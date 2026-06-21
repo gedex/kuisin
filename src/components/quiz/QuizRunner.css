@@ -40,6 +40,92 @@
   opacity: 0.45;
 }
 
+.quiz-timer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  margin-left: auto;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.quiz-timer::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.quiz-timer strong {
+  min-width: 76px;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 1.08rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.quiz-timer.running {
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
+  background: var(--primary-soft);
+}
+
+.quiz-timer.running::before {
+  background: var(--primary-strong);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.quiz-timer.stopped {
+  background: color-mix(in srgb, var(--surface) 92%, var(--border));
+}
+
+.quiz-intro {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 16px;
+  min-height: 220px;
+  padding: 18px 0 8px;
+  text-align: center;
+}
+
+.quiz-intro h3 {
+  margin: 0;
+  font-size: 1.34rem;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.quiz-intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.quiz-intro-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.quiz-intro .primary-button {
+  min-width: min(100%, 240px);
+}
+
 .review-panel {
   display: grid;
   gap: 12px;
@@ -111,6 +197,19 @@
 }
 
 @media (max-width: 560px) {
+  .quiz-timer {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .panel-heading .ghost-button {
+    width: 100%;
+  }
+
+  .quiz-intro {
+    min-height: 180px;
+  }
+
   .quiz-nav {
     grid-template-columns: 1fr 1fr;
   }

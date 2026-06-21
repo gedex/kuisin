@@ -97,10 +97,6 @@ export function getExplanation(question: QuizQuestion) {
 }
 
 export function getTotalTimeMs(attempt: QuizAttempt, results: QuestionResult[]) {
-  if (attempt.startedAt && attempt.completedAt) {
-    return getElapsedMs(attempt.startedAt, attempt.completedAt);
-  }
-
   return results.reduce((total, result) => total + result.durationMs, 0);
 }
 
