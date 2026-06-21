@@ -35,11 +35,10 @@ npm run preview
 ## Deploy to GitHub Pages
 
 The `trunk` branch deploys to GitHub Pages through GitHub Actions. The
-production build uses `/kuisin/` as the Vite base path, matching the repository
-URL:
+production build uses `/` as the Vite base path, matching the custom domain:
 
 ```text
-https://gedex.github.io/kuisin/
+https://kuisin.id/
 ```
 
 To deploy:
@@ -47,8 +46,27 @@ To deploy:
 1. Push changes to `trunk`.
 2. In GitHub, open **Settings -> Pages**.
 3. Set **Build and deployment -> Source** to **GitHub Actions**.
-4. Open **Actions -> Deploy to GitHub Pages** and wait for the workflow to
+4. Set **Custom domain** to `kuisin.id`.
+5. Open **Actions -> Deploy to GitHub Pages** and wait for the workflow to
    finish.
+
+Hostinger DNS records for `kuisin.id`:
+
+Remove any default `@` A records first, including Hostinger parking records,
+then add these records:
+
+```text
+Type  Name  Value
+A     @     185.199.108.153
+A     @     185.199.109.153
+A     @     185.199.110.153
+A     @     185.199.111.153
+AAAA  @     2606:50c0:8000::153
+AAAA  @     2606:50c0:8001::153
+AAAA  @     2606:50c0:8002::153
+AAAA  @     2606:50c0:8003::153
+CNAME www   gedex.github.io
+```
 
 ## Quiz Data
 
