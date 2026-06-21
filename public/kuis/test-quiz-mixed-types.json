@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "slug": "test-quiz-mixed-types",
+  "title": "test quiz mixed types",
+  "description": "test e2e fixture for mixed question types with shuffled questions and choices.",
+  "subject": "test quiz fixtures",
+  "tags": ["test", "test-e2e", "test-mixed", "test-shuffle"],
+  "quiz": {
+    "settings": {
+      "questionMode": "all",
+      "passingScore": 75,
+      "shuffleQuestions": true,
+      "shuffleChoices": true
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "test prompt mixed q1: choose the mixed multiple choice answer.",
+        "choices": [
+          { "id": "a", "text": "test distractor mixed a" },
+          { "id": "b", "text": "test answer mixed b" },
+          { "id": "c", "text": "test distractor mixed c" }
+        ],
+        "answer": "b",
+        "explanation": "test explanation: mixed b is configured as correct."
+      },
+      {
+        "id": "q2",
+        "type": "true-false",
+        "prompt": "test prompt mixed q2: the expected answer is false.",
+        "answer": false,
+        "explanation": "test explanation: mixed q2 is configured as false."
+      },
+      {
+        "id": "q3",
+        "type": "short-answer",
+        "prompt": "test prompt mixed q3: type mixed.",
+        "answers": ["mixed", "test mixed"],
+        "explanation": "test explanation: mixed and test mixed are accepted."
+      }
+    ]
+  },
+  "flashcards": []
+}

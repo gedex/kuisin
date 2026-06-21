@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "slug": "test-quiz-ujian-besok",
+  "title": "test quiz ujian besok",
+  "description": "test e2e fixture converted from ujian besok for mixed single question flow.",
+  "subject": "test converted fixtures",
+  "tags": ["test", "test-e2e", "test-ujian-besok", "test-mixed"],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 75,
+      "shuffleQuestions": true,
+      "shuffleChoices": false
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "test prompt ujian besok: choose the mixed fixture option.",
+        "choices": [
+          { "id": "a", "text": "test distractor morning" },
+          { "id": "b", "text": "test answer mixed fixture" },
+          { "id": "c", "text": "test distractor evening" }
+        ],
+        "answer": "b",
+        "explanation": "test explanation: the mixed fixture choice is configured as correct."
+      },
+      {
+        "id": "q2",
+        "type": "true-false",
+        "prompt": "test prompt ujian besok: this fixture expects the false button.",
+        "answer": false,
+        "explanation": "test explanation: this converted quiz intentionally uses false."
+      },
+      {
+        "id": "q3",
+        "type": "short-answer",
+        "prompt": "test prompt ujian besok: type ready.",
+        "answers": ["ready", "test ready"],
+        "explanation": "test explanation: ready is accepted for this converted fixture."
+      }
+    ]
+  },
+  "flashcards": []
+}

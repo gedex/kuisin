@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "slug": "test-quiz-multiple-choice-single-shuffled",
+  "title": "test quiz multiple choice single shuffled",
+  "description": "test e2e fixture for single question mode with shuffled questions and choices.",
+  "subject": "test quiz fixtures",
+  "tags": ["test", "test-e2e", "test-multiple-choice", "test-shuffle"],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 70,
+      "shuffleQuestions": true,
+      "shuffleChoices": true
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "test prompt multiple choice alpha: choose the answer labeled alpha.",
+        "choices": [
+          { "id": "a", "text": "test answer alpha" },
+          { "id": "b", "text": "test distractor beta" },
+          { "id": "c", "text": "test distractor gamma" }
+        ],
+        "answer": "a",
+        "explanation": "test explanation: alpha is the configured correct choice."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "test prompt multiple choice number: choose the answer labeled two.",
+        "choices": [
+          { "id": "a", "text": "test distractor one" },
+          { "id": "b", "text": "test answer two" },
+          { "id": "c", "text": "test distractor three" }
+        ],
+        "answer": "b",
+        "explanation": "test explanation: two is the configured correct choice."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "test prompt multiple choice final: choose the answer labeled final.",
+        "choices": [
+          { "id": "a", "text": "test distractor left" },
+          { "id": "b", "text": "test distractor middle" },
+          { "id": "c", "text": "test answer final" }
+        ],
+        "answer": "c",
+        "explanation": "test explanation: final is the configured correct choice."
+      }
+    ]
+  },
+  "flashcards": []
+}

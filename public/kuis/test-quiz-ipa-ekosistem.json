@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "slug": "test-quiz-ipa-ekosistem",
+  "title": "test quiz ipa ekosistem",
+  "description": "test e2e fixture converted from ipa ekosistem for shuffled question review.",
+  "subject": "test converted fixtures",
+  "tags": ["test", "test-e2e", "test-ipa-ekosistem", "test-review"],
+  "quiz": {
+    "settings": {
+      "questionMode": "all",
+      "passingScore": 70,
+      "shuffleQuestions": true,
+      "shuffleChoices": false
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "true-false",
+        "prompt": "test prompt ipa ekosistem: this converted fixture expects true.",
+        "answer": true,
+        "explanation": "test explanation: q1 is configured as true."
+      },
+      {
+        "id": "q2",
+        "type": "true-false",
+        "prompt": "test prompt ipa ekosistem: this converted fixture expects false.",
+        "answer": false,
+        "explanation": "test explanation: q2 is configured as false."
+      },
+      {
+        "id": "q3",
+        "type": "true-false",
+        "prompt": "test prompt ipa ekosistem: this final converted fixture expects true.",
+        "answer": true,
+        "explanation": "test explanation: q3 is configured as true."
+      }
+    ]
+  },
+  "flashcards": []
+}

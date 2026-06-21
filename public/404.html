@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kuisin</title>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var search = window.location.search || "";
+        var hash = window.location.hash || "";
+        var base = "/";
+
+        window.location.replace(
+          base + "?p=" + encodeURIComponent(path + search + hash)
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

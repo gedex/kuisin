@@ -1,0 +1,117 @@
+.question-block {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 90%, var(--bg));
+}
+
+.question-title {
+  display: block;
+}
+
+.question-title h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.choice-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.true-false-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.choice-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 54px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.choice-button span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.choice-button.selected {
+  border-color: var(--primary);
+}
+
+.choice-button.correct {
+  border-color: color-mix(in srgb, var(--good) 52%, var(--border));
+  background: var(--good-soft);
+  color: var(--good);
+}
+
+.choice-button.wrong {
+  border-color: color-mix(in srgb, var(--bad) 52%, var(--border));
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+
+.explanation {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
+
+.explanation.correct {
+  background: var(--good-soft);
+  color: var(--good);
+}
+
+.explanation.wrong {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+
+.short-answer-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.short-answer-form input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  outline: 0;
+}
+
+.short-answer-form input::placeholder {
+  color: color-mix(in srgb, var(--muted) 74%, transparent);
+}
+
+@media (max-width: 880px) {
+  .choice-list {
+    grid-template-columns: 1fr;
+  }
+
+  .true-false-list,
+  .short-answer-form {
+    grid-template-columns: 1fr;
+  }
+}

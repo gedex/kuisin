@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "slug": "operasi-matematika-dasar-sd",
+  "title": "Operasi Matematika Dasar SD",
+  "description": "20 soal operasi dasar untuk siswa SD: penjumlahan, pengurangan, perkalian, pembagian, dan soal cerita singkat.",
+  "subject": "Matematika",
+  "tags": ["sd", "matematika", "operasi-dasar", "aritmetika"],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 70,
+      "shuffleQuestions": false,
+      "shuffleChoices": false
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 24 + 18?",
+        "choices": [
+          { "id": "a", "text": "40" },
+          { "id": "b", "text": "42" },
+          { "id": "c", "text": "44" },
+          { "id": "d", "text": "46" }
+        ],
+        "answer": "b",
+        "explanation": "24 + 18 = 42."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 57 + 36?",
+        "choices": [
+          { "id": "a", "text": "83" },
+          { "id": "b", "text": "91" },
+          { "id": "c", "text": "93" },
+          { "id": "d", "text": "95" }
+        ],
+        "answer": "c",
+        "explanation": "57 + 36 = 93."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 120 + 85?",
+        "choices": [
+          { "id": "a", "text": "195" },
+          { "id": "b", "text": "200" },
+          { "id": "c", "text": "205" },
+          { "id": "d", "text": "215" }
+        ],
+        "answer": "c",
+        "explanation": "120 + 85 = 205."
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 73 - 28?",
+        "choices": [
+          { "id": "a", "text": "43" },
+          { "id": "b", "text": "45" },
+          { "id": "c", "text": "47" },
+          { "id": "d", "text": "51" }
+        ],
+        "answer": "b",
+        "explanation": "73 - 28 = 45."
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 96 - 47?",
+        "choices": [
+          { "id": "a", "text": "39" },
+          { "id": "b", "text": "47" },
+          { "id": "c", "text": "49" },
+          { "id": "d", "text": "53" }
+        ],
+        "answer": "c",
+        "explanation": "96 - 47 = 49."
+      },
+      {
+        "id": "q6",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 250 - 125?",
+        "choices": [
+          { "id": "a", "text": "115" },
+          { "id": "b", "text": "120" },
+          { "id": "c", "text": "125" },
+          { "id": "d", "text": "135" }
+        ],
+        "answer": "c",
+        "explanation": "250 - 125 = 125."
+      },
+      {
+        "id": "q7",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 6 x 7?",
+        "choices": [
+          { "id": "a", "text": "36" },
+          { "id": "b", "text": "40" },
+          { "id": "c", "text": "42" },
+          { "id": "d", "text": "48" }
+        ],
+        "answer": "c",
+        "explanation": "6 x 7 = 42."
+      },
+      {
+        "id": "q8",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 8 x 9?",
+        "choices": [
+          { "id": "a", "text": "63" },
+          { "id": "b", "text": "72" },
+          { "id": "c", "text": "81" },
+          { "id": "d", "text": "89" }
+        ],
+        "answer": "b",
+        "explanation": "8 x 9 = 72."
+      },
+      {
+        "id": "q9",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 12 x 5?",
+        "choices": [
+          { "id": "a", "text": "50" },
+          { "id": "b", "text": "55" },
+          { "id": "c", "text": "60" },
+          { "id": "d", "text": "65" }
+        ],
+        "answer": "c",
+        "explanation": "12 x 5 = 60."
+      },
+      {
+        "id": "q10",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 56 / 7?",
+        "choices": [
+          { "id": "a", "text": "7" },
+          { "id": "b", "text": "8" },
+          { "id": "c", "text": "9" },
+          { "id": "d", "text": "10" }
+        ],
+        "answer": "b",
+        "explanation": "56 / 7 = 8."
+      },
+      {
+        "id": "q11",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 81 / 9?",
+        "choices": [
+          { "id": "a", "text": "7" },
+          { "id": "b", "text": "8" },
+          { "id": "c", "text": "9" },
+          { "id": "d", "text": "10" }
+        ],
+        "answer": "c",
+        "explanation": "81 / 9 = 9."
+      },
+      {
+        "id": "q12",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 72 / 8?",
+        "choices": [
+          { "id": "a", "text": "8" },
+          { "id": "b", "text": "9" },
+          { "id": "c", "text": "10" },
+          { "id": "d", "text": "12" }
+        ],
+        "answer": "b",
+        "explanation": "72 / 8 = 9."
+      },
+      {
+        "id": "q13",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 38 + 24?",
+        "choices": [
+          { "id": "a", "text": "52" },
+          { "id": "b", "text": "60" },
+          { "id": "c", "text": "62" },
+          { "id": "d", "text": "64" }
+        ],
+        "answer": "c",
+        "explanation": "38 + 24 = 62."
+      },
+      {
+        "id": "q14",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 15 x 2?",
+        "choices": [
+          { "id": "a", "text": "30" },
+          { "id": "b", "text": "35" },
+          { "id": "c", "text": "40" },
+          { "id": "d", "text": "45" }
+        ],
+        "answer": "a",
+        "explanation": "15 x 2 = 30."
+      },
+      {
+        "id": "q15",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 45 - 30?",
+        "choices": [
+          { "id": "a", "text": "15" },
+          { "id": "b", "text": "20" },
+          { "id": "c", "text": "30" },
+          { "id": "d", "text": "240" }
+        ],
+        "answer": "a",
+        "explanation": "45 - 30 = 15."
+      },
+      {
+        "id": "q16",
+        "type": "multiple-choice",
+        "prompt": "Ibu membeli 3 kantong apel. Setiap kantong berisi 8 apel. Berapa jumlah apel Ibu?",
+        "choices": [
+          { "id": "a", "text": "11" },
+          { "id": "b", "text": "18" },
+          { "id": "c", "text": "24" },
+          { "id": "d", "text": "32" }
+        ],
+        "answer": "c",
+        "explanation": "3 kantong x 8 apel = 24 apel."
+      },
+      {
+        "id": "q17",
+        "type": "multiple-choice",
+        "prompt": "Ani punya 35 pensil. Ia membeli 12 pensil lagi. Berapa pensil Ani sekarang?",
+        "choices": [
+          { "id": "a", "text": "29" },
+          { "id": "b", "text": "35" },
+          { "id": "c", "text": "47" },
+          { "id": "d", "text": "53" }
+        ],
+        "answer": "c",
+        "explanation": "35 + 12 = 47."
+      },
+      {
+        "id": "q18",
+        "type": "multiple-choice",
+        "prompt": "Ada 4 kotak buku. Setiap kotak berisi 6 buku. Berapa jumlah buku semuanya?",
+        "choices": [
+          { "id": "a", "text": "24" },
+          { "id": "b", "text": "25" },
+          { "id": "c", "text": "29" },
+          { "id": "d", "text": "35" }
+        ],
+        "answer": "a",
+        "explanation": "4 x 6 = 24."
+      },
+      {
+        "id": "q19",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 100 - 36?",
+        "choices": [
+          { "id": "a", "text": "54" },
+          { "id": "b", "text": "64" },
+          { "id": "c", "text": "74" },
+          { "id": "d", "text": "86" }
+        ],
+        "answer": "b",
+        "explanation": "100 - 36 = 64."
+      },
+      {
+        "id": "q20",
+        "type": "multiple-choice",
+        "prompt": "Berapa hasil 7 x 6?",
+        "choices": [
+          { "id": "a", "text": "42" },
+          { "id": "b", "text": "48" },
+          { "id": "c", "text": "50" },
+          { "id": "d", "text": "56" }
+        ],
+        "answer": "a",
+        "explanation": "7 x 6 = 42."
+      }
+    ]
+  },
+  "flashcards": []
+}

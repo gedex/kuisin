@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "slug": "test-quiz-short-answer-all-static",
+  "title": "test quiz short answer all static",
+  "description": "test e2e fixture for all question mode with short answer questions.",
+  "subject": "test quiz fixtures",
+  "tags": ["test", "test-e2e", "test-short-answer", "test-static"],
+  "quiz": {
+    "settings": {
+      "questionMode": "all",
+      "passingScore": 70,
+      "shuffleQuestions": false,
+      "shuffleChoices": false
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "short-answer",
+        "prompt": "test prompt short answer q1: type alpha.",
+        "answers": ["alpha", "test alpha"],
+        "explanation": "test explanation: alpha and test alpha are accepted."
+      },
+      {
+        "id": "q2",
+        "type": "short-answer",
+        "prompt": "test prompt short answer q2: type beta.",
+        "answers": ["beta", "test beta"],
+        "explanation": "test explanation: beta and test beta are accepted."
+      },
+      {
+        "id": "q3",
+        "type": "short-answer",
+        "prompt": "test prompt short answer q3: type TESTCASE exactly.",
+        "answers": ["TESTCASE"],
+        "caseSensitive": true,
+        "explanation": "test explanation: TESTCASE is accepted with case sensitivity enabled."
+      }
+    ]
+  },
+  "flashcards": []
+}

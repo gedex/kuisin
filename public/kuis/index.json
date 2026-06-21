@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-21",
+  "items": [
+    {
+      "type": "quiz",
+      "slug": "operasi-matematika-dasar-sd",
+      "title": "Operasi Matematika Dasar SD",
+      "description": "20 soal operasi dasar untuk siswa SD: penjumlahan, pengurangan, perkalian, pembagian, dan soal cerita singkat.",
+      "subject": "Matematika",
+      "tags": ["sd", "matematika", "operasi-dasar", "aritmetika"],
+      "questionCount": 20,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/operasi-matematika-dasar-sd.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-multiple-choice-single-shuffled",
+      "title": "test quiz multiple choice single shuffled",
+      "description": "test e2e fixture for single question mode with shuffled questions and choices.",
+      "subject": "test quiz fixtures",
+      "tags": ["test", "test-e2e", "test-multiple-choice", "test-shuffle"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-multiple-choice-single-shuffled.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-true-false-all-static",
+      "title": "test quiz true false all static",
+      "description": "test e2e fixture for all question mode with static true false questions.",
+      "subject": "test quiz fixtures",
+      "tags": ["test", "test-e2e", "test-true-false", "test-static"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-true-false-all-static.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-short-answer-all-static",
+      "title": "test quiz short answer all static",
+      "description": "test e2e fixture for all question mode with short answer questions.",
+      "subject": "test quiz fixtures",
+      "tags": ["test", "test-e2e", "test-short-answer", "test-static"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-short-answer-all-static.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-mixed-types",
+      "title": "test quiz mixed types",
+      "description": "test e2e fixture for mixed question types with shuffled questions and choices.",
+      "subject": "test quiz fixtures",
+      "tags": ["test", "test-e2e", "test-mixed", "test-shuffle"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-mixed-types.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-ujian-besok",
+      "title": "test quiz ujian besok",
+      "description": "test e2e fixture converted from ujian besok for mixed single question flow.",
+      "subject": "test converted fixtures",
+      "tags": ["test", "test-e2e", "test-ujian-besok", "test-mixed"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-ujian-besok.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-matematika-dasar",
+      "title": "test quiz matematika dasar",
+      "description": "test e2e fixture converted from matematika dasar for multiple choice navigation.",
+      "subject": "test converted fixtures",
+      "tags": ["test", "test-e2e", "test-matematika-dasar", "test-navigation"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-matematika-dasar.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "test-quiz-ipa-ekosistem",
+      "title": "test quiz ipa ekosistem",
+      "description": "test e2e fixture converted from ipa ekosistem for shuffled question review.",
+      "subject": "test converted fixtures",
+      "tags": ["test", "test-e2e", "test-ipa-ekosistem", "test-review"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-ipa-ekosistem.json"
+    }
+  ]
+}

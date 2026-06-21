@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "slug": "test-quiz-matematika-dasar",
+  "title": "test quiz matematika dasar",
+  "description": "test e2e fixture converted from matematika dasar for multiple choice navigation.",
+  "subject": "test converted fixtures",
+  "tags": ["test", "test-e2e", "test-matematika-dasar", "test-navigation"],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 70,
+      "shuffleQuestions": false,
+      "shuffleChoices": true
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "test prompt matematika dasar: choose the option for 2 + 2.",
+        "choices": [
+          { "id": "a", "text": "test distractor 3" },
+          { "id": "b", "text": "test answer 4" },
+          { "id": "c", "text": "test distractor 5" }
+        ],
+        "answer": "b",
+        "explanation": "test explanation: 2 + 2 is 4."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "test prompt matematika dasar: choose the even test number.",
+        "choices": [
+          { "id": "a", "text": "test distractor 7" },
+          { "id": "b", "text": "test distractor 9" },
+          { "id": "c", "text": "test answer 10" }
+        ],
+        "answer": "c",
+        "explanation": "test explanation: 10 is even."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "test prompt matematika dasar: choose the test sequence result after a, b.",
+        "choices": [
+          { "id": "a", "text": "test answer c" },
+          { "id": "b", "text": "test distractor d" },
+          { "id": "c", "text": "test distractor e" }
+        ],
+        "answer": "a",
+        "explanation": "test explanation: c follows the fixture sequence."
+      }
+    ]
+  },
+  "flashcards": []
+}

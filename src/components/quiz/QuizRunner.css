@@ -1,0 +1,139 @@
+.question-list {
+  display: grid;
+  gap: 14px;
+}
+
+.question-flow {
+  display: grid;
+  gap: 14px;
+}
+
+.quiz-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-items: center;
+}
+
+.quiz-nav span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 850;
+  text-align: center;
+}
+
+.quiz-nav .soft-button,
+.quiz-nav .primary-button {
+  width: 100%;
+}
+
+.quiz-nav .primary-button {
+  justify-self: stretch;
+}
+
+.quiz-nav button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.review-panel {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 90%, var(--primary-soft));
+}
+
+.review-panel h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  letter-spacing: 0;
+}
+
+.review-note {
+  margin: 0;
+  color: var(--muted);
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+}
+
+.review-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.review-item span:nth-child(2) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.review-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.review-item strong {
+  font-size: 0.84rem;
+}
+
+.review-item strong.wrong {
+  color: var(--bad);
+}
+
+.review-item strong.skipped {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .quiz-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quiz-nav span {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .quiz-nav .soft-button,
+  .quiz-nav .primary-button {
+    width: 100%;
+  }
+
+  .quiz-nav .primary-button {
+    justify-self: stretch;
+  }
+
+  .review-item {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .review-item strong {
+    grid-column: 2;
+  }
+}
