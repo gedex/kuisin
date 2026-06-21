@@ -32,6 +32,24 @@ Preview the production build:
 npm run preview
 ```
 
+## Deploy to GitHub Pages
+
+The `trunk` branch deploys to GitHub Pages through GitHub Actions. The
+production build uses `/kuisin/` as the Vite base path, matching the repository
+URL:
+
+```text
+https://gedex.github.io/kuisin/
+```
+
+To deploy:
+
+1. Push changes to `trunk`.
+2. In GitHub, open **Settings -> Pages**.
+3. Set **Build and deployment -> Source** to **GitHub Actions**.
+4. Open **Actions -> Deploy to GitHub Pages** and wait for the workflow to
+   finish.
+
 ## Quiz Data
 
 The quiz index is at:
