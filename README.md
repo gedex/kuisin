@@ -50,23 +50,8 @@ To deploy:
 5. Open **Actions -> Deploy to GitHub Pages** and wait for the workflow to
    finish.
 
-Hostinger DNS records for `kuisin.id`:
-
-Remove any default `@` A records first, including Hostinger parking records,
-then add these records:
-
-```text
-Type  Name  Value
-A     @     185.199.108.153
-A     @     185.199.109.153
-A     @     185.199.110.153
-A     @     185.199.111.153
-AAAA  @     2606:50c0:8000::153
-AAAA  @     2606:50c0:8001::153
-AAAA  @     2606:50c0:8002::153
-AAAA  @     2606:50c0:8003::153
-CNAME www   gedex.github.io
-```
+Configure the custom-domain DNS records using the
+[GitHub Pages custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 ## Quiz Data
 
