@@ -1,7 +1,26 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-21",
+  "updatedAt": "2026-07-09",
   "items": [
+    {
+      "type": "quiz",
+      "slug": "tka-smp-mata-pelajaran-wajib",
+      "title": "Latihan TKA SMP Mata Pelajaran Wajib",
+      "description": "30 soal latihan orisinal untuk TKA SMP/MTs mata pelajaran wajib: Matematika dan Bahasa Indonesia, disusun mengikuti kerangka asesmen resmi Pusmendik.",
+      "subject": "TKA SMP",
+      "tags": [
+        "smp",
+        "mts",
+        "tka",
+        "matematika",
+        "bahasa-indonesia",
+        "mata-pelajaran-wajib",
+        "pusmendik"
+      ],
+      "questionCount": 30,
+      "flashcardCount": 8,
+      "dataFile": "./kuis/tka-smp-mata-pelajaran-wajib.json"
+    },
     {
       "type": "quiz",
       "slug": "operasi-matematika-dasar-sd",

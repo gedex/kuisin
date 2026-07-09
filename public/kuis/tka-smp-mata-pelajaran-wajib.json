@@ -1,0 +1,437 @@
+{
+  "version": 1,
+  "slug": "tka-smp-mata-pelajaran-wajib",
+  "title": "Latihan TKA SMP Mata Pelajaran Wajib",
+  "description": "30 soal latihan orisinal untuk TKA SMP/MTs mata pelajaran wajib: Matematika dan Bahasa Indonesia, disusun mengikuti kerangka asesmen resmi Pusmendik.",
+  "subject": "TKA SMP",
+  "tags": [
+    "smp",
+    "mts",
+    "tka",
+    "matematika",
+    "bahasa-indonesia",
+    "mata-pelajaran-wajib",
+    "pusmendik"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 75,
+      "shuffleQuestions": false,
+      "shuffleChoices": true
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Bilangan Real\n\nPada kegiatan bakti sekolah, panitia menyiapkan 72 botol air. Tiga kelas masing-masing menambah 28 botol. Setelah kegiatan, tersisa 45 botol. Berapa botol air yang digunakan selama kegiatan?",
+        "choices": [
+          { "id": "a", "text": "107 botol" },
+          { "id": "b", "text": "111 botol" },
+          { "id": "c", "text": "153 botol" },
+          { "id": "d", "text": "285 botol" }
+        ],
+        "answer": "b",
+        "explanation": "Jumlah air tersedia 72 + 3 x 28 = 156 botol. Yang digunakan 156 - 45 = 111 botol."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Estimasi\n\nHarga beras di koperasi adalah Rp12.800 per kg. Ibu membeli 4,9 kg. Perkiraan terbaik biaya yang perlu dibayar adalah ...",
+        "choices": [
+          { "id": "a", "text": "Rp58.000" },
+          { "id": "b", "text": "Rp63.000" },
+          { "id": "c", "text": "Rp65.000" },
+          { "id": "d", "text": "Rp70.000" }
+        ],
+        "answer": "c",
+        "explanation": "12.800 dapat dibulatkan menjadi 13.000 dan 4,9 menjadi 5. Perkiraannya 13.000 x 5 = 65.000."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Faktorisasi Prima\n\nLampu A berkedip setiap 24 detik dan lampu B setiap 36 detik. Jika keduanya berkedip bersama pada pukul 07.00.00, kapan keduanya berkedip bersama lagi untuk pertama kali?",
+        "choices": [
+          { "id": "a", "text": "48 detik kemudian" },
+          { "id": "b", "text": "60 detik kemudian" },
+          { "id": "c", "text": "72 detik kemudian" },
+          { "id": "d", "text": "96 detik kemudian" }
+        ],
+        "answer": "c",
+        "explanation": "24 = 2^3 x 3 dan 36 = 2^2 x 3^2. KPK-nya 2^3 x 3^2 = 72, jadi keduanya berkedip bersama lagi 72 detik kemudian."
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Rasio dan Skala\n\nPada peta berskala 1 : 250.000, jarak rumah Dina ke museum adalah 6 cm. Jarak sebenarnya rumah Dina ke museum adalah ...",
+        "choices": [
+          { "id": "a", "text": "12 km" },
+          { "id": "b", "text": "15 km" },
+          { "id": "c", "text": "18 km" },
+          { "id": "d", "text": "25 km" }
+        ],
+        "answer": "b",
+        "explanation": "6 x 250.000 = 1.500.000 cm = 15.000 m = 15 km."
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Perbandingan Berbalik Nilai\n\nEnam pekerja dapat menyelesaikan pengecatan aula dalam 12 hari. Jika kemampuan setiap pekerja sama, berapa hari yang diperlukan 9 pekerja untuk pekerjaan yang sama?",
+        "choices": [
+          { "id": "a", "text": "6 hari" },
+          { "id": "b", "text": "8 hari" },
+          { "id": "c", "text": "10 hari" },
+          { "id": "d", "text": "18 hari" }
+        ],
+        "answer": "b",
+        "explanation": "Banyak pekerja dan waktu berbanding terbalik. 6 x 12 = 9 x h, sehingga h = 72 / 9 = 8 hari."
+      },
+      {
+        "id": "q6",
+        "type": "true-false",
+        "prompt": "Matematika - Laju Perubahan\n\nSebuah pompa mengalirkan air dengan laju tetap 18 liter per menit. Setelah 7 menit, volume air yang dialirkan adalah 126 liter.",
+        "answer": true,
+        "explanation": "Volume = laju x waktu = 18 x 7 = 126 liter."
+      },
+      {
+        "id": "q7",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Bentuk Aljabar\n\nBentuk sederhana dari 3(2x - 5) + 4x adalah ...",
+        "choices": [
+          { "id": "a", "text": "6x - 1" },
+          { "id": "b", "text": "6x - 15" },
+          { "id": "c", "text": "10x + 15" },
+          { "id": "d", "text": "10x - 15" }
+        ],
+        "answer": "d",
+        "explanation": "3(2x - 5) + 4x = 6x - 15 + 4x = 10x - 15."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Matematika - Pertidaksamaan Linear\n\nNilai bilangan bulat terbesar x yang memenuhi 2x + 5 <= 17 adalah ...",
+        "answers": ["6"],
+        "explanation": "2x + 5 <= 17 berarti 2x <= 12, sehingga x <= 6. Bilangan bulat terbesar yang memenuhi adalah 6."
+      },
+      {
+        "id": "q9",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Sistem Persamaan Linear Dua Variabel\n\nDi toko alat tulis, 2 buku tulis dan 3 pensil berharga Rp19.000. Satu buku tulis dan 2 pensil berharga Rp11.000. Harga satu buku tulis adalah ...",
+        "choices": [
+          { "id": "a", "text": "Rp3.000" },
+          { "id": "b", "text": "Rp5.000" },
+          { "id": "c", "text": "Rp6.000" },
+          { "id": "d", "text": "Rp8.000" }
+        ],
+        "answer": "b",
+        "explanation": "Misal buku b dan pensil p. Dari b + 2p = 11.000 dan 2b + 3p = 19.000 diperoleh p = 3.000 dan b = 5.000."
+      },
+      {
+        "id": "q10",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Fungsi\n\nDiketahui f(x) = 2x - 1 dengan domain {1, 2, 4}. Range fungsi tersebut adalah ...",
+        "choices": [
+          { "id": "a", "text": "{1, 2, 4}" },
+          { "id": "b", "text": "{2, 4, 8}" },
+          { "id": "c", "text": "{1, 3, 7}" },
+          { "id": "d", "text": "{3, 5, 9}" }
+        ],
+        "answer": "c",
+        "explanation": "f(1) = 1, f(2) = 3, dan f(4) = 7. Jadi range-nya {1, 3, 7}."
+      },
+      {
+        "id": "q11",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Barisan Bilangan\n\nBarisan 5, 9, 13, 17, ... memiliki beda tetap. Suku ke-12 barisan tersebut adalah ...",
+        "choices": [
+          { "id": "a", "text": "45" },
+          { "id": "b", "text": "47" },
+          { "id": "c", "text": "49" },
+          { "id": "d", "text": "53" }
+        ],
+        "answer": "c",
+        "explanation": "Barisan aritmetika dengan suku pertama 5 dan beda 4. Suku ke-12 = 5 + 11 x 4 = 49."
+      },
+      {
+        "id": "q12",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Teorema Pythagoras\n\nSebuah tangga panjangnya 10 m disandarkan pada dinding. Kaki tangga berjarak 6 m dari dinding. Tinggi ujung tangga pada dinding adalah ...",
+        "choices": [
+          { "id": "a", "text": "6 m" },
+          { "id": "b", "text": "7 m" },
+          { "id": "c", "text": "8 m" },
+          { "id": "d", "text": "9 m" }
+        ],
+        "answer": "c",
+        "explanation": "Tinggi = akar(10^2 - 6^2) = akar(100 - 36) = akar(64) = 8 m."
+      },
+      {
+        "id": "q13",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Kesebangunan\n\nPada waktu yang sama, tongkat setinggi 1,6 m memiliki bayangan 2 m. Sebuah tiang memiliki bayangan 7,5 m. Tinggi tiang tersebut adalah ...",
+        "choices": [
+          { "id": "a", "text": "5 m" },
+          { "id": "b", "text": "6 m" },
+          { "id": "c", "text": "7,5 m" },
+          { "id": "d", "text": "9,6 m" }
+        ],
+        "answer": "b",
+        "explanation": "Perbandingan tinggi dan bayangan sama: 1,6 / 2 = t / 7,5. Maka t = 0,8 x 7,5 = 6 m."
+      },
+      {
+        "id": "q14",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Pengukuran Luas\n\nTaman berbentuk persegi panjang berukuran 12 m x 8 m. Pada salah satu sisi lebarnya ditambahkan setengah lingkaran berdiameter 8 m. Jika pi = 3,14, luas taman seluruhnya adalah ...",
+        "choices": [
+          { "id": "a", "text": "108,56 m2" },
+          { "id": "b", "text": "116,48 m2" },
+          { "id": "c", "text": "121,12 m2" },
+          { "id": "d", "text": "146,24 m2" }
+        ],
+        "answer": "c",
+        "explanation": "Luas persegi panjang 12 x 8 = 96. Luas setengah lingkaran = 1/2 x 3,14 x 4^2 = 25,12. Total 121,12 m2."
+      },
+      {
+        "id": "q15",
+        "type": "multiple-choice",
+        "prompt": "Matematika - Data dan Peluang\n\nData nilai kuis enam siswa adalah 6, 8, 8, 10, 12, 14. Pernyataan yang benar adalah ...",
+        "choices": [
+          { "id": "a", "text": "Rata-rata data adalah 8." },
+          { "id": "b", "text": "Median data adalah 8." },
+          { "id": "c", "text": "Median data adalah 9 dan modus data adalah 8." },
+          { "id": "d", "text": "Jangkauan data adalah 6." }
+        ],
+        "answer": "c",
+        "explanation": "Median = (8 + 10) / 2 = 9. Nilai yang paling sering muncul adalah 8, sehingga modusnya 8."
+      },
+      {
+        "id": "q16",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Pemahaman Tekstual\n\nBacalah teks berikut.\n\nDi Kelurahan Seruni, warga membuka sudut baca di balai RW setiap sore. Buku diperoleh dari donasi dan dicatat oleh relawan. Anak-anak boleh meminjam dua buku selama satu minggu. Selain membaca, mereka belajar merawat buku dan menulis ulasan pendek. Ketua RW mengatakan program ini dibuat karena perpustakaan umum cukup jauh. Setelah dua bulan, jumlah pengunjung naik dari 18 menjadi 46 anak per pekan.\n\nMengapa warga membuat program sudut baca?",
+        "choices": [
+          { "id": "a", "text": "Karena balai RW tidak digunakan pada sore hari." },
+          { "id": "b", "text": "Karena perpustakaan umum cukup jauh." },
+          { "id": "c", "text": "Karena anak-anak wajib menulis ulasan." },
+          { "id": "d", "text": "Karena relawan ingin mencatat semua buku." }
+        ],
+        "answer": "b",
+        "explanation": "Alasan program disebutkan langsung dalam teks: perpustakaan umum cukup jauh."
+      },
+      {
+        "id": "q17",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Pemahaman Inferensial\n\nBacalah teks berikut.\n\nDi Kelurahan Seruni, warga membuka sudut baca di balai RW setiap sore. Buku diperoleh dari donasi dan dicatat oleh relawan. Anak-anak boleh meminjam dua buku selama satu minggu. Selain membaca, mereka belajar merawat buku dan menulis ulasan pendek. Setelah dua bulan, jumlah pengunjung naik dari 18 menjadi 46 anak per pekan.\n\nKesimpulan paling tepat dari perubahan jumlah pengunjung adalah ...",
+        "choices": [
+          { "id": "a", "text": "Anak-anak hanya datang karena ingin meminjam buku baru." },
+          { "id": "b", "text": "Relawan tidak perlu lagi mencatat buku." },
+          { "id": "c", "text": "Sudut baca makin diminati anak-anak." },
+          { "id": "d", "text": "Semua anak di kelurahan sudah gemar membaca." }
+        ],
+        "answer": "c",
+        "explanation": "Kenaikan pengunjung dari 18 menjadi 46 anak per pekan menunjukkan minat terhadap sudut baca meningkat."
+      },
+      {
+        "id": "q18",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Istilah dalam Teks\n\nDalam teks sudut baca, buku diperoleh dari donasi. Makna kata donasi adalah ...",
+        "choices": [
+          { "id": "a", "text": "Sumbangan yang diberikan secara sukarela." },
+          { "id": "b", "text": "Buku yang dipinjam dalam waktu lama." },
+          { "id": "c", "text": "Catatan milik relawan." },
+          { "id": "d", "text": "Hadiah karena menang lomba." }
+        ],
+        "answer": "a",
+        "explanation": "Donasi berarti pemberian atau sumbangan secara sukarela."
+      },
+      {
+        "id": "q19",
+        "type": "true-false",
+        "prompt": "Bahasa Indonesia - Informasi Tersurat\n\nBerdasarkan teks sudut baca, setiap anak boleh meminjam lebih dari dua buku selama satu minggu.",
+        "answer": false,
+        "explanation": "Teks menyebut anak-anak boleh meminjam dua buku selama satu minggu, bukan lebih dari dua buku."
+      },
+      {
+        "id": "q20",
+        "type": "short-answer",
+        "prompt": "Bahasa Indonesia - Informasi Tersurat\n\nBerdasarkan teks sudut baca, berapa lama anak-anak boleh meminjam buku?",
+        "answers": ["satu minggu", "1 minggu", "seminggu"],
+        "caseSensitive": false,
+        "explanation": "Teks menyebut anak-anak boleh meminjam dua buku selama satu minggu."
+      },
+      {
+        "id": "q21",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Teks Fiksi\n\nBacalah teks berikut.\n\nGerimis turun ketika Raka sampai di halte kecil depan pasar. Ia menggenggam kotak kue buatan ibunya. Kue itu harus tiba di rumah Nenek sebelum magrib. Bus terakhir belum terlihat, sementara jam dinding toko menunjukkan pukul lima. Raka hampir menelepon Ayah, tetapi ia melihat Bu Sari, tetangga Nenek, menepi dengan sepeda motornya. Bu Sari bertanya apakah Raka akan ke rumah Nenek Lani. Raka mengangguk lega dan menjaga kotak kue itu agar tidak basah.\n\nLatar awal cerita tersebut adalah ...",
+        "choices": [
+          { "id": "a", "text": "Rumah Nenek Lani menjelang pagi." },
+          { "id": "b", "text": "Toko kue saat hujan deras." },
+          { "id": "c", "text": "Sepeda motor Bu Sari di halaman rumah." },
+          { "id": "d", "text": "Halte kecil depan pasar saat gerimis." }
+        ],
+        "answer": "d",
+        "explanation": "Kalimat pertama menyebut Raka sampai di halte kecil depan pasar ketika gerimis turun."
+      },
+      {
+        "id": "q22",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Pemahaman Inferensial\n\nMengapa Raka merasa lega saat melihat Bu Sari?",
+        "choices": [
+          { "id": "a", "text": "Karena ia mendapat kemungkinan tumpangan ke rumah Nenek." },
+          { "id": "b", "text": "Karena kue buatan ibunya sudah habis." },
+          { "id": "c", "text": "Karena bus terakhir baru saja datang." },
+          { "id": "d", "text": "Karena Ayah sudah tiba di halte." }
+        ],
+        "answer": "a",
+        "explanation": "Raka harus mengantar kue sebelum magrib, sedangkan bus belum terlihat. Kehadiran Bu Sari memberi jalan keluar."
+      },
+      {
+        "id": "q23",
+        "type": "true-false",
+        "prompt": "Bahasa Indonesia - Evaluasi dan Apresiasi\n\nBerdasarkan cerita Raka, pernyataan berikut tepat: Raka digambarkan sebagai tokoh yang bertanggung jawab menjaga titipan.",
+        "answer": true,
+        "explanation": "Raka berusaha mengantar kue tepat waktu dan menjaga kotak kue agar tidak basah."
+      },
+      {
+        "id": "q24",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Memprediksi Peristiwa\n\nJika Bu Sari tidak datang, tindakan yang paling mungkin dilakukan Raka adalah ...",
+        "choices": [
+          { "id": "a", "text": "Meninggalkan kotak kue di halte." },
+          { "id": "b", "text": "Menunggu sampai pagi." },
+          { "id": "c", "text": "Menelepon Ayah untuk meminta bantuan." },
+          { "id": "d", "text": "Menjual kue di depan pasar." }
+        ],
+        "answer": "c",
+        "explanation": "Teks menyatakan Raka hampir menelepon Ayah sebelum melihat Bu Sari."
+      },
+      {
+        "id": "q25",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Menanggapi Bahasa Penulis\n\nKalimat dalam cerita Raka yang paling kuat membangun suasana cemas adalah ...",
+        "choices": [
+          { "id": "a", "text": "Ia menggenggam kotak kue buatan ibunya." },
+          { "id": "b", "text": "Bus terakhir belum terlihat, sementara jam dinding toko menunjukkan pukul lima." },
+          { "id": "c", "text": "Bu Sari bertanya apakah Raka akan ke rumah Nenek Lani." },
+          { "id": "d", "text": "Raka mengangguk lega." }
+        ],
+        "answer": "b",
+        "explanation": "Kalimat itu menunjukkan batas waktu dan hambatan, sehingga menimbulkan ketegangan."
+      },
+      {
+        "id": "q26",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Teks Informasi Jamak\n\nBacalah dua teks berikut.\n\nTeks 1: Kompos daun dibuat dari sampah organik seperti daun kering dan sisa sayur. Bahan dicacah lalu disimpan dalam wadah lembap agar terurai. Setelah beberapa minggu, kompos dapat digunakan untuk menyuburkan tanah.\n\nTeks 2: Di SMP Tunas, siswa mengumpulkan daun kering setiap Jumat. Mereka menimbang bahan, mencatat suhu komposter, dan membandingkan pertumbuhan cabai pada tanah biasa dan tanah berkompos.\n\nBahan yang disebut sebagai sampah organik pada Teks 1 adalah ...",
+        "choices": [
+          { "id": "a", "text": "Daun kering dan sisa sayur." },
+          { "id": "b", "text": "Tanah biasa dan tanah berkompos." },
+          { "id": "c", "text": "Wadah lembap dan komposter." },
+          { "id": "d", "text": "Cabai dan buku catatan." }
+        ],
+        "answer": "a",
+        "explanation": "Teks 1 menyebut sampah organik berupa daun kering dan sisa sayur."
+      },
+      {
+        "id": "q27",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Hubungan Antarteks\n\nHubungan isi Teks 1 dan Teks 2 tentang kompos adalah ...",
+        "choices": [
+          { "id": "a", "text": "Teks 1 menolak kegiatan yang dilakukan pada Teks 2." },
+          { "id": "b", "text": "Teks 2 menjelaskan asal-usul semua sampah organik." },
+          { "id": "c", "text": "Teks 1 menjelaskan cara umum membuat kompos, sedangkan Teks 2 menunjukkan penerapannya di sekolah." },
+          { "id": "d", "text": "Teks 1 dan Teks 2 membahas cara memasak cabai." }
+        ],
+        "answer": "c",
+        "explanation": "Teks 1 berisi penjelasan umum, sedangkan Teks 2 memberi contoh kegiatan siswa yang menerapkan pembuatan dan pengamatan kompos."
+      },
+      {
+        "id": "q28",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Istilah Teknis\n\nPada Teks 2, makna kata komposter yang paling tepat adalah ...",
+        "choices": [
+          { "id": "a", "text": "Tanaman cabai yang diberi pupuk." },
+          { "id": "b", "text": "Wadah atau tempat untuk proses pengomposan." },
+          { "id": "c", "text": "Siswa yang mengumpulkan daun kering." },
+          { "id": "d", "text": "Catatan suhu harian." }
+        ],
+        "answer": "b",
+        "explanation": "Dalam konteks teks, komposter adalah tempat atau alat yang dipakai untuk mengolah bahan menjadi kompos."
+      },
+      {
+        "id": "q29",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Fakta dalam Teks\n\nPernyataan yang merupakan fakta dari Teks 2 adalah ...",
+        "choices": [
+          { "id": "a", "text": "Kegiatan kompos adalah kegiatan sekolah paling menarik." },
+          { "id": "b", "text": "Cabai pada tanah berkompos pasti selalu lebih pedas." },
+          { "id": "c", "text": "Semua siswa lebih suka tanah biasa." },
+          { "id": "d", "text": "Siswa mencatat suhu komposter." }
+        ],
+        "answer": "d",
+        "explanation": "Pernyataan siswa mencatat suhu komposter dapat diverifikasi dan disebutkan langsung dalam Teks 2."
+      },
+      {
+        "id": "q30",
+        "type": "multiple-choice",
+        "prompt": "Bahasa Indonesia - Evaluasi Relevansi\n\nMengapa kegiatan pada Teks 2 relevan dengan kehidupan sehari-hari?",
+        "choices": [
+          { "id": "a", "text": "Karena membantu mengolah sampah organik dan mendukung kesuburan tanah." },
+          { "id": "b", "text": "Karena membuat semua tanaman tumbuh tanpa air." },
+          { "id": "c", "text": "Karena siswa tidak perlu lagi belajar pelajaran lain." },
+          { "id": "d", "text": "Karena kompos hanya berguna di laboratorium sekolah." }
+        ],
+        "answer": "a",
+        "explanation": "Kegiatan membuat kompos berkaitan dengan pengurangan sampah organik dan pemanfaatannya untuk menyuburkan tanah."
+      }
+    ]
+  },
+  "flashcards": [
+    {
+      "id": "f1",
+      "front": "Fokus TKA Matematika SMP",
+      "back": "Mengukur pemahaman fakta, konsep, prinsip, prosedur, serta penerapan matematika untuk menyelesaikan masalah.",
+      "hint": "Bukan hanya hitung cepat."
+    },
+    {
+      "id": "f2",
+      "front": "Muatan Matematika SMP",
+      "back": "Bilangan, aljabar, geometri dan pengukuran, serta data dan peluang.",
+      "hint": "Empat rumpun utama."
+    },
+    {
+      "id": "f3",
+      "front": "Level kognitif Matematika",
+      "back": "Pengetahuan dan pemahaman, aplikasi, serta penalaran.",
+      "hint": "Dari memahami sampai menyimpulkan."
+    },
+    {
+      "id": "f4",
+      "front": "Fokus TKA Bahasa Indonesia SMP",
+      "back": "Difokuskan pada keterampilan membaca teks informasi dan teks fiksi.",
+      "hint": "Kuncinya pemahaman bacaan."
+    },
+    {
+      "id": "f5",
+      "front": "Kompetensi membaca Bahasa Indonesia",
+      "back": "Pemahaman tekstual, pemahaman inferensial, serta evaluasi dan apresiasi.",
+      "hint": "Tersurat, tersirat, lalu menilai."
+    },
+    {
+      "id": "f6",
+      "front": "Teks informasi",
+      "back": "Teks yang memuat fakta, konsep, atau prosedur dari berbagai bidang atau topik.",
+      "hint": "Biasanya menjelaskan sesuatu."
+    },
+    {
+      "id": "f7",
+      "front": "Teks fiksi",
+      "back": "Cerita rekaan dengan tokoh, latar, konflik, alur, dan sudut pandang tertentu.",
+      "hint": "Biasanya berbentuk cerita."
+    },
+    {
+      "id": "f8",
+      "front": "Pemahaman inferensial",
+      "back": "Kemampuan menarik kesimpulan berdasarkan informasi tersirat dalam teks.",
+      "hint": "Jawabannya perlu disimpulkan."
+    }
+  ]
+}
