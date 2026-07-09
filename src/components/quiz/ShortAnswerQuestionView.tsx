@@ -1,7 +1,9 @@
 import { type FormEvent, useEffect, useState } from "react";
 import type { ShortAnswerQuestion } from "../../types";
+import { QuestionDiagram } from "./QuestionDiagram";
 import type { AnswerHandler } from "./questionViewTypes";
 import { getCorrectAnswerText, isCorrectAnswer } from "./quizUtils";
+import { RichContent } from "./RichContent";
 
 type ShortAnswerQuestionViewProps = {
   question: ShortAnswerQuestion;
@@ -34,8 +36,9 @@ export function ShortAnswerQuestionView({
   return (
     <article className="question-block">
       <div className="question-title">
-        <h3>{question.prompt}</h3>
+        <RichContent text={question.prompt} className="question-prompt" />
       </div>
+      <QuestionDiagram diagram={question.diagram} />
 
       <form className="short-answer-form" onSubmit={submitAnswer}>
         <input
@@ -50,13 +53,17 @@ export function ShortAnswerQuestionView({
       </form>
 
       {hasAnswer ? (
-        <p className={isCorrect ? "explanation correct" : "explanation wrong"}>
-          {isCorrect
-            ? question.explanation ?? "Jawaban benar."
-            : question.explanation
-              ? `${question.explanation} Kunci: ${getCorrectAnswerText(question)}.`
-              : `Kunci: ${getCorrectAnswerText(question)}.`}
-        </p>
+        <div className={isCorrect ? "explanation correct" : "explanation wrong"}>
+          <RichContent
+            text={
+              isCorrect
+                ? question.explanation ?? "Jawaban benar."
+                : question.explanation
+                  ? `${question.explanation} Kunci: ${getCorrectAnswerText(question)}.`
+                  : `Kunci: ${getCorrectAnswerText(question)}.`
+            }
+          />
+        </div>
       ) : null}
     </article>
   );

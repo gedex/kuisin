@@ -10,6 +10,7 @@ import {
   getTotalTimeMs,
   type QuestionResult,
 } from "./quizUtils";
+import { RichContent } from "./RichContent";
 import "./QuizFinishPage.css";
 
 type QuizFinishPageProps = {
@@ -171,18 +172,26 @@ function AnswerReviewItem({ result }: { result: QuestionResult }) {
         <span>Soal {result.index + 1}</span>
         <strong>Salah</strong>
       </div>
-      <p>{result.question.prompt}</p>
+      <RichContent text={result.question.prompt} className="finish-review-prompt" />
       <div className="finish-answer-grid">
         <div>
           <span>Jawabanmu</span>
-          <strong>{result.answerText}</strong>
+          <strong>
+            <RichContent text={result.answerText} inline />
+          </strong>
         </div>
         <div>
           <span>Kunci</span>
-          <strong>{result.correctAnswerText}</strong>
+          <strong>
+            <RichContent text={result.correctAnswerText} inline />
+          </strong>
         </div>
       </div>
-      {result.explanation ? <p className="finish-explanation">{result.explanation}</p> : null}
+      {result.explanation ? (
+        <div className="finish-explanation">
+          <RichContent text={result.explanation} />
+        </div>
+      ) : null}
     </article>
   );
 }

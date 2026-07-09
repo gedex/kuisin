@@ -1,7 +1,9 @@
 import { Check, X } from "lucide-react";
 import type { TrueFalseQuestion } from "../../types";
+import { QuestionDiagram } from "./QuestionDiagram";
 import type { AnswerHandler } from "./questionViewTypes";
 import { isCorrectAnswer } from "./quizUtils";
+import { RichContent } from "./RichContent";
 
 type TrueFalseQuestionViewProps = {
   question: TrueFalseQuestion;
@@ -20,8 +22,9 @@ export function TrueFalseQuestionView({
   return (
     <article className="question-block">
       <div className="question-title">
-        <h3>{question.prompt}</h3>
+        <RichContent text={question.prompt} className="question-prompt" />
       </div>
+      <QuestionDiagram diagram={question.diagram} />
 
       <div className="true-false-list">
         {[
@@ -55,9 +58,9 @@ export function TrueFalseQuestionView({
       </div>
 
       {hasAnswer && question.explanation ? (
-        <p className={isCorrect ? "explanation correct" : "explanation wrong"}>
-          {question.explanation}
-        </p>
+        <div className={isCorrect ? "explanation correct" : "explanation wrong"}>
+          <RichContent text={question.explanation} />
+        </div>
       ) : null}
     </article>
   );

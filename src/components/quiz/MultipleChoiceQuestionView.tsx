@@ -1,6 +1,8 @@
 import { Check, X } from "lucide-react";
 import type { MultipleChoiceQuestion } from "../../types";
+import { QuestionDiagram } from "./QuestionDiagram";
 import type { AnswerHandler } from "./questionViewTypes";
+import { RichContent } from "./RichContent";
 
 type MultipleChoiceQuestionViewProps = {
   question: MultipleChoiceQuestion;
@@ -19,8 +21,9 @@ export function MultipleChoiceQuestionView({
   return (
     <article className="question-block">
       <div className="question-title">
-        <h3>{question.prompt}</h3>
+        <RichContent text={question.prompt} className="question-prompt" />
       </div>
+      <QuestionDiagram diagram={question.diagram} />
 
       <div className="choice-list">
         {question.choices.map((choice) => {
@@ -42,7 +45,7 @@ export function MultipleChoiceQuestionView({
                 .join(" ")}
               onClick={() => onAnswer(question.id, choice.id)}
             >
-              <span>{choice.text}</span>
+              <RichContent text={choice.text} inline />
               {correct ? <Check size={18} aria-hidden="true" /> : null}
               {wrong ? <X size={18} aria-hidden="true" /> : null}
             </button>
@@ -51,9 +54,9 @@ export function MultipleChoiceQuestionView({
       </div>
 
       {hasAnswer && question.explanation ? (
-        <p className={isCorrect ? "explanation correct" : "explanation wrong"}>
-          {question.explanation}
-        </p>
+        <div className={isCorrect ? "explanation correct" : "explanation wrong"}>
+          <RichContent text={question.explanation} />
+        </div>
       ) : null}
     </article>
   );

@@ -45,6 +45,17 @@
     },
     {
       "type": "quiz",
+      "slug": "test-quiz-rich-math-diagrams",
+      "title": "test quiz rich math diagrams",
+      "description": "test e2e fixture for KaTeX math, triangle diagrams, and cube diagrams.",
+      "subject": "test quiz fixtures",
+      "tags": ["test", "test-e2e", "test-math", "test-diagram", "test-katex"],
+      "questionCount": 3,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/test-quiz-rich-math-diagrams.json"
+    },
+    {
+      "type": "quiz",
       "slug": "test-quiz-true-false-all-static",
       "title": "test quiz true false all static",
       "description": "test e2e fixture for all question mode with static true false questions.",

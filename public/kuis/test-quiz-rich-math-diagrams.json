@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "slug": "test-quiz-rich-math-diagrams",
+  "title": "test quiz rich math diagrams",
+  "description": "test e2e fixture for KaTeX math, triangle diagrams, and cube diagrams.",
+  "subject": "test quiz fixtures",
+  "tags": ["test", "test-e2e", "test-math", "test-diagram", "test-katex"],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "passingScore": 70,
+      "shuffleQuestions": false,
+      "shuffleChoices": false
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Rumus kuadrat untuk persamaan berikut adalah:\n\n$$ ax^2 + bx + c = 0 $$",
+        "choices": [
+          {
+            "id": "a",
+            "text": "\\( x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} \\)"
+          },
+          {
+            "id": "b",
+            "text": "\\( x = \\frac{b \\pm \\sqrt{b^2 + 4ac}}{2a} \\)"
+          },
+          {
+            "id": "c",
+            "text": "\\( x = \\frac{-b \\pm \\sqrt{a^2 - 4bc}}{2c} \\)"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Rumus kuadrat memakai diskriminan \\(b^2 - 4ac\\): \\(x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\)."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Segitiga \\(ABC\\) memiliki \\(AB = AC\\) dan \\(\\angle A = 40^\\circ\\). Berapa besar \\(\\angle C\\)?",
+        "diagram": {
+          "type": "triangle",
+          "title": "Segitiga ABC dengan sudut A",
+          "pointLabels": {
+            "a": "A",
+            "b": "B",
+            "c": "C"
+          },
+          "angleLabel": "\\(40^\\circ\\)",
+          "leftLabel": "\\(AB\\)",
+          "rightLabel": "\\(AC\\)",
+          "baseLabel": "\\(\\angle C = ?\\)",
+          "questionLabel": "Cari \\(\\angle C\\)"
+        },
+        "choices": [
+          { "id": "a", "text": "\\(50^\\circ\\)" },
+          { "id": "b", "text": "\\(70^\\circ\\)" },
+          { "id": "c", "text": "\\(80^\\circ\\)" }
+        ],
+        "answer": "b",
+        "explanation": "Karena \\(AB = AC\\), sudut alas sama besar. Maka \\(\\angle B = \\angle C = \\frac{180^\\circ - 40^\\circ}{2} = 70^\\circ\\)."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Sebuah kubus memiliki panjang rusuk \\(s = 4\\text{ cm}\\). Berapa volumenya?",
+        "diagram": {
+          "type": "cube",
+          "title": "Kubus dengan rusuk 4 cm",
+          "edgeLabel": "\\(s = 4\\text{ cm}\\)",
+          "faceLabel": "Kubus",
+          "questionLabel": "\\(V = s^3 = ?\\)"
+        },
+        "choices": [
+          { "id": "a", "text": "\\(16\\text{ cm}^3\\)" },
+          { "id": "b", "text": "\\(48\\text{ cm}^3\\)" },
+          { "id": "c", "text": "\\(64\\text{ cm}^3\\)" }
+        ],
+        "answer": "c",
+        "explanation": "Volume kubus adalah \\(V = s^3\\). Jadi \\(V = 4^3 = 64\\text{ cm}^3\\)."
+      }
+    ]
+  },
+  "flashcards": []
+}

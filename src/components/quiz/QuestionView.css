@@ -11,12 +11,194 @@
   display: block;
 }
 
-.question-title h3 {
+.rich-content {
+  min-width: 0;
+  color: inherit;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+}
+
+.rich-content p {
   margin: 0;
+}
+
+.rich-content p + p,
+.rich-content ul,
+.rich-content ol {
+  margin: 0.65em 0 0;
+}
+
+.rich-content ul,
+.rich-content ol {
+  padding-left: 1.35em;
+}
+
+.rich-content .katex {
+  color: inherit;
+}
+
+.rich-content .katex-display {
+  max-width: 100%;
+  margin: 0.55rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+
+.inline-rich-content {
+  display: inline;
+}
+
+.inline-rich-content .katex-display {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.question-prompt {
   font-size: 1.05rem;
+  font-weight: 800;
   line-height: 1.45;
   letter-spacing: 0;
-  white-space: pre-line;
+  white-space: normal;
+}
+
+.question-diagram {
+  position: relative;
+  width: min(100%, 430px);
+  aspect-ratio: 16 / 11;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 82%, var(--primary-soft));
+}
+
+.question-diagram svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.diagram-face {
+  stroke: none;
+}
+
+.primary-face {
+  fill: color-mix(in srgb, var(--primary-soft) 82%, var(--surface));
+}
+
+.secondary-face {
+  fill: color-mix(in srgb, var(--accent-soft) 80%, var(--surface));
+}
+
+.tertiary-face {
+  fill: color-mix(in srgb, var(--surface-strong) 72%, var(--surface));
+}
+
+.diagram-line,
+.diagram-accent-line,
+.diagram-muted-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diagram-line {
+  stroke: var(--text);
+  stroke-width: 3;
+}
+
+.diagram-accent-line {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.diagram-muted-line {
+  stroke: color-mix(in srgb, var(--muted) 58%, transparent);
+  stroke-dasharray: 5 6;
+  stroke-width: 2;
+}
+
+.diagram-label {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 46%;
+  min-height: 24px;
+  padding: 3px 7px;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(44, 62, 80, 0.08);
+}
+
+.triangle-label-a {
+  left: 50%;
+  top: 9%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle-label-b {
+  left: 16%;
+  top: 82%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle-label-c {
+  left: 84%;
+  top: 82%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle-angle-label {
+  left: 50%;
+  top: 32%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.triangle-left-label {
+  left: 30%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle-right-label {
+  left: 70%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle-base-label {
+  left: 50%;
+  top: 84%;
+  transform: translate(-50%, -50%);
+}
+
+.cube-edge-label {
+  left: 27%;
+  top: 73%;
+  transform: translate(-50%, -50%);
+}
+
+.cube-face-label {
+  left: 45%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+}
+
+.diagram-question-label {
+  right: 12px;
+  bottom: 12px;
+  max-width: min(58%, 220px);
+  color: var(--primary-strong);
 }
 
 .choice-list {
@@ -46,7 +228,8 @@
   cursor: pointer;
 }
 
-.choice-button span {
+.choice-button > .inline-rich-content {
+  flex: 1;
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -114,5 +297,9 @@
   .true-false-list,
   .short-answer-form {
     grid-template-columns: 1fr;
+  }
+
+  .question-diagram {
+    width: 100%;
   }
 }
