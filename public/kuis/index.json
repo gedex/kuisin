@@ -34,6 +34,24 @@
     },
     {
       "type": "quiz",
+      "slug": "latihan-penjumlahan-lebih-10-pengurangan-meminjam-sd",
+      "title": "Latihan Penjumlahan Lebih dari 10 dan Pengurangan Meminjam SD",
+      "description": "30 soal isian singkat untuk melatih penjumlahan yang hasilnya lebih dari 10 dan pengurangan yang perlu meminjam.",
+      "subject": "Matematika",
+      "tags": [
+        "sd",
+        "matematika",
+        "penjumlahan",
+        "pengurangan",
+        "meminjam",
+        "aritmetika"
+      ],
+      "questionCount": 30,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/latihan-penjumlahan-lebih-10-pengurangan-meminjam-sd.json"
+    },
+    {
+      "type": "quiz",
       "slug": "test-quiz-multiple-choice-single-shuffled",
       "title": "test quiz multiple choice single shuffled",
       "description": "test e2e fixture for single question mode with shuffled questions and choices.",
