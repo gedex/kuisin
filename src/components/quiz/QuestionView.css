@@ -120,6 +120,10 @@
   stroke-width: 2;
 }
 
+.diagram-point {
+  fill: var(--accent);
+}
+
 .diagram-label {
   position: absolute;
   display: inline-flex;
@@ -179,6 +183,150 @@
 .triangle-base-label {
   left: 50%;
   top: 84%;
+  transform: translate(-50%, -50%);
+}
+
+.angle-vertex-label {
+  left: 23%;
+  top: 76%;
+  transform: translate(-50%, -50%);
+}
+
+.angle-first-ray-label {
+  left: 76%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+}
+
+.angle-second-ray-label {
+  left: 67%;
+  top: 29%;
+  transform: translate(-50%, -50%);
+}
+
+.angle-angle-label {
+  left: 38%;
+  top: 63%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.parallel-top-label {
+  left: 18%;
+  top: 28%;
+  transform: translate(-50%, -50%);
+}
+
+.parallel-bottom-label {
+  left: 18%;
+  top: 64%;
+  transform: translate(-50%, -50%);
+}
+
+.parallel-transversal-label {
+  left: 65%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+
+.parallel-upper-angle-label {
+  left: 41%;
+  top: 26%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.parallel-lower-angle-label {
+  left: 61%;
+  top: 61%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.quad-label-a {
+  left: 27%;
+  top: 26%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-label-b {
+  left: 73%;
+  top: 26%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-label-c {
+  left: 82%;
+  top: 76%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-label-d {
+  left: 18%;
+  top: 76%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-top-label {
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-right-label {
+  left: 77%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-bottom-label {
+  left: 50%;
+  top: 77%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-left-label {
+  left: 24%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+}
+
+.quad-diagonal-label {
+  left: 53%;
+  top: 53%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.circle-center-label {
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-radius-label {
+  left: 62%;
+  top: 43%;
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.circle-chord-label {
+  left: 48%;
+  top: 73%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-tangent-label {
+  left: 50%;
+  top: 19%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-angle-label {
+  left: 66%;
+  top: 62%;
+  color: var(--accent);
   transform: translate(-50%, -50%);
 }
 

@@ -52,6 +52,25 @@
     },
     {
       "type": "quiz",
+      "slug": "geometri-sma-komprehensif",
+      "title": "Geometri SMA Komprehensif",
+      "description": "45 soal geometri SMA yang mencakup dasar geometri, pembuktian, garis sejajar, segitiga, trigonometri, lingkaran, bangun datar, bangun ruang, koordinat, transformasi, kesebangunan, dan konstruksi.",
+      "subject": "Matematika",
+      "tags": [
+        "sma",
+        "matematika",
+        "geometri",
+        "segitiga",
+        "lingkaran",
+        "bangun-ruang",
+        "transformasi"
+      ],
+      "questionCount": 45,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/geometri-sma-komprehensif.json"
+    },
+    {
+      "type": "quiz",
       "slug": "test-quiz-multiple-choice-single-shuffled",
       "title": "test quiz multiple choice single shuffled",
       "description": "test e2e fixture for single question mode with shuffled questions and choices.",

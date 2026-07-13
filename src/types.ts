@@ -38,6 +38,55 @@ export type TriangleDiagram = {
   questionLabel?: string;
 };
 
+export type AngleDiagram = {
+  type: "angle";
+  title?: string;
+  vertexLabel?: string;
+  firstRayLabel?: string;
+  secondRayLabel?: string;
+  angleLabel?: string;
+  questionLabel?: string;
+};
+
+export type ParallelLinesDiagram = {
+  type: "parallel-lines";
+  title?: string;
+  topLineLabel?: string;
+  bottomLineLabel?: string;
+  transversalLabel?: string;
+  upperAngleLabel?: string;
+  lowerAngleLabel?: string;
+  questionLabel?: string;
+};
+
+export type QuadrilateralDiagram = {
+  type: "quadrilateral";
+  title?: string;
+  pointLabels?: {
+    a?: string;
+    b?: string;
+    c?: string;
+    d?: string;
+  };
+  topLabel?: string;
+  rightLabel?: string;
+  bottomLabel?: string;
+  leftLabel?: string;
+  diagonalLabel?: string;
+  questionLabel?: string;
+};
+
+export type CircleDiagram = {
+  type: "circle";
+  title?: string;
+  centerLabel?: string;
+  radiusLabel?: string;
+  chordLabel?: string;
+  tangentLabel?: string;
+  angleLabel?: string;
+  questionLabel?: string;
+};
+
 export type CubeDiagram = {
   type: "cube";
   title?: string;
@@ -46,7 +95,13 @@ export type CubeDiagram = {
   questionLabel?: string;
 };
 
-export type QuestionDiagram = TriangleDiagram | CubeDiagram;
+export type QuestionDiagram =
+  | TriangleDiagram
+  | AngleDiagram
+  | ParallelLinesDiagram
+  | QuadrilateralDiagram
+  | CircleDiagram
+  | CubeDiagram;
 
 export type MultipleChoiceQuestion = {
   id: string;
