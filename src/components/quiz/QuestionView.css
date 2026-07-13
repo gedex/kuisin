@@ -431,10 +431,22 @@
   background: var(--surface);
   color: var(--text);
   outline: 0;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
 }
 
 .short-answer-form input::placeholder {
   color: color-mix(in srgb, var(--muted) 74%, transparent);
+}
+
+.short-answer-form input:focus {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary-soft) 36%, var(--surface));
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--primary) 24%, transparent),
+    0 1px 0 color-mix(in srgb, var(--primary) 22%, transparent);
 }
 
 @media (max-width: 880px) {

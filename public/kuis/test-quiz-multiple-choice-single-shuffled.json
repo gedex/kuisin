@@ -8,6 +8,7 @@
   "quiz": {
     "settings": {
       "questionMode": "single",
+      "requireAnswerBeforeNext": true,
       "passingScore": 70,
       "shuffleQuestions": true,
       "shuffleChoices": true

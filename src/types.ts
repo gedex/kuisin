@@ -137,6 +137,8 @@ export type QuizQuestion = MultipleChoiceQuestion | TrueFalseQuestion | ShortAns
 export type QuizContent = {
   settings?: {
     questionMode?: "all" | "single";
+    requireAnswerBeforeNext?: boolean;
+    disableQuestionNavigation?: boolean;
     shuffleQuestions?: boolean;
     shuffleChoices?: boolean;
     passingScore?: number;

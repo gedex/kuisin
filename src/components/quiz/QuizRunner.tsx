@@ -32,6 +32,8 @@ export function QuizRunner({
   const startedFromCtaRef = useRef(false);
   const [timerNowMs, setTimerNowMs] = useState(() => Date.now());
   const questionMode = quiz.settings?.questionMode ?? "all";
+  const requireAnswerBeforeNext = quiz.settings?.requireAnswerBeforeNext ?? false;
+  const disableQuestionNavigation = quiz.settings?.disableQuestionNavigation ?? false;
   const currentQuestionIndex = Math.max(
     0,
     Math.min(
@@ -40,6 +42,9 @@ export function QuizRunner({
     ),
   );
   const currentQuestion = quiz.questions[currentQuestionIndex];
+  const currentQuestionAnswered = currentQuestion
+    ? Boolean(attempt.answers[currentQuestion.id])
+    : false;
   const answeredCount = Object.keys(attempt.answers).length;
   const score = quiz.questions.reduce((total, question) => {
     return total + (isCorrectAnswer(question, attempt.answers[question.id]) ? 1 : 0);
@@ -122,6 +127,17 @@ export function QuizRunner({
 
   function answerQuestion(questionId: string, answer: string) {
     const timestamp = new Date().toISOString();
+    const answeredQuestionIndex = quiz.questions.findIndex(
+      (question) => question.id === questionId,
+    );
+    const nextQuestionIndex =
+      questionMode === "single" &&
+      disableQuestionNavigation &&
+      answeredQuestionIndex >= 0 &&
+      answeredQuestionIndex < quiz.questions.length - 1
+        ? answeredQuestionIndex + 1
+        : undefined;
+
     setTimerNowMs(Date.now());
 
     setAttempt((current) => {
@@ -145,13 +161,28 @@ export function QuizRunner({
         questionTimes,
         startedAt,
         lastAnsweredAt: timestamp,
-        currentQuestionIndex: current.currentQuestionIndex ?? currentQuestionIndex,
+        currentQuestionIndex:
+          nextQuestionIndex ?? current.currentQuestionIndex ?? currentQuestionIndex,
         completedAt: complete ? current.completedAt ?? timestamp : undefined,
       };
     });
+
+    if (nextQuestionIndex !== undefined) {
+      onQuestionIndexChange?.(nextQuestionIndex);
+    }
   }
 
   function goToQuestion(index: number) {
+    if (disableQuestionNavigation) return;
+
+    if (
+      requireAnswerBeforeNext &&
+      index > currentQuestionIndex &&
+      !currentQuestionAnswered
+    ) {
+      return;
+    }
+
     const nextQuestionIndex = Math.max(
       0,
       Math.min(Math.max(index, 0), Math.max(quiz.questions.length - 1, 0)),
@@ -238,31 +269,37 @@ export function QuizRunner({
             question={currentQuestion}
             selectedAnswer={attempt.answers[currentQuestion.id]}
             onAnswer={answerQuestion}
+            autoFocusInput={disableQuestionNavigation}
           />
 
-          <div className="quiz-nav" aria-label="Navigasi soal">
-            <button
-              className="soft-button"
-              type="button"
-              onClick={() => goToQuestion(currentQuestionIndex - 1)}
-              disabled={currentQuestionIndex === 0}
-            >
-              <ChevronLeft size={17} aria-hidden="true" />
-              Sebelumnya
-            </button>
-            <span>
-              Soal {currentQuestionIndex + 1} dari {quiz.questions.length}
-            </span>
-            <button
-              className="primary-button"
-              type="button"
-              onClick={() => goToQuestion(currentQuestionIndex + 1)}
-              disabled={currentQuestionIndex === quiz.questions.length - 1}
-            >
-              Berikutnya
-              <ChevronRight size={17} aria-hidden="true" />
-            </button>
-          </div>
+          {!disableQuestionNavigation ? (
+            <div className="quiz-nav" aria-label="Navigasi soal">
+              <button
+                className="soft-button"
+                type="button"
+                onClick={() => goToQuestion(currentQuestionIndex - 1)}
+                disabled={currentQuestionIndex === 0}
+              >
+                <ChevronLeft size={17} aria-hidden="true" />
+                Sebelumnya
+              </button>
+              <span>
+                Soal {currentQuestionIndex + 1} dari {quiz.questions.length}
+              </span>
+              <button
+                className="primary-button"
+                type="button"
+                onClick={() => goToQuestion(currentQuestionIndex + 1)}
+                disabled={
+                  currentQuestionIndex === quiz.questions.length - 1 ||
+                  (requireAnswerBeforeNext && !currentQuestionAnswered)
+                }
+              >
+                Berikutnya
+                <ChevronRight size={17} aria-hidden="true" />
+              </button>
+            </div>
+          ) : null}
         </div>
       ) : !showIntro ? (
         <div className="question-list">

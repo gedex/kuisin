@@ -72,12 +72,17 @@ Single-question quizzes can use routed pagination:
 ```json
 {
   "settings": {
-    "questionMode": "single"
+    "questionMode": "single",
+    "requireAnswerBeforeNext": true,
+    "disableQuestionNavigation": true
   }
 }
 ```
 
-Then questions are linkable with `?soal=1`, `?soal=2`, etc.
+Then questions are linkable with `?soal=1`, `?soal=2`, etc. Set
+`requireAnswerBeforeNext` to `true` to keep the next button disabled until the
+current question has an answer. Set `disableQuestionNavigation` to `true` to
+hide previous/next buttons and move to the next question after an answer.
 
 Question renderers are selected per question, so mixed quizzes can combine question types:
 

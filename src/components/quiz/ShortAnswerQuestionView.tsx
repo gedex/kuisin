@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import type { ShortAnswerQuestion } from "../../types";
 import { QuestionDiagram } from "./QuestionDiagram";
 import type { AnswerHandler } from "./questionViewTypes";
@@ -9,13 +9,16 @@ type ShortAnswerQuestionViewProps = {
   question: ShortAnswerQuestion;
   selectedAnswer?: string;
   onAnswer: AnswerHandler;
+  autoFocus?: boolean;
 };
 
 export function ShortAnswerQuestionView({
   question,
   selectedAnswer,
   onAnswer,
+  autoFocus = false,
 }: ShortAnswerQuestionViewProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [draft, setDraft] = useState(selectedAnswer ?? "");
   const hasAnswer = Boolean(selectedAnswer);
   const isCorrect = isCorrectAnswer(question, selectedAnswer);
@@ -23,6 +26,12 @@ export function ShortAnswerQuestionView({
   useEffect(() => {
     setDraft(selectedAnswer ?? "");
   }, [selectedAnswer]);
+
+  useEffect(() => {
+    if (!autoFocus || selectedAnswer) return;
+
+    inputRef.current?.focus();
+  }, [autoFocus, question.id, selectedAnswer]);
 
   function submitAnswer(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -42,6 +51,7 @@ export function ShortAnswerQuestionView({
 
       <form className="short-answer-form" onSubmit={submitAnswer}>
         <input
+          ref={inputRef}
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           placeholder="Tulis jawaban singkat..."

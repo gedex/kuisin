@@ -9,9 +9,15 @@ type QuestionViewProps = {
   question: QuizQuestion;
   selectedAnswer?: string;
   onAnswer: AnswerHandler;
+  autoFocusInput?: boolean;
 };
 
-export function QuestionView({ question, selectedAnswer, onAnswer }: QuestionViewProps) {
+export function QuestionView({
+  question,
+  selectedAnswer,
+  onAnswer,
+  autoFocusInput = false,
+}: QuestionViewProps) {
   switch (question.type) {
     case "multiple-choice":
       return (
@@ -35,6 +41,7 @@ export function QuestionView({ question, selectedAnswer, onAnswer }: QuestionVie
           question={question}
           selectedAnswer={selectedAnswer}
           onAnswer={onAnswer}
+          autoFocus={autoFocusInput}
         />
       );
   }
