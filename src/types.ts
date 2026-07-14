@@ -95,13 +95,61 @@ export type CubeDiagram = {
   questionLabel?: string;
 };
 
+export type FlagDiagram = {
+  type: "flag";
+  title?: string;
+  description?: string;
+  emoji: string;
+  caption?: string;
+  questionLabel?: string;
+};
+
+export type CountryMapArea = {
+  points: string;
+  role?: "context" | "highlight" | "muted";
+  label?: string;
+};
+
+export type CountryMapLabel = {
+  text: string;
+  x: number;
+  y: number;
+  role?: "land" | "water" | "region";
+};
+
+export type CountryMapDiagram = {
+  type: "country-map";
+  title?: string;
+  description?: string;
+  regionLabel?: string;
+  questionLabel?: string;
+  viewBox?: string;
+  areas: CountryMapArea[];
+  labels?: CountryMapLabel[];
+};
+
+export type WorldMapPinDiagram = {
+  type: "world-map-pin";
+  title?: string;
+  description?: string;
+  regionLabel?: string;
+  questionLabel?: string;
+  pin: {
+    x: number;
+    y: number;
+  };
+};
+
 export type QuestionDiagram =
   | TriangleDiagram
   | AngleDiagram
   | ParallelLinesDiagram
   | QuadrilateralDiagram
   | CircleDiagram
-  | CubeDiagram;
+  | CubeDiagram
+  | FlagDiagram
+  | CountryMapDiagram
+  | WorldMapPinDiagram;
 
 export type MultipleChoiceQuestion = {
   id: string;

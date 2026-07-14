@@ -1,7 +1,25 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-09",
+  "updatedAt": "2026-07-14",
   "items": [
+    {
+      "type": "quiz",
+      "slug": "geografi-dunia-negara-bendera-ibu-kota-peta",
+      "title": "Geografi Dunia: Negara, Bendera, Ibu Kota, dan Peta",
+      "description": "25 soal geografi dunia untuk mengenali negara dari bendera, memilih bendera negara, menebak ibu kota, menghubungkan tempat terkenal dengan negara, dan membaca wilayah negara pada peta.",
+      "subject": "Geografi",
+      "tags": [
+        "geografi",
+        "negara",
+        "bendera",
+        "ibu-kota",
+        "peta",
+        "dunia"
+      ],
+      "questionCount": 25,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/geografi-dunia-negara-bendera-ibu-kota-peta.json"
+    },
     {
       "type": "quiz",
       "slug": "tka-smp-mata-pelajaran-wajib",

@@ -21,7 +21,21 @@ export function QuestionDiagram({ diagram }: QuestionDiagramProps) {
       return <CircleDiagram diagram={diagram} />;
     case "cube":
       return <CubeDiagram diagram={diagram} />;
+    case "flag":
+      return <FlagDiagram diagram={diagram} />;
+    case "world-map-pin":
+      return <WorldMapPinDiagram diagram={diagram} />;
+    case "country-map":
+      return <CountryMapDiagram diagram={diagram} />;
   }
+}
+
+function publicAssetUrl(path: string) {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const normalizedPath = path.replace(/^\//, "");
+
+  return `${normalizedBaseUrl}${normalizedPath}`;
 }
 
 function TriangleDiagram({
@@ -187,6 +201,106 @@ function CubeDiagram({
       <DiagramLabel className="cube-edge-label" text={diagram.edgeLabel} />
       <DiagramLabel className="cube-face-label" text={diagram.faceLabel} />
       <DiagramLabel className="diagram-question-label" text={diagram.questionLabel} />
+    </figure>
+  );
+}
+
+function FlagDiagram({
+  diagram,
+}: {
+  diagram: Extract<QuestionDiagramType, { type: "flag" }>;
+}) {
+  return (
+    <figure
+      className="question-diagram flag-diagram"
+      aria-label={diagram.description ?? diagram.title ?? "Diagram bendera"}
+    >
+      <div className="flag-canvas" aria-hidden="true">
+        <span className="flag-emoji">{diagram.emoji}</span>
+      </div>
+
+      <DiagramLabel className="flag-caption-label" text={diagram.caption} />
+      <DiagramLabel className="diagram-question-label" text={diagram.questionLabel} />
+    </figure>
+  );
+}
+
+function CountryMapDiagram({
+  diagram,
+}: {
+  diagram: Extract<QuestionDiagramType, { type: "country-map" }>;
+}) {
+  return (
+    <figure
+      className="question-diagram country-map-diagram"
+      aria-label={diagram.description ?? diagram.title ?? "Diagram peta"}
+    >
+      <svg
+        viewBox={diagram.viewBox ?? "0 0 320 220"}
+        role="img"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect className="map-water" x="0" y="0" width="320" height="220" rx="0" />
+        <path
+          className="map-graticule"
+          d="M0 55 H320 M0 110 H320 M0 165 H320 M80 0 V220 M160 0 V220 M240 0 V220"
+        />
+        {diagram.areas.map((area, index) => (
+          <polygon
+            key={`${area.role ?? "context"}-${index}`}
+            className={`map-area map-${area.role ?? "context"}`}
+            points={area.points}
+          />
+        ))}
+        {diagram.labels?.map((label) => (
+          <text
+            key={`${label.text}-${label.x}-${label.y}`}
+            className={`map-label map-label-${label.role ?? "land"}`}
+            x={label.x}
+            y={label.y}
+          >
+            {label.text}
+          </text>
+        ))}
+      </svg>
+
+      <DiagramLabel className="map-region-label" text={diagram.regionLabel} />
+      <DiagramLabel className="diagram-question-label" text={diagram.questionLabel} />
+    </figure>
+  );
+}
+
+function WorldMapPinDiagram({
+  diagram,
+}: {
+  diagram: Extract<QuestionDiagramType, { type: "world-map-pin" }>;
+}) {
+  return (
+    <figure
+      className="question-diagram world-map-diagram"
+      aria-label={diagram.description ?? diagram.title ?? "Peta dunia dengan pin negara"}
+    >
+      <div className="world-map-frame" aria-hidden="true">
+        <img
+          className="world-map-image"
+          src={publicAssetUrl("maps/blank-map-world.svg")}
+          alt=""
+        />
+        <span
+          className="world-map-pin"
+          style={{
+            left: `${diagram.pin.x}%`,
+            top: `${diagram.pin.y}%`,
+          }}
+        />
+      </div>
+
+      <DiagramLabel className="map-region-label" text={diagram.regionLabel} />
+      <DiagramLabel
+        className="diagram-question-label world-map-question-label"
+        text={diagram.questionLabel}
+      />
     </figure>
   );
 }

@@ -124,6 +124,168 @@
   fill: var(--accent);
 }
 
+.flag-diagram {
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface) 88%, var(--primary-soft)),
+      color-mix(in srgb, var(--surface-strong) 72%, var(--accent-soft))
+    );
+}
+
+.flag-canvas {
+  position: absolute;
+  inset: 12% 14%;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--border) 64%, transparent);
+  border-radius: calc(var(--radius) - 4px);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.74),
+    0 18px 38px rgba(44, 62, 80, 0.13);
+}
+
+.flag-emoji {
+  font-size: clamp(5rem, 18vw, 8.5rem);
+  line-height: 1;
+  filter: drop-shadow(0 10px 16px rgba(44, 62, 80, 0.16));
+}
+
+.flag-caption-label {
+  left: 16px;
+  top: 16px;
+  max-width: min(48%, 210px);
+}
+
+.country-map-diagram {
+  width: min(100%, 560px);
+  background: #d8ecf1;
+}
+
+.world-map-diagram {
+  width: min(100%, 760px);
+  aspect-ratio: 2754 / 1398;
+  background: #d8ecf1;
+}
+
+.world-map-frame {
+  position: absolute;
+  inset: 0;
+  background: #d8ecf1;
+}
+
+.world-map-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: saturate(0.92) contrast(0.96);
+}
+
+.world-map-pin {
+  position: absolute;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -100%);
+  filter: drop-shadow(0 9px 13px rgba(24, 38, 50, 0.3));
+}
+
+.world-map-pin::before,
+.world-map-pin::after {
+  position: absolute;
+  content: "";
+}
+
+.world-map-pin::before {
+  inset: 3px 5px 5px;
+  border: 3px solid #ffffff;
+  border-radius: 999px 999px 999px 0;
+  background: #e23d3d;
+  transform: rotate(-45deg);
+}
+
+.world-map-pin::after {
+  left: 50%;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #ffffff;
+  transform: translateX(-50%);
+}
+
+.world-map-question-label {
+  color: #b42318;
+}
+
+.map-water {
+  fill: #d8ecf1;
+}
+
+.map-graticule {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.62);
+  stroke-width: 1;
+}
+
+.map-area {
+  stroke: #77848b;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  shape-rendering: geometricPrecision;
+}
+
+.map-context {
+  fill: #f3f7f5;
+}
+
+.map-muted {
+  fill: #b8c4ca;
+  opacity: 0.58;
+}
+
+.map-highlight {
+  fill: #f7d56c;
+  filter: drop-shadow(0 4px 5px rgba(90, 70, 20, 0.18));
+  stroke: #8f6b00;
+  stroke-width: 3.3;
+}
+
+.map-label {
+  paint-order: stroke;
+  pointer-events: none;
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-linejoin: round;
+  stroke-width: 4px;
+  fill: #2d3a43;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-anchor: middle;
+}
+
+.map-label-water {
+  stroke: rgba(216, 236, 241, 0.92);
+  fill: #527684;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.map-label-region {
+  stroke: rgba(255, 255, 255, 0.82);
+  fill: #1d4c59;
+  font-size: 10px;
+}
+
+.map-region-label {
+  left: 12px;
+  top: 12px;
+  max-width: min(58%, 230px);
+}
+
 .diagram-label {
   position: absolute;
   display: inline-flex;
@@ -380,6 +542,25 @@
   flex: 1;
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.flag-choice-button {
+  position: relative;
+  justify-content: center;
+  min-height: 82px;
+  padding: 10px 48px;
+}
+
+.flag-choice-button > .inline-rich-content {
+  flex: 0 0 auto;
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  line-height: 1;
+  overflow-wrap: normal;
+}
+
+.flag-choice-button > svg {
+  position: absolute;
+  right: 18px;
 }
 
 .choice-button.selected {

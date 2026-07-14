@@ -10,6 +10,8 @@ type QuestionViewProps = {
   selectedAnswer?: string;
   onAnswer: AnswerHandler;
   autoFocusInput?: boolean;
+  shuffleChoices?: boolean;
+  choiceShuffleSeed?: string;
 };
 
 export function QuestionView({
@@ -17,6 +19,8 @@ export function QuestionView({
   selectedAnswer,
   onAnswer,
   autoFocusInput = false,
+  shuffleChoices = false,
+  choiceShuffleSeed,
 }: QuestionViewProps) {
   switch (question.type) {
     case "multiple-choice":
@@ -25,6 +29,8 @@ export function QuestionView({
           question={question}
           selectedChoiceId={selectedAnswer}
           onAnswer={onAnswer}
+          shuffleChoices={shuffleChoices}
+          choiceShuffleSeed={choiceShuffleSeed}
         />
       );
     case "true-false":

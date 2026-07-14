@@ -34,6 +34,8 @@ export function QuizRunner({
   const questionMode = quiz.settings?.questionMode ?? "all";
   const requireAnswerBeforeNext = quiz.settings?.requireAnswerBeforeNext ?? false;
   const disableQuestionNavigation = quiz.settings?.disableQuestionNavigation ?? false;
+  const shuffleChoices = quiz.settings?.shuffleChoices ?? false;
+  const choiceShuffleSeed = `${slug}:${attempt.startedAt ?? "not-started"}`;
   const currentQuestionIndex = Math.max(
     0,
     Math.min(
@@ -270,6 +272,8 @@ export function QuizRunner({
             selectedAnswer={attempt.answers[currentQuestion.id]}
             onAnswer={answerQuestion}
             autoFocusInput={disableQuestionNavigation}
+            shuffleChoices={shuffleChoices}
+            choiceShuffleSeed={choiceShuffleSeed}
           />
 
           {!disableQuestionNavigation ? (
@@ -309,6 +313,8 @@ export function QuizRunner({
               question={question}
               selectedAnswer={attempt.answers[question.id]}
               onAnswer={answerQuestion}
+              shuffleChoices={shuffleChoices}
+              choiceShuffleSeed={choiceShuffleSeed}
             />
           ))}
         </div>

@@ -1,0 +1,417 @@
+{
+  "version": 1,
+  "slug": "geografi-dunia-negara-bendera-ibu-kota-peta",
+  "title": "Geografi Dunia: Negara, Bendera, Ibu Kota, dan Peta",
+  "description": "25 soal geografi dunia untuk mengenali negara dari bendera, memilih bendera negara, menebak ibu kota, menghubungkan tempat terkenal dengan negara, dan membaca wilayah negara pada peta.",
+  "subject": "Geografi",
+  "tags": [
+    "geografi",
+    "negara",
+    "bendera",
+    "ibu-kota",
+    "peta",
+    "dunia"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "shuffleQuestions": true,
+      "shuffleChoices": true,
+      "passingScore": 75
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Perhatikan bendera berikut. Negara apakah ini?",
+        "diagram": {
+          "type": "flag",
+          "emoji": "🇯🇵",
+          "description": "Bendera dengan bidang putih dan lingkaran merah di tengah.",
+          "questionLabel": "Nama negara?"
+        },
+        "choices": [
+          { "id": "a", "text": "Jepang" },
+          { "id": "b", "text": "Korea Selatan" },
+          { "id": "c", "text": "Tiongkok" },
+          { "id": "d", "text": "Singapura" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera putih dengan lingkaran merah di tengah adalah bendera Jepang."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Perhatikan bendera berikut. Negara apakah ini?",
+        "diagram": {
+          "type": "flag",
+          "emoji": "🇧🇷",
+          "description": "Bendera hijau dengan belah ketupat kuning dan lingkaran biru di tengah.",
+          "questionLabel": "Nama negara?"
+        },
+        "choices": [
+          { "id": "a", "text": "Brasil" },
+          { "id": "b", "text": "Meksiko" },
+          { "id": "c", "text": "Argentina" },
+          { "id": "d", "text": "Kolombia" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera hijau, kuning, dan biru tersebut adalah bendera Brasil."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Perhatikan bendera berikut. Negara apakah ini?",
+        "diagram": {
+          "type": "flag",
+          "emoji": "🇨🇦",
+          "description": "Bendera merah putih dengan daun maple di bagian tengah.",
+          "questionLabel": "Nama negara?"
+        },
+        "choices": [
+          { "id": "a", "text": "Kanada" },
+          { "id": "b", "text": "Amerika Serikat" },
+          { "id": "c", "text": "Swiss" },
+          { "id": "d", "text": "Denmark" }
+        ],
+        "answer": "a",
+        "explanation": "Daun maple merah adalah ciri khas bendera Kanada."
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "prompt": "Perhatikan bendera berikut. Negara apakah ini?",
+        "diagram": {
+          "type": "flag",
+          "emoji": "🇰🇪",
+          "description": "Bendera hitam, merah, dan hijau dengan perisai di tengah.",
+          "questionLabel": "Nama negara?"
+        },
+        "choices": [
+          { "id": "a", "text": "Kenya" },
+          { "id": "b", "text": "Afrika Selatan" },
+          { "id": "c", "text": "Etiopia" },
+          { "id": "d", "text": "Ghana" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera dengan perisai Maasai di tengah adalah bendera Kenya."
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "prompt": "Perhatikan bendera berikut. Negara apakah ini?",
+        "diagram": {
+          "type": "flag",
+          "emoji": "🇹🇷",
+          "description": "Bendera merah dengan bulan sabit dan bintang putih.",
+          "questionLabel": "Nama negara?"
+        },
+        "choices": [
+          { "id": "a", "text": "Turki" },
+          { "id": "b", "text": "Tunisia" },
+          { "id": "c", "text": "Pakistan" },
+          { "id": "d", "text": "Maroko" }
+        ],
+        "answer": "a",
+        "explanation": "Bulan sabit dan bintang putih di atas warna merah adalah ciri bendera Turki."
+      },
+      {
+        "id": "q6",
+        "type": "multiple-choice",
+        "prompt": "Pilih bendera yang benar untuk negara Australia.",
+        "choices": [
+          { "id": "a", "text": "🇦🇺" },
+          { "id": "b", "text": "🇳🇿" },
+          { "id": "c", "text": "🇬🇧" },
+          { "id": "d", "text": "🇺🇸" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera Australia memuat Union Jack dan gugus bintang Southern Cross."
+      },
+      {
+        "id": "q7",
+        "type": "multiple-choice",
+        "prompt": "Pilih bendera yang benar untuk negara Swiss.",
+        "choices": [
+          { "id": "a", "text": "🇨🇭" },
+          { "id": "b", "text": "🇩🇰" },
+          { "id": "c", "text": "🇹🇴" },
+          { "id": "d", "text": "🇦🇹" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera Swiss berwarna merah dengan salib putih di tengah."
+      },
+      {
+        "id": "q8",
+        "type": "multiple-choice",
+        "prompt": "Pilih bendera yang benar untuk negara Argentina.",
+        "choices": [
+          { "id": "a", "text": "🇦🇷" },
+          { "id": "b", "text": "🇺🇾" },
+          { "id": "c", "text": "🇵🇾" },
+          { "id": "d", "text": "🇭🇳" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera Argentina memiliki garis biru muda, putih, biru muda, dengan matahari di bagian tengah."
+      },
+      {
+        "id": "q9",
+        "type": "multiple-choice",
+        "prompt": "Pilih bendera yang benar untuk negara Korea Selatan.",
+        "choices": [
+          { "id": "a", "text": "🇰🇷" },
+          { "id": "b", "text": "🇯🇵" },
+          { "id": "c", "text": "🇨🇳" },
+          { "id": "d", "text": "🇰🇵" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera Korea Selatan memiliki simbol taegeuk merah-biru dan empat trigram."
+      },
+      {
+        "id": "q10",
+        "type": "multiple-choice",
+        "prompt": "Pilih bendera yang benar untuk negara Mesir.",
+        "choices": [
+          { "id": "a", "text": "🇪🇬" },
+          { "id": "b", "text": "🇮🇶" },
+          { "id": "c", "text": "🇸🇾" },
+          { "id": "d", "text": "🇾🇪" }
+        ],
+        "answer": "a",
+        "explanation": "Bendera Mesir berupa tiga garis horizontal merah, putih, dan hitam dengan lambang elang di tengah."
+      },
+      {
+        "id": "q11",
+        "type": "multiple-choice",
+        "prompt": "Apa ibu kota Jepang?",
+        "choices": [
+          { "id": "a", "text": "Tokyo" },
+          { "id": "b", "text": "Osaka" },
+          { "id": "c", "text": "Kyoto" },
+          { "id": "d", "text": "Sapporo" }
+        ],
+        "answer": "a",
+        "explanation": "Ibu kota Jepang adalah Tokyo."
+      },
+      {
+        "id": "q12",
+        "type": "multiple-choice",
+        "prompt": "Apa ibu kota Australia?",
+        "choices": [
+          { "id": "a", "text": "Canberra" },
+          { "id": "b", "text": "Sydney" },
+          { "id": "c", "text": "Melbourne" },
+          { "id": "d", "text": "Perth" }
+        ],
+        "answer": "a",
+        "explanation": "Ibu kota Australia adalah Canberra, bukan Sydney atau Melbourne."
+      },
+      {
+        "id": "q13",
+        "type": "multiple-choice",
+        "prompt": "Apa ibu kota Kanada?",
+        "choices": [
+          { "id": "a", "text": "Ottawa" },
+          { "id": "b", "text": "Toronto" },
+          { "id": "c", "text": "Vancouver" },
+          { "id": "d", "text": "Montreal" }
+        ],
+        "answer": "a",
+        "explanation": "Ibu kota Kanada adalah Ottawa."
+      },
+      {
+        "id": "q14",
+        "type": "multiple-choice",
+        "prompt": "Apa ibu kota Brasil?",
+        "choices": [
+          { "id": "a", "text": "Brasilia" },
+          { "id": "b", "text": "Rio de Janeiro" },
+          { "id": "c", "text": "Sao Paulo" },
+          { "id": "d", "text": "Salvador" }
+        ],
+        "answer": "a",
+        "explanation": "Ibu kota Brasil adalah Brasilia."
+      },
+      {
+        "id": "q15",
+        "type": "multiple-choice",
+        "prompt": "Apa ibu kota Mesir?",
+        "choices": [
+          { "id": "a", "text": "Kairo" },
+          { "id": "b", "text": "Alexandria" },
+          { "id": "c", "text": "Luxor" },
+          { "id": "d", "text": "Giza" }
+        ],
+        "answer": "a",
+        "explanation": "Ibu kota Mesir adalah Kairo."
+      },
+      {
+        "id": "q16",
+        "type": "multiple-choice",
+        "prompt": "Menara Eiffel berada di negara mana?",
+        "choices": [
+          { "id": "a", "text": "Prancis" },
+          { "id": "b", "text": "Italia" },
+          { "id": "c", "text": "Jerman" },
+          { "id": "d", "text": "Spanyol" }
+        ],
+        "answer": "a",
+        "explanation": "Menara Eiffel berada di Paris, Prancis."
+      },
+      {
+        "id": "q17",
+        "type": "multiple-choice",
+        "prompt": "Taj Mahal berada di negara mana?",
+        "choices": [
+          { "id": "a", "text": "India" },
+          { "id": "b", "text": "Pakistan" },
+          { "id": "c", "text": "Nepal" },
+          { "id": "d", "text": "Bangladesh" }
+        ],
+        "answer": "a",
+        "explanation": "Taj Mahal berada di Agra, India."
+      },
+      {
+        "id": "q18",
+        "type": "multiple-choice",
+        "prompt": "Machu Picchu berada di negara mana?",
+        "choices": [
+          { "id": "a", "text": "Peru" },
+          { "id": "b", "text": "Meksiko" },
+          { "id": "c", "text": "Cile" },
+          { "id": "d", "text": "Bolivia" }
+        ],
+        "answer": "a",
+        "explanation": "Machu Picchu berada di Pegunungan Andes, Peru."
+      },
+      {
+        "id": "q19",
+        "type": "multiple-choice",
+        "prompt": "Colosseum berada di negara mana?",
+        "choices": [
+          { "id": "a", "text": "Italia" },
+          { "id": "b", "text": "Yunani" },
+          { "id": "c", "text": "Turki" },
+          { "id": "d", "text": "Mesir" }
+        ],
+        "answer": "a",
+        "explanation": "Colosseum berada di Roma, Italia."
+      },
+      {
+        "id": "q20",
+        "type": "multiple-choice",
+        "prompt": "Tembok Besar berada di negara mana?",
+        "choices": [
+          { "id": "a", "text": "Tiongkok" },
+          { "id": "b", "text": "Mongolia" },
+          { "id": "c", "text": "Korea Selatan" },
+          { "id": "d", "text": "Jepang" }
+        ],
+        "answer": "a",
+        "explanation": "Tembok Besar berada di Tiongkok."
+      },
+      {
+        "id": "q21",
+        "type": "multiple-choice",
+        "prompt": "Pin merah pada peta dunia menunjukkan negara apa?",
+        "diagram": {
+          "type": "world-map-pin",
+          "description": "Peta dunia dengan pin merah di Asia Timur.",
+          "regionLabel": "Peta dunia - Asia Timur",
+          "questionLabel": "Pin merah = ?",
+          "pin": { "x": 82.4, "y": 29.2 }
+        },
+        "choices": [
+          { "id": "a", "text": "Jepang" },
+          { "id": "b", "text": "Filipina" },
+          { "id": "c", "text": "Korea Selatan" },
+          { "id": "d", "text": "Taiwan" }
+        ],
+        "answer": "a",
+        "explanation": "Pin merah berada di Jepang, gugus pulau di timur daratan Asia."
+      },
+      {
+        "id": "q22",
+        "type": "multiple-choice",
+        "prompt": "Pin merah pada peta dunia menunjukkan negara apa?",
+        "diagram": {
+          "type": "world-map-pin",
+          "description": "Peta dunia dengan pin merah di Oseania.",
+          "regionLabel": "Peta dunia - Oseania",
+          "questionLabel": "Pin merah = ?",
+          "pin": { "x": 84.2, "y": 67.8 }
+        },
+        "choices": [
+          { "id": "a", "text": "Australia" },
+          { "id": "b", "text": "Selandia Baru" },
+          { "id": "c", "text": "Papua Nugini" },
+          { "id": "d", "text": "Indonesia" }
+        ],
+        "answer": "a",
+        "explanation": "Pin merah berada di Australia, daratan besar di kawasan Oseania."
+      },
+      {
+        "id": "q23",
+        "type": "multiple-choice",
+        "prompt": "Pin merah pada peta dunia menunjukkan negara apa?",
+        "diagram": {
+          "type": "world-map-pin",
+          "description": "Peta dunia dengan pin merah di Asia Selatan.",
+          "regionLabel": "Peta dunia - Asia Selatan",
+          "questionLabel": "Pin merah = ?",
+          "pin": { "x": 68.5, "y": 35.8 }
+        },
+        "choices": [
+          { "id": "a", "text": "India" },
+          { "id": "b", "text": "Pakistan" },
+          { "id": "c", "text": "Bangladesh" },
+          { "id": "d", "text": "Nepal" }
+        ],
+        "answer": "a",
+        "explanation": "Pin merah berada di India, negara besar di Asia Selatan."
+      },
+      {
+        "id": "q24",
+        "type": "multiple-choice",
+        "prompt": "Pin merah pada peta dunia menunjukkan negara apa?",
+        "diagram": {
+          "type": "world-map-pin",
+          "description": "Peta dunia dengan pin merah di Amerika Selatan.",
+          "regionLabel": "Peta dunia - Amerika Selatan",
+          "questionLabel": "Pin merah = ?",
+          "pin": { "x": 31.0, "y": 55.0 }
+        },
+        "choices": [
+          { "id": "a", "text": "Brasil" },
+          { "id": "b", "text": "Argentina" },
+          { "id": "c", "text": "Cile" },
+          { "id": "d", "text": "Peru" }
+        ],
+        "answer": "a",
+        "explanation": "Pin merah berada di Brasil, negara luas di bagian timur Amerika Selatan."
+      },
+      {
+        "id": "q25",
+        "type": "multiple-choice",
+        "prompt": "Pin merah pada peta dunia menunjukkan negara apa?",
+        "diagram": {
+          "type": "world-map-pin",
+          "description": "Peta dunia dengan pin merah di Eropa Selatan.",
+          "regionLabel": "Peta dunia - Eropa Selatan",
+          "questionLabel": "Pin merah = ?",
+          "pin": { "x": 51.0, "y": 26.0 }
+        },
+        "choices": [
+          { "id": "a", "text": "Italia" },
+          { "id": "b", "text": "Yunani" },
+          { "id": "c", "text": "Spanyol" },
+          { "id": "d", "text": "Kroasia" }
+        ],
+        "answer": "a",
+        "explanation": "Pin merah berada di Italia, negara di Eropa Selatan yang dikenal berbentuk seperti sepatu bot."
+      }
+    ]
+  },
+  "flashcards": []
+}
