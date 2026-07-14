@@ -89,8 +89,10 @@ Question renderers are selected per question, so mixed quizzes can combine quest
 ```json
 {
   "id": "q1",
-  "type": "multiple-choice",
-  "prompt": "Berapa hasil 8 x 7?"
+  "type": "short-answer",
+  "prompt": "Berapa hasil 8 x 7?",
+  "inputType": "number",
+  "answers": ["56"]
 }
 ```
 
@@ -98,4 +100,4 @@ Supported question types:
 
 - `multiple-choice`: `choices` + answer choice id
 - `true-false`: boolean `answer`
-- `short-answer`: accepted `answers` array
+- `short-answer`: accepted `answers` array, optional `inputType` for the answer field

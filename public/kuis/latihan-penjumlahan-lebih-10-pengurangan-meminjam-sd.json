@@ -25,6 +25,7 @@
       {
         "id": "q1",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 8 + 6?",
         "answers": ["14"],
         "explanation": "8 + 6 = 14. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 4 lagi menjadi 14."
@@ -32,6 +33,7 @@
       {
         "id": "q2",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 9 + 2?",
         "answers": ["11"],
         "explanation": "9 + 2 = 11. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 1 lagi menjadi 11."
@@ -39,6 +41,7 @@
       {
         "id": "q3",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 7 + 5?",
         "answers": ["12"],
         "explanation": "7 + 5 = 12. Coba buat 10 dulu: 7 + 3 = 10, lalu tambah 2 lagi menjadi 12."
@@ -46,6 +49,7 @@
       {
         "id": "q4",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 6 + 8?",
         "answers": ["14"],
         "explanation": "6 + 8 = 14. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 4 lagi menjadi 14."
@@ -53,6 +57,7 @@
       {
         "id": "q5",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 9 + 7?",
         "answers": ["16"],
         "explanation": "9 + 7 = 16. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 6 lagi menjadi 16."
@@ -60,6 +65,7 @@
       {
         "id": "q6",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 8 + 4?",
         "answers": ["12"],
         "explanation": "8 + 4 = 12. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 2 lagi menjadi 12."
@@ -67,6 +73,7 @@
       {
         "id": "q7",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 5 + 9?",
         "answers": ["14"],
         "explanation": "5 + 9 = 14. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 4 lagi menjadi 14."
@@ -74,6 +81,7 @@
       {
         "id": "q8",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 7 + 6?",
         "answers": ["13"],
         "explanation": "7 + 6 = 13. Coba buat 10 dulu: 7 + 3 = 10, lalu tambah 3 lagi menjadi 13."
@@ -81,6 +89,7 @@
       {
         "id": "q9",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 8 + 8?",
         "answers": ["16"],
         "explanation": "8 + 8 = 16. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 6 lagi menjadi 16."
@@ -88,6 +97,7 @@
       {
         "id": "q10",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 9 + 5?",
         "answers": ["14"],
         "explanation": "9 + 5 = 14. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 4 lagi menjadi 14."
@@ -95,6 +105,7 @@
       {
         "id": "q11",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 6 + 7?",
         "answers": ["13"],
         "explanation": "6 + 7 = 13. Coba buat 10 dulu: 7 + 3 = 10, lalu tambah 3 lagi menjadi 13."
@@ -102,6 +113,7 @@
       {
         "id": "q12",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 4 + 8?",
         "answers": ["12"],
         "explanation": "4 + 8 = 12. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 2 lagi menjadi 12."
@@ -109,6 +121,7 @@
       {
         "id": "q13",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 34 - 18?",
         "answers": ["16"],
         "explanation": "34 - 18 = 16. Karena 4 tidak cukup dikurangi 8, pinjam 1 puluhan menjadi 14 - 8 = 6, lalu 2 puluhan - 1 puluhan = 1 puluhan."
@@ -116,6 +129,7 @@
       {
         "id": "q14",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 22 - 9?",
         "answers": ["13"],
         "explanation": "22 - 9 = 13. Karena 2 tidak cukup dikurangi 9, pinjam 1 puluhan menjadi 12 - 9 = 3, lalu tersisa 1 puluhan."
@@ -123,6 +137,7 @@
       {
         "id": "q15",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 41 - 16?",
         "answers": ["25"],
         "explanation": "41 - 16 = 25. Pinjam 1 puluhan sehingga 11 - 6 = 5, lalu 3 puluhan - 1 puluhan = 2 puluhan."
@@ -130,6 +145,7 @@
       {
         "id": "q16",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 53 - 27?",
         "answers": ["26"],
         "explanation": "53 - 27 = 26. Pinjam 1 puluhan sehingga 13 - 7 = 6, lalu 4 puluhan - 2 puluhan = 2 puluhan."
@@ -137,6 +153,7 @@
       {
         "id": "q17",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 30 - 14?",
         "answers": ["16"],
         "explanation": "30 - 14 = 16. Pinjam 1 puluhan sehingga 10 - 4 = 6, lalu 2 puluhan - 1 puluhan = 1 puluhan."
@@ -144,6 +161,7 @@
       {
         "id": "q18",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 62 - 38?",
         "answers": ["24"],
         "explanation": "62 - 38 = 24. Pinjam 1 puluhan sehingga 12 - 8 = 4, lalu 5 puluhan - 3 puluhan = 2 puluhan."
@@ -151,6 +169,7 @@
       {
         "id": "q19",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 45 - 19?",
         "answers": ["26"],
         "explanation": "45 - 19 = 26. Pinjam 1 puluhan sehingga 15 - 9 = 6, lalu 3 puluhan - 1 puluhan = 2 puluhan."
@@ -158,6 +177,7 @@
       {
         "id": "q20",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 71 - 46?",
         "answers": ["25"],
         "explanation": "71 - 46 = 25. Pinjam 1 puluhan sehingga 11 - 6 = 5, lalu 6 puluhan - 4 puluhan = 2 puluhan."
@@ -165,6 +185,7 @@
       {
         "id": "q21",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 24 - 8?",
         "answers": ["16"],
         "explanation": "24 - 8 = 16. Karena 4 tidak cukup dikurangi 8, pinjam 1 puluhan menjadi 14 - 8 = 6, lalu tersisa 1 puluhan."
@@ -172,6 +193,7 @@
       {
         "id": "q22",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 36 - 17?",
         "answers": ["19"],
         "explanation": "36 - 17 = 19. Pinjam 1 puluhan sehingga 16 - 7 = 9, lalu 2 puluhan - 1 puluhan = 1 puluhan."
@@ -179,6 +201,7 @@
       {
         "id": "q23",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 50 - 23?",
         "answers": ["27"],
         "explanation": "50 - 23 = 27. Pinjam 1 puluhan sehingga 10 - 3 = 7, lalu 4 puluhan - 2 puluhan = 2 puluhan."
@@ -186,6 +209,7 @@
       {
         "id": "q24",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 83 - 59?",
         "answers": ["24"],
         "explanation": "83 - 59 = 24. Pinjam 1 puluhan sehingga 13 - 9 = 4, lalu 7 puluhan - 5 puluhan = 2 puluhan."
@@ -193,6 +217,7 @@
       {
         "id": "q25",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 9 + 6?",
         "answers": ["15"],
         "explanation": "9 + 6 = 15. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 5 lagi menjadi 15."
@@ -200,6 +225,7 @@
       {
         "id": "q26",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 25 - 7?",
         "answers": ["18"],
         "explanation": "25 - 7 = 18. Pinjam 1 puluhan sehingga 15 - 7 = 8, lalu tersisa 1 puluhan."
@@ -207,6 +233,7 @@
       {
         "id": "q27",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 8 + 5?",
         "answers": ["13"],
         "explanation": "8 + 5 = 13. Coba buat 10 dulu: 8 + 2 = 10, lalu tambah 3 lagi menjadi 13."
@@ -214,6 +241,7 @@
       {
         "id": "q28",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 42 - 18?",
         "answers": ["24"],
         "explanation": "42 - 18 = 24. Pinjam 1 puluhan sehingga 12 - 8 = 4, lalu 3 puluhan - 1 puluhan = 2 puluhan."
@@ -221,6 +249,7 @@
       {
         "id": "q29",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 7 + 9?",
         "answers": ["16"],
         "explanation": "7 + 9 = 16. Coba buat 10 dulu: 9 + 1 = 10, lalu tambah 6 lagi menjadi 16."
@@ -228,6 +257,7 @@
       {
         "id": "q30",
         "type": "short-answer",
+        "inputType": "number",
         "prompt": "Berapa hasil 31 - 15?",
         "answers": ["16"],
         "explanation": "31 - 15 = 16. Pinjam 1 puluhan sehingga 11 - 5 = 6, lalu 2 puluhan - 1 puluhan = 1 puluhan."

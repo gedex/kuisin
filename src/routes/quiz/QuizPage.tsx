@@ -30,6 +30,7 @@ export function QuizPage() {
 
     void navigate({
       replace: true,
+      resetScroll: false,
       search: (previous) => ({
         ...previous,
         soal: clampedQuestionNumber,
@@ -39,6 +40,7 @@ export function QuizPage() {
 
   function navigateToQuestion(index: number) {
     void navigate({
+      resetScroll: false,
       search: (previous) => ({
         ...previous,
         soal: index + 1,

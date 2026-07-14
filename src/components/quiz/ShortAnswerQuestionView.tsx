@@ -52,6 +52,7 @@ export function ShortAnswerQuestionView({
       <form className="short-answer-form" onSubmit={submitAnswer}>
         <input
           ref={inputRef}
+          type={question.inputType ?? "text"}
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           placeholder="Tulis jawaban singkat..."

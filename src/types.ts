@@ -128,9 +128,19 @@ export type ShortAnswerQuestion = {
   prompt: string;
   diagram?: QuestionDiagram;
   answers: string[];
+  inputType?: ShortAnswerInputType;
   caseSensitive?: boolean;
   explanation?: string;
 };
+
+export type ShortAnswerInputType =
+  | "text"
+  | "number"
+  | "tel"
+  | "email"
+  | "url"
+  | "search"
+  | "password";
 
 export type QuizQuestion = MultipleChoiceQuestion | TrueFalseQuestion | ShortAnswerQuestion;
 
