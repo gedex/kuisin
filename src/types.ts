@@ -199,7 +199,7 @@ export type QuizContent = {
     disableQuestionNavigation?: boolean;
     shuffleQuestions?: boolean;
     shuffleChoices?: boolean;
-    passingScore?: number;
+    passingScore?: number | null;
   };
   questions: QuizQuestion[];
 };

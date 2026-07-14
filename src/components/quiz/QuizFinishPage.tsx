@@ -15,7 +15,7 @@ import "./QuizFinishPage.css";
 
 type QuizFinishPageProps = {
   attempt: QuizAttempt;
-  passingScore: number;
+  passingScore?: number;
   percentage: number;
   questions: QuizQuestion[];
   score: number;
@@ -39,19 +39,26 @@ export function QuizFinishPage({
   const fastestResult = getFastestResult(results);
   const slowestResult = getSlowestResult(results);
   const typeInsight = getQuestionTypeInsight(results);
-  const passed = percentage >= passingScore;
+  const hasPassingScore = typeof passingScore === "number";
+  const passed = hasPassingScore && percentage >= passingScore;
+  const title = hasPassingScore
+    ? passed
+      ? "Latihan tuntas."
+      : "Latihan selesai."
+    : "Hasil latihanmu.";
+  const summary = hasPassingScore
+    ? passed
+      ? "Bagus, kamu sudah melewati batas kelulusan latihan ini."
+      : "Cek lagi bagian yang salah, lalu coba ulangi saat siap."
+    : "Cek statistik dan review jawaban untuk melihat pola yang paling perlu dilatih lagi.";
 
   return (
     <div className="finish-page">
       <div className="finish-hero">
         <div>
           <p className="eyebrow">Selesai</p>
-          <h3>{passed ? "Latihan tuntas." : "Latihan selesai."}</h3>
-          <p>
-            {passed
-              ? "Bagus, kamu sudah melewati batas kelulusan latihan ini."
-              : "Cek lagi bagian yang salah, lalu coba ulangi saat siap."}
-          </p>
+          <h3>{title}</h3>
+          <p>{summary}</p>
         </div>
         <div className="finish-score" aria-label={`Skor ${percentage} persen`}>
           <strong>{percentage}%</strong>

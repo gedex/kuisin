@@ -259,7 +259,9 @@ export function QuizRunner({
       {!showIntro && isComplete ? (
         <QuizFinishPage
           attempt={attempt}
-          passingScore={quiz.settings?.passingScore ?? 70}
+          passingScore={
+            quiz.settings?.passingScore === null ? undefined : quiz.settings?.passingScore ?? 70
+          }
           percentage={percentage}
           questions={quiz.questions}
           score={score}

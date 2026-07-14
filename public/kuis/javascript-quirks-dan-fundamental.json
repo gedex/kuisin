@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "slug": "javascript-quirks-dan-fundamental",
+  "title": "JavaScript: Quirks dan Fundamental",
+  "description": "18 soal orisinal berbahasa Indonesia tentang konsep dan keanehan JavaScript, terinspirasi dari topik di JavaScript Questions, JavaScript Quiz, dan JS Is Weird.",
+  "subject": "JavaScript",
+  "tags": [
+    "javascript",
+    "pemrograman",
+    "frontend",
+    "quirks",
+    "async",
+    "interview"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "disableQuestionNavigation": false,
+      "shuffleQuestions": false,
+      "shuffleChoices": true,
+      "passingScore": null
+    },
+    "questions": [
+      {
+        "id": "js-typeof-null",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(typeof null);\n```",
+        "choices": [
+          { "id": "a", "text": "`\"null\"`" },
+          { "id": "b", "text": "`\"object\"`" },
+          { "id": "c", "text": "`\"undefined\"`" },
+          { "id": "d", "text": "`\"boolean\"`" }
+        ],
+        "answer": "b",
+        "explanation": "`null` adalah nilai primitif, tetapi `typeof null` mengembalikan `\"object\"`. Ini perilaku historis JavaScript yang dipertahankan demi kompatibilitas web lama."
+      },
+      {
+        "id": "js-abstract-equality-array",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log([0] == 0);\n```",
+        "choices": [
+          { "id": "a", "text": "`true`" },
+          { "id": "b", "text": "`false`" },
+          { "id": "c", "text": "`TypeError`" },
+          { "id": "d", "text": "`undefined`" }
+        ],
+        "answer": "a",
+        "explanation": "Operator `==` melakukan coercion. Array `[0]` dikonversi ke string `\"0\"`, lalu dibandingkan sebagai angka `0`, sehingga hasilnya `true`. Dengan `===`, hasilnya akan `false` karena tipe tidak sama."
+      },
+      {
+        "id": "js-nan-self-comparison",
+        "type": "short-answer",
+        "prompt": "Apa output kode berikut? Tulis `true` atau `false`.\n\n```js\nconst value = Number(\"bukan angka\");\nconsole.log(value === value);\n```",
+        "answers": ["false"],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "`Number(\"bukan angka\")` menghasilkan `NaN`. Di JavaScript, `NaN` adalah satu-satunya nilai yang tidak sama dengan dirinya sendiri. Untuk mengecek `NaN`, gunakan `Number.isNaN(value)`."
+      },
+      {
+        "id": "js-floating-point",
+        "type": "short-answer",
+        "prompt": "Apa output kode berikut? Tulis `true` atau `false`.\n\n```js\nconsole.log(0.1 + 0.2 === 0.3);\n```",
+        "answers": ["false"],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "Angka desimal seperti `0.1` dan `0.2` tidak bisa selalu direpresentasikan persis dalam biner floating point. Hasil `0.1 + 0.2` sangat dekat dengan `0.3`, tetapi bukan nilai yang persis sama."
+      },
+      {
+        "id": "js-tdz-let",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi saat kode ini dijalankan?\n\n```js\nconsole.log(topic);\nlet topic = \"closure\";\n```",
+        "choices": [
+          { "id": "a", "text": "Mencetak `undefined`" },
+          { "id": "b", "text": "Mencetak `\"closure\"`" },
+          { "id": "c", "text": "Melempar `ReferenceError`" },
+          { "id": "d", "text": "Mencetak string kosong" }
+        ],
+        "answer": "c",
+        "explanation": "Deklarasi `let` memang berada dalam scope sejak awal blok, tetapi belum boleh diakses sebelum baris deklarasinya dieksekusi. Rentang ini disebut temporal dead zone, sehingga akses awal memicu `ReferenceError`."
+      },
+      {
+        "id": "js-closure-state",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction makeCounter() {\n  let count = 0;\n  return () => ++count;\n}\n\nconst a = makeCounter();\nconst b = makeCounter();\nconsole.log(a(), a(), b());\n```",
+        "choices": [
+          { "id": "a", "text": "`1 2 1`" },
+          { "id": "b", "text": "`1 2 3`" },
+          { "id": "c", "text": "`0 1 0`" },
+          { "id": "d", "text": "`2 3 1`" }
+        ],
+        "answer": "a",
+        "explanation": "Setiap pemanggilan `makeCounter()` membuat environment baru untuk `count`. Fungsi `a` menyimpan `count` miliknya sendiri, dan fungsi `b` menyimpan `count` yang berbeda."
+      },
+      {
+        "id": "js-var-loop-scope",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst readers = [];\n\nfor (var i = 0; i < 3; i += 1) {\n  readers.push(() => i);\n}\n\nconsole.log(readers[0](), readers[2]());\n```",
+        "choices": [
+          { "id": "a", "text": "`0 2`" },
+          { "id": "b", "text": "`0 0`" },
+          { "id": "c", "text": "`2 2`" },
+          { "id": "d", "text": "`3 3`" }
+        ],
+        "answer": "d",
+        "explanation": "`var` bersifat function-scoped: scope-nya mengikuti fungsi terdekat, bukan blok `{}` seperti `for` atau `if`. Berbeda dengan `let`/`const` yang block-scoped. Di loop ini ketiga fungsi membaca `i` yang sama; setelah loop selesai `i` bernilai `3`, jadi semuanya mengembalikan `3`."
+      },
+      {
+        "id": "js-event-loop-order",
+        "type": "short-answer",
+        "prompt": "Urutan outputnya apa? Tulis hurufnya dengan spasi, misalnya `A B C D`.\n\n```js\nconsole.log(\"A\");\nsetTimeout(() => console.log(\"B\"), 0);\nPromise.resolve().then(() => console.log(\"C\"));\nconsole.log(\"D\");\n```",
+        "answers": ["A D C B", "a d c b"],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "`A` dan `D` berjalan sebagai kode sinkron. Setelah itu JavaScript menghabiskan microtask queue dulu, misalnya `Promise.then`, `queueMicrotask`, dan `MutationObserver`. Baru setelahnya task queue, misalnya `setTimeout`, `setInterval`, event klik, dan callback I/O/browser. Karena `C` adalah microtask dan `B` adalah task, urutannya `A D C B`."
+      },
+      {
+        "id": "js-async-return",
+        "type": "true-false",
+        "prompt": "Benar atau salah: fungsi `async` selalu mengembalikan `Promise`, bahkan ketika kita menulis `return` nilai biasa.\n\n```js\nasync function getNumber() {\n  return 42;\n}\n\nconst result = getNumber();\n```",
+        "answer": true,
+        "explanation": "Benar. Nilai `42` dibungkus menjadi fulfilled `Promise`. Karena itu `result` adalah `Promise`, dan nilainya bisa dibaca dengan `await getNumber()` atau `getNumber().then(...)`."
+      },
+      {
+        "id": "js-arrow-this",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst user = {\n  name: \"Budi\",\n  readName() {\n    const reader = () => this.name;\n    return reader();\n  },\n};\n\nconsole.log(user.readName());\n```",
+        "choices": [
+          { "id": "a", "text": "`\"Budi\"`" },
+          { "id": "b", "text": "`undefined`" },
+          { "id": "c", "text": "`\"reader\"`" },
+          { "id": "d", "text": "`TypeError`" }
+        ],
+        "answer": "a",
+        "explanation": "Arrow function tidak punya `this` sendiri. `reader` menangkap `this` dari method `readName`, dan saat `user.readName()` dipanggil, `this` di method tersebut adalah objek `user`."
+      },
+      {
+        "id": "js-prototype-lookup",
+        "type": "true-false",
+        "prompt": "Benar atau salah: kode ini mencetak `\"anggota\"` karena properti bisa ditemukan lewat prototype chain.\n\n```js\nconst base = { role: \"anggota\" };\nconst member = Object.create(base);\nmember.name = \"Dina\";\n\nconsole.log(member.role);\n```",
+        "answer": true,
+        "explanation": "Benar. `member` tidak punya properti `role` miliknya sendiri, lalu JavaScript mencari ke prototype-nya, yaitu `base`. Di sana `role` ditemukan."
+      },
+      {
+        "id": "js-map-parse-int",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log([\"10\", \"11\", \"12\"].map(parseInt));\n```",
+        "choices": [
+          { "id": "a", "text": "`[10, 11, 12]`" },
+          { "id": "b", "text": "`[10, NaN, 1]`" },
+          { "id": "c", "text": "`[10, 1, 0]`" },
+          { "id": "d", "text": "`[NaN, NaN, NaN]`" }
+        ],
+        "answer": "b",
+        "explanation": "`map` mengirim tiga argumen ke callback: nilai, index, dan array. `parseInt` membaca argumen kedua sebagai radix. Jadi pemanggilannya menjadi `parseInt(\"10\", 0)`, `parseInt(\"11\", 1)`, dan `parseInt(\"12\", 2)`, menghasilkan `[10, NaN, 1]`."
+      },
+      {
+        "id": "js-object-key-order",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst order = { b: 1, 2: \"dua\", 1: \"satu\", a: 2 };\nconsole.log(Object.keys(order).join(\",\"));\n```",
+        "choices": [
+          { "id": "a", "text": "`\"b,2,1,a\"`" },
+          { "id": "b", "text": "`\"1,2,b,a\"`" },
+          { "id": "c", "text": "`\"2,1,b,a\"`" },
+          { "id": "d", "text": "`\"a,b,1,2\"`" }
+        ],
+        "answer": "b",
+        "explanation": "Key yang berupa integer non-negatif diurutkan naik lebih dulu, lalu key string lain mengikuti urutan insertion. Karena itu urutannya `1`, `2`, `b`, lalu `a`."
+      },
+      {
+        "id": "js-shallow-spread",
+        "type": "short-answer",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst original = { nested: { count: 1 } };\nconst copy = { ...original };\n\ncopy.nested.count = 5;\nconsole.log(original.nested.count);\n```",
+        "answers": ["5"],
+        "inputType": "number",
+        "explanation": "Object spread membuat salinan dangkal. Properti `nested` di `copy` dan `original` masih menunjuk objek yang sama, jadi perubahan pada `copy.nested.count` terlihat juga dari `original`."
+      },
+      {
+        "id": "js-destructuring-default",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst { level = 1 } = { level: null };\nconsole.log(level);\n```",
+        "choices": [
+          { "id": "a", "text": "`1`" },
+          { "id": "b", "text": "`null`" },
+          { "id": "c", "text": "`undefined`" },
+          { "id": "d", "text": "`ReferenceError`" }
+        ],
+        "answer": "b",
+        "explanation": "Default value pada destructuring hanya dipakai ketika nilai properti adalah `undefined`. Karena `level` berisi `null`, nilai `null` tetap dipakai."
+      },
+      {
+        "id": "js-nullish-vs-or",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst config = { retry: 0 };\nconsole.log(config.retry || 3, config.retry ?? 3);\n```",
+        "choices": [
+          { "id": "a", "text": "`0 0`" },
+          { "id": "b", "text": "`3 3`" },
+          { "id": "c", "text": "`3 0`" },
+          { "id": "d", "text": "`0 3`" }
+        ],
+        "answer": "c",
+        "explanation": "`||` memakai fallback untuk semua nilai falsy, termasuk `0`. Operator `??` hanya memakai fallback untuk `null` atau `undefined`, sehingga `0` tetap dipertahankan."
+      },
+      {
+        "id": "js-promise-all-rejection",
+        "type": "multiple-choice",
+        "prompt": "Apa yang dicetak kode berikut?\n\n```js\nPromise.all([\n  Promise.resolve(\"siap\"),\n  Promise.reject(\"gagal\"),\n])\n  .then(console.log)\n  .catch(console.log);\n```",
+        "choices": [
+          { "id": "a", "text": "`[\"siap\", \"gagal\"]`" },
+          { "id": "b", "text": "`\"siap\"`" },
+          { "id": "c", "text": "`\"gagal\"`" },
+          { "id": "d", "text": "Tidak mencetak apa pun" }
+        ],
+        "answer": "c",
+        "explanation": "`Promise.all` hanya fulfilled jika semua promise fulfilled. Begitu ada satu promise rejected, hasil `Promise.all` ikut rejected dengan alasan tersebut, lalu blok `.catch(console.log)` mencetak `\"gagal\"`."
+      },
+      {
+        "id": "js-tagged-template",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction loud(parts, value) {\n  return parts[0] + value.toUpperCase() + parts[1];\n}\n\nconsole.log(loud`halo ${\"js\"}!`);\n```",
+        "choices": [
+          { "id": "a", "text": "`\"halo js!\"`" },
+          { "id": "b", "text": "`\"halo JS!\"`" },
+          { "id": "c", "text": "`\"HALO js!\"`" },
+          { "id": "d", "text": "`TypeError`" }
+        ],
+        "answer": "b",
+        "explanation": "Pada tagged template, fungsi `loud` menerima array potongan string sebagai argumen pertama dan nilai interpolasi sebagai argumen berikutnya. `parts[0]` adalah `\"halo \"`, `value` adalah `\"js\"`, dan `parts[1]` adalah `\"!\"`."
+      }
+    ]
+  },
+  "flashcards": []
+}

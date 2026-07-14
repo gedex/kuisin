@@ -1,6 +1,8 @@
 import ReactMarkdown, { type Components } from "react-markdown";
+import rehypeHighlight, { type Options as RehypeHighlightOptions } from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import "highlight.js/styles/github-dark.css";
 import "katex/dist/katex.min.css";
 
 type RichContentProps = {
@@ -12,6 +14,7 @@ type RichContentProps = {
 const inlineComponents: Components = {
   p: ({ children }) => <>{children}</>,
 };
+const highlightOptions: RehypeHighlightOptions = { detect: true };
 
 export function RichContent({ text, inline = false, className }: RichContentProps) {
   const content = normalizeMathDelimiters(text);
@@ -25,7 +28,7 @@ export function RichContent({ text, inline = false, className }: RichContentProp
         <ReactMarkdown
           components={inlineComponents}
           remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
+          rehypePlugins={[rehypeKatex, [rehypeHighlight, highlightOptions]]}
         >
           {content}
         </ReactMarkdown>
@@ -35,7 +38,10 @@ export function RichContent({ text, inline = false, className }: RichContentProp
 
   return (
     <div className={classes}>
-      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+      <ReactMarkdown
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex, [rehypeHighlight, highlightOptions]]}
+      >
         {content}
       </ReactMarkdown>
     </div>
