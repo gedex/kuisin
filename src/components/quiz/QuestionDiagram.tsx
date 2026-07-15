@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
 import type { QuestionDiagram as QuestionDiagramType } from "../../types";
 import { RichContent } from "./RichContent";
 
@@ -37,6 +39,9 @@ function publicAssetUrl(path: string) {
 
   return `${normalizedBaseUrl}${normalizedPath}`;
 }
+
+const defaultWorldMapZoomIndex = 1;
+const worldMapZoomLevels = [1, 1.8, 2.7, 4] as const;
 
 function TriangleDiagram({
   diagram,
@@ -276,24 +281,44 @@ function WorldMapPinDiagram({
 }: {
   diagram: Extract<QuestionDiagramType, { type: "world-map-pin" }>;
 }) {
+  const [zoomIndex, setZoomIndex] = useState(defaultWorldMapZoomIndex);
+  const zoom = worldMapZoomLevels[zoomIndex];
+  const mapTranslateX = 50 - diagram.pin.x * zoom;
+  const mapTranslateY = 50 - diagram.pin.y * zoom;
+  const canResetZoom = zoomIndex !== defaultWorldMapZoomIndex;
+  const canZoomOut = zoomIndex > 0;
+  const canZoomIn = zoomIndex < worldMapZoomLevels.length - 1;
+
+  useEffect(() => {
+    setZoomIndex(defaultWorldMapZoomIndex);
+  }, [diagram.pin.x, diagram.pin.y]);
+
   return (
     <figure
       className="question-diagram world-map-diagram"
       aria-label={diagram.description ?? diagram.title ?? "Peta dunia dengan pin negara"}
     >
       <div className="world-map-frame" aria-hidden="true">
-        <img
-          className="world-map-image"
-          src={publicAssetUrl("maps/blank-map-world.svg")}
-          alt=""
-        />
-        <span
-          className="world-map-pin"
+        <div
+          className="world-map-content"
           style={{
-            left: `${diagram.pin.x}%`,
-            top: `${diagram.pin.y}%`,
+            transform: `translate(${mapTranslateX}%, ${mapTranslateY}%) scale(${zoom})`,
           }}
-        />
+        >
+          <img
+            className="world-map-image"
+            src={publicAssetUrl("maps/blank-map-world.svg")}
+            alt=""
+          />
+          <span
+            className="world-map-pin"
+            style={{
+              left: `${diagram.pin.x}%`,
+              top: `${diagram.pin.y}%`,
+              transform: `translate(-50%, -100%) scale(${1 / zoom})`,
+            }}
+          />
+        </div>
       </div>
 
       <DiagramLabel className="map-region-label" text={diagram.regionLabel} />
@@ -301,6 +326,42 @@ function WorldMapPinDiagram({
         className="diagram-question-label world-map-question-label"
         text={diagram.questionLabel}
       />
+      <div className="world-map-controls" aria-label="Kontrol zoom peta">
+        <button
+          type="button"
+          className="world-map-control-button"
+          onClick={() => setZoomIndex((index) => Math.max(index - 1, 0))}
+          disabled={!canZoomOut}
+          aria-label="Perkecil peta"
+          title="Perkecil peta"
+        >
+          <ZoomOut size={16} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="world-map-control-button"
+          onClick={() => setZoomIndex(defaultWorldMapZoomIndex)}
+          disabled={!canResetZoom}
+          aria-label="Reset zoom peta"
+          title="Reset zoom peta"
+        >
+          <RotateCcw size={15} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="world-map-control-button"
+          onClick={() =>
+            setZoomIndex((index) =>
+              Math.min(index + 1, worldMapZoomLevels.length - 1),
+            )
+          }
+          disabled={!canZoomIn}
+          aria-label="Perbesar peta"
+          title="Perbesar peta"
+        >
+          <ZoomIn size={16} aria-hidden="true" />
+        </button>
+      </div>
     </figure>
   );
 }
