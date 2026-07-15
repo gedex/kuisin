@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "slug": "javascript-lanjutan-33-konsep",
+  "title": "JavaScript Lanjutan: Engine, Modul, dan Mekanika Bahasa",
+  "description": "25 soal JavaScript tingkat lanjut berbahasa Indonesia, terinspirasi dari 33 JavaScript Concepts: engine, error handling, regex, modern syntax, ES modules, hoisting, TDZ, dan strict mode.",
+  "subject": "JavaScript",
+  "tags": [
+    "javascript",
+    "advanced",
+    "engine",
+    "esm",
+    "regex",
+    "hoisting",
+    "tdz",
+    "strict-mode"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "disableQuestionNavigation": false,
+      "shuffleQuestions": false,
+      "shuffleChoices": true,
+      "passingScore": null
+    },
+    "questions": [
+      {
+        "id": "adv-engine-pipeline",
+        "type": "multiple-choice",
+        "prompt": "Urutan yang paling tepat untuk pipeline eksekusi V8 modern adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Source code -> parser/AST -> Ignition bytecode -> TurboFan optimized machine code"
+          },
+          {
+            "id": "b",
+            "text": "Source code -> TurboFan -> parser/AST -> Ignition bytecode"
+          },
+          {
+            "id": "c",
+            "text": "Source code -> machine code permanen -> AST hanya saat debugging"
+          },
+          {
+            "id": "d",
+            "text": "Source code -> garbage collector -> Ignition -> parser"
+          }
+        ],
+        "answer": "a",
+        "explanation": "V8 membaca source code, mem-parse menjadi token/AST, menjalankan bytecode lewat Ignition, lalu mengoptimasi bagian yang sering berjalan dengan TurboFan.\n\n#### 🔗 Referensi konsep\n- [JavaScript Engines](https://33jsconcepts.com/concepts/javascript-engines)"
+      },
+      {
+        "id": "adv-engine-deopt",
+        "type": "true-false",
+        "prompt": "Benar atau salah: jika TurboFan mengoptimasi fungsi karena selalu menerima angka, lalu fungsi itu tiba-tiba menerima string, V8 dapat melakukan deoptimization dan kembali ke bytecode yang lebih umum.",
+        "answer": true,
+        "explanation": "Benar. Optimasi JIT bergantung pada asumsi dari data runtime. Ketika asumsi tipe atau bentuk objek gagal, V8 membuang jalur optimasi itu dan fallback ke eksekusi yang lebih umum.\n\n#### 🔗 Referensi konsep\n- [JavaScript Engines](https://33jsconcepts.com/concepts/javascript-engines)"
+      },
+      {
+        "id": "adv-engine-hidden-classes",
+        "type": "multiple-choice",
+        "prompt": "Kode mana yang paling ramah untuk hidden class/object shape di V8?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Selalu membuat objek dengan properti yang sama dan urutan yang sama."
+          },
+          {
+            "id": "b",
+            "text": "Menambahkan properti acak setelah objek dipakai lama."
+          },
+          {
+            "id": "c",
+            "text": "Sering memakai `delete` pada properti objek hot path."
+          },
+          {
+            "id": "d",
+            "text": "Mengganti-ganti tipe properti yang sama pada setiap call."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Objek dengan properti yang sama dalam urutan yang sama dapat berbagi hidden class. Ini membantu inline caching dan akses properti lebih cepat.\n\n#### 🔗 Referensi konsep\n- [JavaScript Engines](https://33jsconcepts.com/concepts/javascript-engines)"
+      },
+      {
+        "id": "adv-error-finally-return",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil pemanggilan `run()`?\n\n```js\nfunction run() {\n  try {\n    return \"try\";\n  } finally {\n    return \"finally\";\n  }\n}\n\nrun();\n```",
+        "choices": [
+          { "id": "a", "text": "`\"try\"`" },
+          { "id": "b", "text": "`\"finally\"`" },
+          { "id": "c", "text": "`undefined`" },
+          { "id": "d", "text": "`SyntaxError`" }
+        ],
+        "answer": "b",
+        "explanation": "Blok `finally` selalu berjalan setelah `try`/`catch`. Jika `finally` juga melakukan `return`, nilai itu menggantikan `return` dari `try`. Pola ini biasanya dihindari karena membuat flow sulit dibaca.\n\n#### 🔗 Referensi konsep\n- [Error Handling](https://33jsconcepts.com/concepts/error-handling)"
+      },
+      {
+        "id": "adv-error-async-callback",
+        "type": "true-false",
+        "prompt": "Benar atau salah: `try/catch` di bawah ini akan menangkap error dari callback `setTimeout`.\n\n```js\ntry {\n  setTimeout(() => {\n    throw new Error(\"meledak\");\n  }, 0);\n} catch (error) {\n  console.log(\"tertangkap\");\n}\n```",
+        "answer": false,
+        "explanation": "Salah. `try/catch` hanya menangkap error sinkron di stack yang sama. Callback `setTimeout` berjalan nanti di task berbeda, jadi error harus ditangani di dalam callback atau lewat mekanisme global/error boundary yang sesuai.\n\n#### 🔗 Referensi konsep\n- [Error Handling](https://33jsconcepts.com/concepts/error-handling)"
+      },
+      {
+        "id": "adv-error-fetch-ok",
+        "type": "multiple-choice",
+        "prompt": "Untuk `fetch()`, pernyataan mana yang paling tepat?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`fetch()` otomatis reject untuk status HTTP `404` atau `500`."
+          },
+          {
+            "id": "b",
+            "text": "`fetch()` biasanya resolve untuk respons HTTP, jadi kita perlu cek `response.ok`."
+          },
+          {
+            "id": "c",
+            "text": "`response.ok` hanya tersedia pada Node.js, bukan browser."
+          },
+          {
+            "id": "d",
+            "text": "`try/catch` tidak bisa dipakai bersama `await fetch()`."
+          }
+        ],
+        "answer": "b",
+        "explanation": "`fetch()` reject untuk kegagalan jaringan, bukan otomatis untuk status HTTP error. Untuk `404`/`500`, respons bisa tetap resolve, sehingga kode robust perlu mengecek `response.ok`.\n\n#### 🔗 Referensi konsep\n- [Error Handling](https://33jsconcepts.com/concepts/error-handling)"
+      },
+      {
+        "id": "adv-regex-global-test",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil dua pemanggilan `test()` berikut?\n\n```js\nconst re = /a/g;\n\nconsole.log(re.test(\"a\"));\nconsole.log(re.test(\"a\"));\n```",
+        "choices": [
+          { "id": "a", "text": "`true`, lalu `true`" },
+          { "id": "b", "text": "`true`, lalu `false`" },
+          { "id": "c", "text": "`false`, lalu `true`" },
+          { "id": "d", "text": "`false`, lalu `false`" }
+        ],
+        "answer": "b",
+        "explanation": "Regex dengan flag `g` bersifat stateful melalui `lastIndex`. Setelah match pertama, `lastIndex` maju. Pemanggilan kedua mulai dari posisi akhir string, sehingga gagal dan mengembalikan `false`.\n\n#### 🔗 Referensi konsep\n- [Regular Expressions](https://33jsconcepts.com/concepts/regular-expressions)"
+      },
+      {
+        "id": "adv-regex-greedy-lazy",
+        "type": "multiple-choice",
+        "prompt": "Pattern mana yang cocok untuk mengambil tag `<b>` pertama saja dari string `\"<b>satu</b><b>dua</b>\"`?",
+        "choices": [
+          { "id": "a", "text": "`/<b>.*<\\/b>/`" },
+          { "id": "b", "text": "`/<b>.*?<\\/b>/`" },
+          { "id": "c", "text": "`/^<b>.*<\\/b>$/g`" },
+          { "id": "d", "text": "`/<b>.+<\\/b>/m`" }
+        ],
+        "answer": "b",
+        "explanation": "`.*` bersifat greedy dan akan melebar sejauh mungkin. `.*?` adalah versi lazy/minimal, jadi berhenti pada `</b>` pertama.\n\n#### 🔗 Referensi konsep\n- [Regular Expressions](https://33jsconcepts.com/concepts/regular-expressions)"
+      },
+      {
+        "id": "adv-regex-named-groups",
+        "type": "short-answer",
+        "prompt": "Apa nama fitur regex yang dipakai untuk memberi nama pada capture group seperti `(?<year>\\d{4})`?",
+        "answers": [
+          "named capture group",
+          "named capture groups",
+          "named group",
+          "named groups",
+          "grup bernama",
+          "capture group bernama"
+        ],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "Itu adalah named capture group. Fitur ini membuat hasil ekstraksi lebih mudah dibaca karena bagian match bisa diakses lewat nama, bukan hanya nomor indeks.\n\n#### 🔗 Referensi konsep\n- [Regular Expressions](https://33jsconcepts.com/concepts/regular-expressions)"
+      },
+      {
+        "id": "adv-modern-optional-chain-short-circuit",
+        "type": "multiple-choice",
+        "prompt": "Apa nilai `index` setelah kode ini berjalan?\n\n```js\nlet index = 0;\nconst user = null;\n\nuser?.items?.[index++];\n```",
+        "choices": [
+          { "id": "a", "text": "`0`" },
+          { "id": "b", "text": "`1`" },
+          { "id": "c", "text": "`undefined`" },
+          { "id": "d", "text": "`ReferenceError`" }
+        ],
+        "answer": "a",
+        "explanation": "Optional chaining melakukan short-circuit saat bagian kiri `null` atau `undefined`. Karena `user` adalah `null`, ekspresi `[index++]` tidak dievaluasi, sehingga `index` tetap `0`.\n\n#### 🔗 Referensi konsep\n- [Modern JS Syntax](https://33jsconcepts.com/concepts/modern-js-syntax)"
+      },
+      {
+        "id": "adv-modern-default-param",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction label(value = \"default\") {\n  return value;\n}\n\nconsole.log(label(undefined), label(null));\n```",
+        "choices": [
+          { "id": "a", "text": "`\"default\" \"default\"`" },
+          { "id": "b", "text": "`undefined null`" },
+          { "id": "c", "text": "`\"default\" null`" },
+          { "id": "d", "text": "`null \"default\"`" }
+        ],
+        "answer": "c",
+        "explanation": "Default parameter hanya aktif saat argumen bernilai `undefined` atau tidak diberikan. Nilai `null` tetap dianggap nilai eksplisit, jadi tidak diganti default.\n\n#### 🔗 Referensi konsep\n- [Modern JS Syntax](https://33jsconcepts.com/concepts/modern-js-syntax)"
+      },
+      {
+        "id": "adv-modern-map-key",
+        "type": "true-false",
+        "prompt": "Benar atau salah: `Map` dapat memakai object sebagai key tanpa mengubahnya menjadi string, sedangkan key object biasa akan menjadi string/property key.",
+        "answer": true,
+        "explanation": "Benar. `Map` menyimpan key berdasarkan identity, sehingga object, function, atau primitive bisa dipakai sebagai key. Object literal biasa memakai property key string atau symbol.\n\n#### 🔗 Referensi konsep\n- [Modern JS Syntax](https://33jsconcepts.com/concepts/modern-js-syntax)"
+      },
+      {
+        "id": "adv-esm-live-binding",
+        "type": "multiple-choice",
+        "prompt": "Dalam ES Module, `counter.js` mengekspor `count` dan `inc()` seperti ini:\n\n```js\nexport let count = 0;\nexport function inc() {\n  count += 1;\n}\n```\n\nJika file lain menjalankan `inc()` lalu membaca `count`, apa konsep yang menjelaskan mengapa nilai import ikut berubah?",
+        "choices": [
+          { "id": "a", "text": "Live binding" },
+          { "id": "b", "text": "Deep clone" },
+          { "id": "c", "text": "Hoisted copy" },
+          { "id": "d", "text": "JSON serialization" }
+        ],
+        "answer": "a",
+        "explanation": "ESM memakai live binding: import mengacu ke binding asli di modul sumber, bukan salinan nilai lama. Importer tetap tidak boleh menugaskan ulang binding itu.\n\n#### 🔗 Referensi konsep\n- [ES Modules](https://33jsconcepts.com/concepts/es-modules)"
+      },
+      {
+        "id": "adv-esm-static-import",
+        "type": "multiple-choice",
+        "prompt": "Mana pernyataan yang benar tentang import ES Module statis?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`import { x } from pathVariable` valid selama `pathVariable` string."
+          },
+          {
+            "id": "b",
+            "text": "Static import harus top-level dan module specifier-nya string literal."
+          },
+          {
+            "id": "c",
+            "text": "Static import boleh ditaruh di dalam `if` agar bundler lebih mudah tree-shaking."
+          },
+          {
+            "id": "d",
+            "text": "Static import selalu synchronous seperti `require()`."
+          }
+        ],
+        "answer": "b",
+        "explanation": "Static import bersifat deklaratif: harus top-level dan path-nya string literal. Struktur statis inilah yang memungkinkan analisis module graph dan tree-shaking. Untuk lazy/conditional loading, gunakan `import()`.\n\n#### 🔗 Referensi konsep\n- [ES Modules](https://33jsconcepts.com/concepts/es-modules)"
+      },
+      {
+        "id": "adv-esm-dynamic-import",
+        "type": "short-answer",
+        "prompt": "Dynamic `import(\"./fitur.js\")` mengembalikan objek async jenis apa?",
+        "answers": ["promise", "a promise", "Promise"],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "Dynamic import mengembalikan `Promise` yang resolve ke module namespace object. Ini dipakai untuk lazy loading atau code splitting.\n\n#### 🔗 Referensi konsep\n- [ES Modules](https://33jsconcepts.com/concepts/es-modules)"
+      },
+      {
+        "id": "adv-hoisting-function-declaration",
+        "type": "true-false",
+        "prompt": "Benar atau salah: function declaration dapat dipanggil sebelum baris deklarasinya karena nama dan body fungsinya tersedia saat fase persiapan eksekusi.\n\n```js\nconsole.log(total(2, 3));\n\nfunction total(a, b) {\n  return a + b;\n}\n```",
+        "answer": true,
+        "explanation": "Benar. Function declaration fully hoisted: binding dan body fungsi tersedia sebelum kode dieksekusi. Ini berbeda dari function expression yang mengikuti aturan variabelnya.\n\n#### 🔗 Referensi konsep\n- [Hoisting](https://33jsconcepts.com/beyond/concepts/hoisting)"
+      },
+      {
+        "id": "adv-hoisting-var-function-expression",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi saat kode ini berjalan?\n\n```js\nsayHi();\n\nvar sayHi = function () {\n  return \"hi\";\n};\n```",
+        "choices": [
+          { "id": "a", "text": "Berjalan normal dan mengembalikan `\"hi\"`" },
+          { "id": "b", "text": "Melempar `TypeError` karena `sayHi` masih `undefined` saat dipanggil" },
+          { "id": "c", "text": "Melempar `ReferenceError` karena `var` punya TDZ" },
+          { "id": "d", "text": "Melempar `SyntaxError` karena function expression tidak boleh memakai `var`" }
+        ],
+        "answer": "b",
+        "explanation": "Deklarasi `var sayHi` di-hoist dan diinisialisasi ke `undefined`, tetapi assignment function expression tetap terjadi di baris aslinya. Memanggil `undefined` sebagai fungsi menghasilkan `TypeError`.\n\n#### 🔗 Referensi konsep\n- [Hoisting](https://33jsconcepts.com/beyond/concepts/hoisting)"
+      },
+      {
+        "id": "adv-hoisting-function-vs-var",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(typeof tool);\n\nvar tool = \"hammer\";\nfunction tool() {}\n```",
+        "choices": [
+          { "id": "a", "text": "`\"function\"`" },
+          { "id": "b", "text": "`\"string\"`" },
+          { "id": "c", "text": "`\"undefined\"`" },
+          { "id": "d", "text": "`ReferenceError`" }
+        ],
+        "answer": "a",
+        "explanation": "Saat function declaration dan `var` berbagi nama dalam scope yang sama, function declaration menang pada fase awal. Assignment `tool = \"hammer\"` baru terjadi setelah `console.log`.\n\n#### 🔗 Referensi konsep\n- [Hoisting](https://33jsconcepts.com/beyond/concepts/hoisting)"
+      },
+      {
+        "id": "adv-tdz-typeof",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi pada kode ini?\n\n```js\n{\n  console.log(typeof token);\n  let token = \"abc\";\n}\n```",
+        "choices": [
+          { "id": "a", "text": "Mencetak `\"undefined\"`" },
+          { "id": "b", "text": "Mencetak `\"string\"`" },
+          { "id": "c", "text": "Melempar `ReferenceError`" },
+          { "id": "d", "text": "Melempar `TypeError`" }
+        ],
+        "answer": "c",
+        "explanation": "`typeof` aman untuk variabel yang benar-benar undeclared, tetapi tidak aman untuk binding `let`/`const` yang sedang berada di TDZ. `token` sudah ada di scope, tetapi belum diinisialisasi.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "adv-tdz-default-params",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi saat `setup()` dipanggil?\n\n```js\nfunction setup(options = defaults, defaults = {}) {\n  return options;\n}\n\nsetup();\n```",
+        "choices": [
+          { "id": "a", "text": "Mengembalikan `{}`" },
+          { "id": "b", "text": "Mengembalikan `undefined`" },
+          { "id": "c", "text": "Melempar `ReferenceError`" },
+          { "id": "d", "text": "Melempar `SyntaxError`" }
+        ],
+        "answer": "c",
+        "explanation": "Default parameter dievaluasi dari kiri ke kanan. Parameter pertama mencoba membaca `defaults` sebelum parameter kedua diinisialisasi, sehingga terkena TDZ dan melempar `ReferenceError`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "adv-tdz-shadowing",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi pada kode berikut?\n\n```js\nconst status = \"global\";\n\n{\n  console.log(status);\n  const status = \"block\";\n}\n```",
+        "choices": [
+          { "id": "a", "text": "Mencetak `\"global\"`" },
+          { "id": "b", "text": "Mencetak `\"block\"`" },
+          { "id": "c", "text": "Melempar `ReferenceError`" },
+          { "id": "d", "text": "Melempar `TypeError`" }
+        ],
+        "answer": "c",
+        "explanation": "`const status` di blok dalam melakukan shadowing terhadap `status` luar sejak awal blok. Selama TDZ, binding blok itu belum bisa diakses, dan binding luar juga tertutup.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "adv-strict-accidental-global",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi dalam strict mode?\n\n```js\n\"use strict\";\n\nfunction save() {\n  result = \"ok\";\n}\n\nsave();\n```",
+        "choices": [
+          { "id": "a", "text": "`result` otomatis menjadi global" },
+          { "id": "b", "text": "Melempar `ReferenceError`" },
+          { "id": "c", "text": "Melempar `SyntaxError`" },
+          { "id": "d", "text": "`result` menjadi property lokal fungsi" }
+        ],
+        "answer": "b",
+        "explanation": "Strict mode mencegah accidental global. Assignment ke identifier yang belum dideklarasikan melempar `ReferenceError`, bukan diam-diam membuat global variable.\n\n#### 🔗 Referensi konsep\n- [Strict Mode](https://33jsconcepts.com/beyond/concepts/strict-mode)"
+      },
+      {
+        "id": "adv-strict-this",
+        "type": "multiple-choice",
+        "prompt": "Apa nilai `this` di dalam `plain()` saat fungsi dipanggil seperti ini?\n\n```js\n\"use strict\";\n\nfunction plain() {\n  return this;\n}\n\nplain();\n```",
+        "choices": [
+          { "id": "a", "text": "`globalThis`" },
+          { "id": "b", "text": "`window` di browser, `global` di Node.js" },
+          { "id": "c", "text": "`undefined`" },
+          { "id": "d", "text": "Objek fungsi `plain`" }
+        ],
+        "answer": "c",
+        "explanation": "Dalam strict mode, pemanggilan fungsi biasa tidak mengubah `this` menjadi global object. Jika tidak ada receiver, `this` tetap `undefined`.\n\n#### 🔗 Referensi konsep\n- [Strict Mode](https://33jsconcepts.com/beyond/concepts/strict-mode)"
+      },
+      {
+        "id": "adv-strict-arguments",
+        "type": "true-false",
+        "prompt": "Benar atau salah: dalam strict mode, mengubah parameter fungsi otomatis ikut mengubah `arguments[0]`.",
+        "answer": false,
+        "explanation": "Salah. Strict mode memutus sinkronisasi membingungkan antara parameter bernama dan objek `arguments`. Mengubah parameter tidak otomatis mengubah `arguments[0]`, dan sebaliknya.\n\n#### 🔗 Referensi konsep\n- [Strict Mode](https://33jsconcepts.com/beyond/concepts/strict-mode)"
+      },
+      {
+        "id": "adv-module-tdz-cycle",
+        "type": "multiple-choice",
+        "prompt": "Dalam circular ES module import, mengapa sebuah modul bisa terkena `ReferenceError: Cannot access ... before initialization`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Karena semua export ESM disalin sebagai snapshot yang tidak pernah berubah."
+          },
+          {
+            "id": "b",
+            "text": "Karena live binding bisa ada sebelum nilai modul sumber selesai diinisialisasi."
+          },
+          {
+            "id": "c",
+            "text": "Karena ESM tidak pernah menjalankan kode secara strict mode."
+          },
+          {
+            "id": "d",
+            "text": "Karena circular import selalu menjadi `SyntaxError` sebelum runtime."
+          }
+        ],
+        "answer": "b",
+        "explanation": "ESM membuat live binding saat module graph disiapkan, tetapi nilai tertentu bisa belum diinisialisasi ketika modul lain membacanya dalam siklus import. Ini membuat circular dependency dapat bertemu TDZ.\n\n#### 🔗 Referensi konsep\n- [ES Modules](https://33jsconcepts.com/concepts/es-modules)\n- [Temporal Dead Zone](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      }
+    ]
+  },
+  "flashcards": []
+}

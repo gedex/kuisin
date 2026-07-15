@@ -22,6 +22,45 @@
   margin: 0;
 }
 
+.rich-content h4 {
+  margin: 0.85em 0 0.32em;
+  font-size: 0.94em;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.rich-content h4:first-child {
+  margin-top: 0;
+}
+
+.rich-content h4 + ul,
+.rich-content h4 + ol {
+  margin-top: 0.25em;
+}
+
+.rich-content a {
+  color: var(--primary-strong);
+  font-weight: 850;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.09em;
+  text-decoration-color: color-mix(in srgb, currentColor 72%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.rich-content a:hover,
+.rich-content a:focus-visible {
+  color: var(--primary);
+  text-decoration-color: currentColor;
+}
+
+.explanation .rich-content a,
+.explanation .rich-content a:hover,
+.explanation .rich-content a:focus-visible {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+
 .rich-content p + p,
 .rich-content ul,
 .rich-content ol {

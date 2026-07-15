@@ -4,6 +4,26 @@
   "items": [
     {
       "type": "quiz",
+      "slug": "javascript-lanjutan-33-konsep",
+      "title": "JavaScript Lanjutan: Engine, Modul, dan Mekanika Bahasa",
+      "description": "25 soal JavaScript tingkat lanjut berbahasa Indonesia, terinspirasi dari 33 JavaScript Concepts: engine, error handling, regex, modern syntax, ES modules, hoisting, TDZ, dan strict mode.",
+      "subject": "JavaScript",
+      "tags": [
+        "javascript",
+        "advanced",
+        "engine",
+        "esm",
+        "regex",
+        "hoisting",
+        "tdz",
+        "strict-mode"
+      ],
+      "questionCount": 25,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/javascript-lanjutan-33-konsep.json"
+    },
+    {
+      "type": "quiz",
       "slug": "javascript-quirks-dan-fundamental",
       "title": "JavaScript: Quirks dan Fundamental",
       "description": "18 soal orisinal berbahasa Indonesia tentang konsep dan keanehan JavaScript, terinspirasi dari topik di JavaScript Questions, JavaScript Quiz, dan JS Is Weird.",
