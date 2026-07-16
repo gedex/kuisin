@@ -1,0 +1,499 @@
+{
+  "version": 1,
+  "slug": "javascript-type-nuances",
+  "title": "JavaScript: Type Nuances",
+  "description": "20 soal JavaScript tentang nuansa tipe: null vs undefined, typeof, short-circuit operator, optional chaining, instanceof, Symbols, dan BigInt.",
+  "subject": "JavaScript",
+  "tags": [
+    "javascript",
+    "type-system",
+    "typeof",
+    "nullish",
+    "optional-chaining",
+    "symbol",
+    "bigint",
+    "instanceof"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "disableQuestionNavigation": false,
+      "shuffleQuestions": false,
+      "shuffleChoices": true,
+      "passingScore": null
+    },
+    "questions": [
+      {
+        "id": "type-dynamic-addition",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction add(a, b) {\n  return a + b;\n}\n\nconsole.log(add(\"5\", 3));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`8`"
+          },
+          {
+            "id": "b",
+            "text": "`\"53\"`"
+          },
+          {
+            "id": "c",
+            "text": "`NaN`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "JavaScript mengecek tipe saat runtime dan operator `+` bisa berarti penjumlahan atau concatenation. Jika salah satu operand adalah string, nilai lain dikonversi ke string, jadi hasilnya `\"53\"`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-null-vs-undefined",
+        "type": "multiple-choice",
+        "prompt": "Pernyataan mana yang paling tepat tentang `null` dan `undefined`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined` biasanya berarti nilai belum tersedia/diisi oleh JavaScript, sedangkan `null` biasanya dipakai developer untuk menandai kosong secara eksplisit."
+          },
+          {
+            "id": "b",
+            "text": "`null` dan `undefined` selalu identik dalam semua operator."
+          },
+          {
+            "id": "c",
+            "text": "`undefined` hanya bisa muncul pada array, bukan object atau function."
+          },
+          {
+            "id": "d",
+            "text": "`null` otomatis dibuat JavaScript ketika property object hilang."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`undefined` sering muncul otomatis: variabel belum diisi, property hilang, parameter tidak dikirim, atau function tidak mengembalikan nilai. `null` lebih sering dipakai sebagai sinyal eksplisit: nilai memang kosong.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-null-undefined-equality",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(null == undefined);\nconsole.log(null === undefined);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`true`, lalu `true`"
+          },
+          {
+            "id": "b",
+            "text": "`true`, lalu `false`"
+          },
+          {
+            "id": "c",
+            "text": "`false`, lalu `true`"
+          },
+          {
+            "id": "d",
+            "text": "`false`, lalu `false`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Loose equality menganggap `null` dan `undefined` setara untuk kasus cek “tidak ada nilai”. Strict equality tidak melakukan coercion, jadi tipe berbeda tetap tidak sama.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-check-both-nullish",
+        "type": "short-answer",
+        "prompt": "Ekspresi singkat apa yang umum dipakai untuk mengecek apakah `value` adalah `null` **atau** `undefined` dalam satu kondisi?",
+        "answers": [
+          "value == null",
+          "value==null"
+        ],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "`value == null` adalah salah satu penggunaan loose equality yang sengaja dan berguna: ia true untuk `null` dan `undefined`, tetapi false untuk `0`, `\"\"`, `false`, dan `NaN`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-typeof-null",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(typeof null);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"null\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"undefined\"`"
+          },
+          {
+            "id": "c",
+            "text": "`\"object\"`"
+          },
+          {
+            "id": "d",
+            "text": "`\"empty\"`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "`typeof null` mengembalikan `\"object\"`, sebuah bug historis JavaScript yang dipertahankan demi kompatibilitas. Untuk mengecek `null`, gunakan `value === null`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-json-null-undefined",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(JSON.stringify({ a: null, b: undefined }));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`{\"a\":null}`"
+          },
+          {
+            "id": "b",
+            "text": "`{\"a\":null,\"b\":undefined}`"
+          },
+          {
+            "id": "c",
+            "text": "`{\"a\":null,\"b\":null}`"
+          },
+          {
+            "id": "d",
+            "text": "`undefined`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`JSON.stringify` menyimpan property bernilai `null`, tetapi menghilangkan property object yang bernilai `undefined`. Ini sering penting saat membedakan “kosong eksplisit” dan “tidak dikirim”.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-or-vs-nullish",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(0 || 10);\nconsole.log(0 ?? 10);\nconsole.log(\"\" || \"guest\");\nconsole.log(\"\" ?? \"guest\");\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`10`, `0`, `\"guest\"`, `\"\"`"
+          },
+          {
+            "id": "b",
+            "text": "`0`, `0`, `\"\"`, `\"\"`"
+          },
+          {
+            "id": "c",
+            "text": "`10`, `10`, `\"guest\"`, `\"guest\"`"
+          },
+          {
+            "id": "d",
+            "text": "`0`, `10`, `\"\"`, `\"guest\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`||` fallback untuk semua nilai falsy, termasuk `0` dan string kosong. `??` fallback hanya untuk `null` atau `undefined`, sehingga `0` dan `\"\"` tetap dipertahankan.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-nullish-mix-syntax",
+        "type": "true-false",
+        "prompt": "Benar atau salah: `null || undefined ?? \"x\"` valid tanpa tanda kurung karena `||` dievaluasi sebelum `??`.",
+        "answer": false,
+        "explanation": "Salah. JavaScript melarang mencampur `??` dengan `||` atau `&&` tanpa parentheses karena bisa ambigu. Gunakan `(null || undefined) ?? \"x\"` atau `null || (undefined ?? \"x\")`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-optional-chaining-short-circuit",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst user = null;\n\nconsole.log(user?.profile?.name);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined`"
+          },
+          {
+            "id": "b",
+            "text": "`null`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Optional chaining berhenti saat sisi kiri adalah `null` atau `undefined`, lalu menghasilkan `undefined` alih-alih melempar error saat membaca property berikutnya.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-typeof-collections",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(typeof []);\nconsole.log(typeof function run() {});\nconsole.log(typeof class Task {});\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"array\"`, `\"function\"`, `\"class\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"object\"`, `\"function\"`, `\"function\"`"
+          },
+          {
+            "id": "c",
+            "text": "`\"object\"`, `\"object\"`, `\"object\"`"
+          },
+          {
+            "id": "d",
+            "text": "`\"array\"`, `\"object\"`, `\"function\"`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Array adalah object, jadi `typeof []` adalah `\"object\"`. Function punya hasil khusus `\"function\"`, dan class declaration juga dilaporkan sebagai `\"function\"` oleh `typeof`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-undeclared-typeof",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut jika `missingFeature` belum pernah dideklarasikan?\n\n```js\nconsole.log(typeof missingFeature);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"undefined\"`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined` tanpa string"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`\"missing\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`typeof` unik karena aman dipakai pada identifier yang benar-benar undeclared: hasilnya string `\"undefined\"`. Ini sering dipakai untuk feature detection di environment berbeda.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-array-checking",
+        "type": "multiple-choice",
+        "prompt": "Cara paling tepat untuk mengecek apakah `value` adalah array adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`typeof value === \"array\"`"
+          },
+          {
+            "id": "b",
+            "text": "`Array.isArray(value)`"
+          },
+          {
+            "id": "c",
+            "text": "`value === []`"
+          },
+          {
+            "id": "d",
+            "text": "`value.toString() === \"array\"`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`typeof []` mengembalikan `\"object\"`, jadi bukan cara yang presisi. `Array.isArray(value)` memang dibuat untuk membedakan array dari object biasa.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-object-to-string",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil pemanggilan berikut?\n\n```js\nObject.prototype.toString.call(new Date(\"2026-07-15\"));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"[object Date]\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"date\"`"
+          },
+          {
+            "id": "c",
+            "text": "`\"[object Object]\"`"
+          },
+          {
+            "id": "d",
+            "text": "`\"2026-07-15\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`Object.prototype.toString.call(value)` bisa memberi tag internal yang lebih spesifik daripada `typeof`, misalnya `[object Date]`, `[object Array]`, `[object Null]`, atau `[object RegExp]`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-instanceof-primitives",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(\"halo\" instanceof String);\nconsole.log(new String(\"halo\") instanceof String);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`true`, lalu `true`"
+          },
+          {
+            "id": "b",
+            "text": "`false`, lalu `true`"
+          },
+          {
+            "id": "c",
+            "text": "`true`, lalu `false`"
+          },
+          {
+            "id": "d",
+            "text": "`false`, lalu `false`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`instanceof` mengecek prototype chain object. String literal adalah primitive, bukan object wrapper `String`. `new String(\"halo\")` membuat object wrapper, sehingga cocok dengan `String`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-symbol-unique",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst a = Symbol(\"id\");\nconst b = Symbol(\"id\");\n\nconsole.log(a === b);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`true`, karena deskripsinya sama"
+          },
+          {
+            "id": "b",
+            "text": "`false`, karena setiap `Symbol()` membuat nilai unik"
+          },
+          {
+            "id": "c",
+            "text": "`TypeError`, karena Symbol tidak bisa dibandingkan"
+          },
+          {
+            "id": "d",
+            "text": "`undefined`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Deskripsi symbol hanya untuk debugging. Dua pemanggilan `Symbol(\"id\")` tetap membuat dua primitive symbol yang berbeda dan unik.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-symbol-for-registry",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconsole.log(Symbol.for(\"app.id\") === Symbol.for(\"app.id\"));\nconsole.log(Symbol(\"app.id\") === Symbol(\"app.id\"));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`true`, lalu `false`"
+          },
+          {
+            "id": "b",
+            "text": "`false`, lalu `false`"
+          },
+          {
+            "id": "c",
+            "text": "`true`, lalu `true`"
+          },
+          {
+            "id": "d",
+            "text": "`false`, lalu `true`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`Symbol.for(key)` memakai global symbol registry, jadi key yang sama mengambil symbol yang sama. `Symbol(description)` selalu membuat symbol baru, walaupun description-nya sama.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-symbol-keys-hidden",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst secret = Symbol(\"secret\");\nconst item = { name: \"Buku\", [secret]: 123 };\n\nconsole.log(Object.keys(item));\nconsole.log(Object.getOwnPropertySymbols(item).length);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`[\"name\"]`, lalu `1`"
+          },
+          {
+            "id": "b",
+            "text": "`[\"name\", \"secret\"]`, lalu `0`"
+          },
+          {
+            "id": "c",
+            "text": "`[]`, lalu `1`"
+          },
+          {
+            "id": "d",
+            "text": "`[Symbol(secret)]`, lalu `1`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Property dengan key Symbol tidak muncul di `Object.keys()` atau iterasi string-key biasa. Untuk mengambilnya, gunakan `Object.getOwnPropertySymbols()` atau `Reflect.ownKeys()`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-symbol-to-primitive",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst price = {\n  amount: 150,\n  [Symbol.toPrimitive](hint) {\n    return hint === \"string\" ? \"Rp150\" : this.amount;\n  },\n};\n\nconsole.log(+price);\nconsole.log(`${price}`);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`150`, lalu `\"Rp150\"`"
+          },
+          {
+            "id": "b",
+            "text": "`NaN`, lalu `\"[object Object]\"`"
+          },
+          {
+            "id": "c",
+            "text": "`\"Rp150\"`, lalu `150`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`, karena object tidak bisa dikonversi"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`Symbol.toPrimitive` memberi object cara kustom untuk berubah menjadi primitive. Unary `+` memakai hint number/default, sehingga mendapat `150`; template literal memakai hint string, sehingga mendapat `\"Rp150\"`.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-bigint-precision",
+        "type": "multiple-choice",
+        "prompt": "Mana pilihan yang paling tepat untuk menyimpan integer ID sangat besar tanpa kehilangan presisi?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`9007199254740993` sebagai Number biasa"
+          },
+          {
+            "id": "b",
+            "text": "`9007199254740993n` sebagai BigInt"
+          },
+          {
+            "id": "c",
+            "text": "`Number.MAX_VALUE`"
+          },
+          {
+            "id": "d",
+            "text": "`parseFloat(\"9007199254740993\")`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Number aman untuk integer hanya sampai `Number.MAX_SAFE_INTEGER` (`2^53 - 1`). BigInt memakai suffix `n` atau `BigInt()` untuk menyimpan integer sangat besar tanpa precision loss.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      },
+      {
+        "id": "type-bigint-limitations",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\nconsole.log(10n + 5);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Mencetak `15n`"
+          },
+          {
+            "id": "b",
+            "text": "Mencetak `15`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `TypeError` karena BigInt dan Number tidak boleh dicampur langsung dalam operasi aritmetika"
+          },
+          {
+            "id": "d",
+            "text": "Mencetak `\"10n5\"`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "BigInt dan Number harus disamakan tipenya sebelum operasi aritmetika. Gunakan `10n + BigInt(5)` atau konversi ke Number jika nilai masih aman dan kehilangan presisi bukan masalah.\n\n#### 🔗 Referensi konsep\n- [JavaScript Type Nuances](https://33jsconcepts.com/beyond/concepts/javascript-type-nuances)"
+      }
+    ]
+  },
+  "flashcards": []
+}

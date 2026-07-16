@@ -1,0 +1,732 @@
+{
+  "version": 1,
+  "slug": "javascript-oop-prototype-this-class",
+  "title": "JavaScript OOP: Prototype, this, Class, dan Polymorphism",
+  "description": "30 soal JavaScript OOP tentang factory function, class, constructor, this/call/apply/bind, prototype chain, inheritance, dan polymorphism.",
+  "subject": "JavaScript",
+  "tags": [
+    "javascript",
+    "oop",
+    "prototype",
+    "this",
+    "class",
+    "factory",
+    "inheritance",
+    "polymorphism"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "disableQuestionNavigation": false,
+      "shuffleQuestions": false,
+      "shuffleChoices": true,
+      "passingScore": null
+    },
+    "questions": [
+      {
+        "id": "oop-factory-definition",
+        "type": "multiple-choice",
+        "prompt": "Apa ciri utama factory function di JavaScript?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Function biasa yang membuat dan mengembalikan object, tanpa wajib memakai `new`."
+          },
+          {
+            "id": "b",
+            "text": "Function yang hanya boleh dipanggil dengan `new`."
+          },
+          {
+            "id": "c",
+            "text": "Class yang semua method-nya otomatis private."
+          },
+          {
+            "id": "d",
+            "text": "Object yang prototype-nya selalu `null`."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Factory function hanyalah function biasa yang mengembalikan object baru. Ia fleksibel karena bisa memakai closure, mengembalikan bentuk object berbeda, dan tidak membutuhkan keyword `new`.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-factory-output",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction createUser(name) {\n  return {\n    name,\n    greet() {\n      return `Halo, ${this.name}`;\n    },\n  };\n}\n\nconst user = createUser(\"Budi\");\nconsole.log(user.greet());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"Halo, Budi\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"Halo, undefined\"`"
+          },
+          {
+            "id": "c",
+            "text": "`TypeError`"
+          },
+          {
+            "id": "d",
+            "text": "`undefined`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`createUser` mengembalikan object dengan property `name` dan method `greet`. Saat dipanggil sebagai `user.greet()`, `this` mengarah ke `user`, sehingga `this.name` adalah `\"Budi\"`.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-factory-closure-private",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction createCounter() {\n  let value = 0;\n\n  return {\n    inc() {\n      value += 1;\n      return value;\n    },\n  };\n}\n\nconst counter = createCounter();\nconsole.log(counter.value, counter.inc(), counter.inc());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined 1 2`"
+          },
+          {
+            "id": "b",
+            "text": "`0 1 2`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined undefined undefined`"
+          },
+          {
+            "id": "d",
+            "text": "`ReferenceError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`value` adalah variabel lokal di closure factory, bukan property pada object yang dikembalikan. Dari luar `counter.value` tidak ada, tetapi method `inc` tetap bisa membaca dan mengubah `value` melalui closure.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-class-method-prototype",
+        "type": "true-false",
+        "prompt": "Benar atau salah: method yang ditulis di body `class` biasa disimpan di prototype class, sehingga tidak dibuat ulang sebagai function baru di setiap instance.",
+        "answer": true,
+        "explanation": "Benar. Method class biasa ditempatkan di `ClassName.prototype`. Instance berbagi method itu lewat prototype chain, sementara data instance seperti `this.name` tetap berada pada masing-masing object.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-class-new-required",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\nclass User {\n  constructor(name) {\n    this.name = name;\n  }\n}\n\nconst user = User(\"Budi\");\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`user.name` menjadi `\"Budi\"`"
+          },
+          {
+            "id": "b",
+            "text": "`user` menjadi `undefined`, tanpa error"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `TypeError` karena class constructor harus dipanggil dengan `new`."
+          },
+          {
+            "id": "d",
+            "text": "Melempar `ReferenceError` karena `this` belum dibuat."
+          }
+        ],
+        "answer": "c",
+        "explanation": "ES class tidak bisa dipanggil seperti function biasa. Untuk membuat instance, gunakan `new User(\"Budi\")`; `new` membuat object baru dan mengikat `this` ke object itu selama constructor berjalan.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-static-method",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nclass MathTool {\n  static double(n) {\n    return n * 2;\n  }\n}\n\nconst tool = new MathTool();\nconsole.log(MathTool.double(4));\nconsole.log(typeof tool.double);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`8`, lalu `\"undefined\"`"
+          },
+          {
+            "id": "b",
+            "text": "`8`, lalu `\"function\"`"
+          },
+          {
+            "id": "c",
+            "text": "`TypeError`, lalu `\"undefined\"`"
+          },
+          {
+            "id": "d",
+            "text": "`undefined`, lalu `\"function\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Static method menempel pada class constructor (`MathTool`), bukan pada instance (`tool`). Karena itu `MathTool.double(4)` berjalan, sedangkan `tool.double` tidak ada.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-private-field",
+        "type": "multiple-choice",
+        "prompt": "Mana pernyataan yang benar tentang private field class seperti `#balance`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`#balance` hanya bisa diakses dari dalam body class yang mendeklarasikannya."
+          },
+          {
+            "id": "b",
+            "text": "`#balance` bisa dibaca dengan `instance[\"#balance\"]`."
+          },
+          {
+            "id": "c",
+            "text": "`#balance` sama saja dengan property public bernama `balance`."
+          },
+          {
+            "id": "d",
+            "text": "`#balance` hanya private jika object dibekukan dengan `Object.freeze()`."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Private field class memakai syntax khusus `#name` dan dicek oleh bahasa. Ia tidak bisa diakses lewat string key biasa dari luar class, berbeda dari convention seperti `_balance`.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-this-call-site",
+        "type": "multiple-choice",
+        "prompt": "Prinsip paling penting tentang `this` di JavaScript adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`this` ditentukan dari cara function dipanggil, bukan dari tempat function ditulis."
+          },
+          {
+            "id": "b",
+            "text": "`this` selalu menunjuk ke object tempat function pertama kali didefinisikan."
+          },
+          {
+            "id": "c",
+            "text": "`this` selalu sama dengan global object."
+          },
+          {
+            "id": "d",
+            "text": "`this` hanya tersedia di class, bukan function biasa."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`this` bersifat call-time binding. Method call, plain function call, `new`, `call`, `apply`, `bind`, dan arrow function punya aturan berbeda untuk menentukan nilai `this`.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-left-of-dot",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst user = {\n  name: \"Sari\",\n  getName() {\n    return this.name;\n  },\n};\n\nconsole.log(user.getName());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"Sari\"`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined`"
+          },
+          {
+            "id": "c",
+            "text": "`\"getName\"`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Pada method call `user.getName()`, object di sebelah kiri titik adalah receiver. Karena receiver-nya `user`, maka `this` di dalam method mengarah ke `user`.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-lost-this",
+        "type": "multiple-choice",
+        "prompt": "Apa yang paling mungkin terjadi pada strict mode?\n\n```js\n\"use strict\";\n\nconst user = {\n  name: \"Sari\",\n  getName() {\n    return this.name;\n  },\n};\n\nconst fn = user.getName;\nconsole.log(fn());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"Sari\"`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined`, karena `this.name` hilang"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `TypeError` karena `this` adalah `undefined`."
+          },
+          {
+            "id": "d",
+            "text": "`\"user\"`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Saat method dilepas menjadi `fn`, pemanggilannya menjadi plain function call. Dalam strict mode, `this` pada plain call adalah `undefined`, sehingga membaca `this.name` melempar `TypeError`.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-arrow-this",
+        "type": "multiple-choice",
+        "prompt": "Mana pernyataan yang benar tentang arrow function dan `this`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Arrow function tidak punya `this` sendiri; ia memakai `this` dari scope luar."
+          },
+          {
+            "id": "b",
+            "text": "Arrow function selalu membuat `this` menunjuk ke object di kiri titik."
+          },
+          {
+            "id": "c",
+            "text": "Arrow function hanya boleh dipakai sebagai constructor."
+          },
+          {
+            "id": "d",
+            "text": "`call()` selalu bisa mengganti `this` arrow function."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Arrow function punya lexical `this`, artinya nilai `this` diambil dari scope tempat arrow dibuat. Karena itu arrow function tidak cocok untuk method object yang perlu receiver dinamis.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-call-apply-difference",
+        "type": "multiple-choice",
+        "prompt": "Perbedaan utama `call()` dan `apply()` adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`call()` menerima argumen satu per satu, sedangkan `apply()` menerima argumen sebagai array/array-like."
+          },
+          {
+            "id": "b",
+            "text": "`apply()` permanen mengikat `this`, sedangkan `call()` tidak."
+          },
+          {
+            "id": "c",
+            "text": "`call()` hanya untuk class, sedangkan `apply()` hanya untuk factory."
+          },
+          {
+            "id": "d",
+            "text": "`call()` asynchronous, sedangkan `apply()` synchronous."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`call(thisArg, arg1, arg2)` dan `apply(thisArg, [arg1, arg2])` sama-sama langsung memanggil function dengan `this` tertentu. Bedanya ada pada bentuk daftar argumen.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-bind-permanent",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nfunction getName() {\n  return this.name;\n}\n\nconst a = { name: \"Ayu\" };\nconst b = { name: \"Bimo\" };\n\nconst bound = getName.bind(a);\nconsole.log(bound.call(b));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"Ayu\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"Bimo\"`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`bind(a)` mengembalikan function baru dengan `this` terikat ke `a`. Setelah binding itu dibuat, `call(b)` tidak bisa mengganti `this` menjadi `b`.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-method-borrowing",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst listLike = { 0: \"a\", 1: \"b\", length: 2 };\nconst result = Array.prototype.join.call(listLike, \"-\");\n\nconsole.log(result);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"a-b\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"[object Object]\"`"
+          },
+          {
+            "id": "c",
+            "text": "`TypeError`"
+          },
+          {
+            "id": "d",
+            "text": "`\"0-1-length\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`call` bisa dipakai untuk method borrowing. `Array.prototype.join` bekerja pada object array-like selama object itu punya index numerik dan `length` yang sesuai.\n\n#### 🔗 Referensi konsep\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-prototype-chain",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi saat JavaScript membaca `obj.role`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "JavaScript mencari `role` di `obj`, lalu mengikuti prototype chain sampai property ditemukan atau sampai `null`."
+          },
+          {
+            "id": "b",
+            "text": "JavaScript hanya mencari `role` di property milik `obj` sendiri."
+          },
+          {
+            "id": "c",
+            "text": "JavaScript menyalin semua property prototype ke `obj` sebelum membaca."
+          },
+          {
+            "id": "d",
+            "text": "JavaScript selalu membaca dari `Object.prototype` terlebih dahulu."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Prototype chain adalah mekanisme delegasi property. Lookup dimulai dari object sendiri, lalu naik ke prototype, prototype-nya prototype, dan seterusnya sampai property ditemukan atau chain berakhir di `null`.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-object-create-output",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst mentor = {\n  role: \"mentor\",\n  speak() {\n    return `${this.name} adalah ${this.role}`;\n  },\n};\n\nconst member = Object.create(mentor);\nmember.name = \"Rina\";\n\nconsole.log(member.speak());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"Rina adalah mentor\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"undefined adalah mentor\"`"
+          },
+          {
+            "id": "c",
+            "text": "`TypeError`"
+          },
+          {
+            "id": "d",
+            "text": "`\"Rina adalah undefined\"`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`member` tidak punya method `speak`, jadi JavaScript menemukannya di prototype `mentor`. Karena method dipanggil sebagai `member.speak()`, `this` tetap `member`, sehingga `this.name` adalah `\"Rina\"` dan `this.role` dicari di prototype.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)\n- [this, call, apply, and bind](https://33jsconcepts.com/concepts/this-call-apply-bind)"
+      },
+      {
+        "id": "oop-property-shadowing",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst base = { level: 1 };\nconst player = Object.create(base);\nplayer.level = 3;\n\nconsole.log(player.level, base.level);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`3 1`"
+          },
+          {
+            "id": "b",
+            "text": "`3 3`"
+          },
+          {
+            "id": "c",
+            "text": "`1 1`"
+          },
+          {
+            "id": "d",
+            "text": "`undefined 1`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Assignment `player.level = 3` membuat own property pada `player`. Own property itu menutupi (`shadow`) property `level` di prototype, tetapi tidak mengubah `base.level`.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-prototype-vs-prototype-property",
+        "type": "multiple-choice",
+        "prompt": "Mana pernyataan yang paling tepat?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`obj.[[Prototype]]` adalah prototype actual object; `Constructor.prototype` adalah object yang akan menjadi prototype instance baru saat dipakai dengan `new`."
+          },
+          {
+            "id": "b",
+            "text": "`obj.prototype` selalu sama dengan `obj.[[Prototype]]`."
+          },
+          {
+            "id": "c",
+            "text": "Semua object punya property public `.prototype`."
+          },
+          {
+            "id": "d",
+            "text": "`Constructor.prototype` hanya dipakai oleh factory function."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Ini salah satu sumber kebingungan JS OOP. Object biasa punya internal `[[Prototype]]`; function constructor punya property `.prototype` yang dipakai sebagai prototype bagi instance yang dibuat dengan `new`.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-new-operator-steps",
+        "type": "multiple-choice",
+        "prompt": "Urutan yang paling tepat saat `new Person(\"Ayu\")` dipanggil adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Buat object baru -> set prototype ke `Person.prototype` -> panggil `Person` dengan `this` object baru -> return object."
+          },
+          {
+            "id": "b",
+            "text": "Panggil `Person` -> buat prototype baru -> hapus `this` -> return `undefined`."
+          },
+          {
+            "id": "c",
+            "text": "Clone semua method dari `Person.prototype` ke global object -> return global object."
+          },
+          {
+            "id": "d",
+            "text": "Buat object baru -> set prototype ke `Object.prototype` saja -> abaikan constructor."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`new` membuat object baru, menghubungkannya ke `Constructor.prototype`, menjalankan constructor dengan `this` mengarah ke object baru, lalu mengembalikan object tersebut kecuali constructor mengembalikan object lain secara eksplisit.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-has-own-vs-in",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst proto = { role: \"admin\" };\nconst user = Object.create(proto);\nuser.name = \"Dina\";\n\nconsole.log(\"role\" in user);\nconsole.log(Object.hasOwn(user, \"role\"));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`true`, lalu `false`"
+          },
+          {
+            "id": "b",
+            "text": "`false`, lalu `false`"
+          },
+          {
+            "id": "c",
+            "text": "`true`, lalu `true`"
+          },
+          {
+            "id": "d",
+            "text": "`false`, lalu `true`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Operator `in` mengecek property di object sendiri maupun prototype chain. `Object.hasOwn` hanya true jika property adalah own property langsung milik object tersebut.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-object-create-null",
+        "type": "multiple-choice",
+        "prompt": "Apa karakteristik object yang dibuat dengan `Object.create(null)`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Object itu tidak punya prototype, jadi tidak mewarisi method dari `Object.prototype` seperti `toString` atau `hasOwnProperty`."
+          },
+          {
+            "id": "b",
+            "text": "Object itu otomatis menjadi array kosong."
+          },
+          {
+            "id": "c",
+            "text": "Object itu tidak bisa punya property."
+          },
+          {
+            "id": "d",
+            "text": "Object itu selalu immutable."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`Object.create(null)` membuat dictionary object tanpa prototype. Ini berguna untuk map sederhana tanpa inherited keys, tetapi method seperti `obj.hasOwnProperty` tidak tersedia langsung.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-instanceof-chain",
+        "type": "multiple-choice",
+        "prompt": "Apa yang dicek oleh `obj instanceof Constructor`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Apakah `Constructor.prototype` muncul di prototype chain `obj`."
+          },
+          {
+            "id": "b",
+            "text": "Apakah nama property `constructor` pada `obj` sama dengan string `Constructor`."
+          },
+          {
+            "id": "c",
+            "text": "Apakah `obj` dibuat dengan factory function apa pun."
+          },
+          {
+            "id": "d",
+            "text": "Apakah `obj` punya semua property yang sama dengan `Constructor.prototype`."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`instanceof` tidak mengecek bentuk object secara struktural. Ia mengecek apakah prototype tertentu ada di prototype chain object.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-extends-super-constructor",
+        "type": "multiple-choice",
+        "prompt": "Apa yang wajib dilakukan constructor subclass sebelum memakai `this`?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Memanggil `super(...)`."
+          },
+          {
+            "id": "b",
+            "text": "Memanggil `Object.create(this)`."
+          },
+          {
+            "id": "c",
+            "text": "Menghapus prototype parent."
+          },
+          {
+            "id": "d",
+            "text": "Mengubah semua method menjadi static."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Dalam subclass, constructor harus memanggil `super(...)` sebelum mengakses `this`. `super` menjalankan constructor parent dan menyiapkan instance yang akan dipakai subclass.\n\n#### 🔗 Referensi konsep\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-method-overriding-super",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nclass Animal {\n  speak() {\n    return \"suara\";\n  }\n}\n\nclass Cat extends Animal {\n  speak() {\n    return `${super.speak()} meong`;\n  }\n}\n\nconsole.log(new Cat().speak());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"suara meong\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"meong\"`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined meong`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`Cat` melakukan method overriding terhadap `speak`. Di dalam override, `super.speak()` memanggil implementation parent dengan `this` instance yang sama, lalu hasilnya digabung dengan `\"meong\"`.\n\n#### 🔗 Referensi konsep\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)"
+      },
+      {
+        "id": "oop-polymorphism-definition",
+        "type": "multiple-choice",
+        "prompt": "Apa makna polymorphism dalam desain OOP?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Kode bisa memperlakukan banyak object lewat interface/metode yang sama, sementara tiap object menjalankan implementasinya sendiri."
+          },
+          {
+            "id": "b",
+            "text": "Semua class harus punya property yang sama persis."
+          },
+          {
+            "id": "c",
+            "text": "Subclass dilarang override method parent."
+          },
+          {
+            "id": "d",
+            "text": "Object harus dibuat dengan factory, bukan class."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Polymorphism memungkinkan kode seperti `items.forEach(item => item.render())` bekerja untuk berbagai object, selama semuanya menyediakan method `render`. Detail perilakunya boleh berbeda per object.\n\n#### 🔗 Referensi konsep\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)"
+      },
+      {
+        "id": "oop-polymorphism-output",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nclass Shape {\n  area() {\n    return 0;\n  }\n}\n\nclass Square extends Shape {\n  constructor(size) {\n    super();\n    this.size = size;\n  }\n\n  area() {\n    return this.size * this.size;\n  }\n}\n\nconst shapes = [new Shape(), new Square(4)];\nconsole.log(shapes.map((shape) => shape.area()).join(\",\"));\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"0,16\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"16,16\"`"
+          },
+          {
+            "id": "c",
+            "text": "`\"0,0\"`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Array berisi dua object yang sama-sama punya method `area`, tetapi implementasinya berbeda. Pemanggilan `shape.area()` memilih method sesuai object actual di runtime: base shape mengembalikan `0`, square mengembalikan `16`.\n\n#### 🔗 Referensi konsep\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)"
+      },
+      {
+        "id": "oop-composition-vs-inheritance",
+        "type": "multiple-choice",
+        "prompt": "Kapan composition sering lebih cocok daripada inheritance?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Saat perilaku bisa disusun dari kemampuan kecil yang reusable, bukan dari hierarki parent-child yang kaku."
+          },
+          {
+            "id": "b",
+            "text": "Saat semua object harus berbagi satu ancestor class besar."
+          },
+          {
+            "id": "c",
+            "text": "Saat kode butuh menghindari function dan object."
+          },
+          {
+            "id": "d",
+            "text": "Saat `this` harus selalu global object."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Inheritance berguna untuk hubungan “is-a” yang jelas, tetapi hierarki bisa menjadi rapuh. Composition menyusun object dari kemampuan kecil seperti `canFly`, `canSwim`, atau `canSerialize`, sehingga lebih fleksibel untuk kombinasi perilaku.\n\n#### 🔗 Referensi konsep\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)"
+      },
+      {
+        "id": "oop-factory-instanceof",
+        "type": "true-false",
+        "prompt": "Benar atau salah: object plain yang dikembalikan factory function otomatis membuat `obj instanceof FactoryName` bernilai true.",
+        "answer": false,
+        "explanation": "Salah. Factory function biasa mengembalikan object tanpa otomatis menghubungkannya ke `FactoryName.prototype`. `instanceof` bekerja lewat prototype chain, sehingga class/constructor lebih cocok jika identity lewat `instanceof` memang dibutuhkan.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-class-syntax-sugar",
+        "type": "multiple-choice",
+        "prompt": "Pernyataan mana yang paling tepat tentang `class` di JavaScript?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`class` memberi syntax yang lebih rapi di atas model prototype JavaScript."
+          },
+          {
+            "id": "b",
+            "text": "`class` menghapus prototype chain dari JavaScript."
+          },
+          {
+            "id": "c",
+            "text": "`class` membuat semua method menjadi own property instance."
+          },
+          {
+            "id": "d",
+            "text": "`class` hanya bisa dipakai di browser, bukan Node.js."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Class syntax membuat OOP JavaScript lebih familiar dan terstruktur, tetapi inheritance dan method lookup tetap berjalan lewat prototype chain. Memahami prototype tetap penting walaupun memakai `class`.\n\n#### 🔗 Referensi konsep\n- [Factories and Classes](https://33jsconcepts.com/concepts/factories-classes)\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)"
+      },
+      {
+        "id": "oop-key-mental-model",
+        "type": "short-answer",
+        "prompt": "Dalam satu kata, model inheritance utama JavaScript berbasis apa? Jawab dengan istilah bahasa Inggris yang umum dipakai.",
+        "answers": [
+          "prototype",
+          "prototypes",
+          "prototypal"
+        ],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "JavaScript memakai prototypal inheritance: object mendelegasikan property lookup ke object lain melalui prototype chain. Class syntax tetap dibangun di atas model prototype ini.\n\n#### 🔗 Referensi konsep\n- [Object Creation and Prototypes](https://33jsconcepts.com/concepts/object-creation-prototypes)\n- [Inheritance and Polymorphism](https://33jsconcepts.com/concepts/inheritance-polymorphism)"
+      }
+    ]
+  },
+  "flashcards": []
+}

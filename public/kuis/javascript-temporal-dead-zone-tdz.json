@@ -1,0 +1,714 @@
+{
+  "version": 1,
+  "slug": "javascript-temporal-dead-zone-tdz",
+  "title": "JavaScript: Temporal Dead Zone (TDZ)",
+  "description": "30 soal khusus Temporal Dead Zone untuk programmer JavaScript: teori, hoisting, let/const/class, typeof, shadowing, default parameter, destructuring, loop, closure, dan circular ES modules.",
+  "subject": "JavaScript",
+  "tags": [
+    "javascript",
+    "tdz",
+    "temporal-dead-zone",
+    "hoisting",
+    "let",
+    "const",
+    "class",
+    "esm"
+  ],
+  "quiz": {
+    "settings": {
+      "questionMode": "single",
+      "requireAnswerBeforeNext": true,
+      "disableQuestionNavigation": false,
+      "shuffleQuestions": false,
+      "shuffleChoices": true,
+      "passingScore": null
+    },
+    "questions": [
+      {
+        "id": "tdz-definition",
+        "type": "multiple-choice",
+        "prompt": "Definisi paling tepat untuk Temporal Dead Zone (TDZ) adalah...",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Periode sejak scope dimasuki sampai binding `let`/`const`/`class` selesai diinisialisasi, ketika binding sudah ada tetapi belum boleh diakses."
+          },
+          {
+            "id": "b",
+            "text": "Periode ketika garbage collector menunda penghapusan variabel lokal."
+          },
+          {
+            "id": "c",
+            "text": "Area memory khusus untuk variabel global yang dibuat dengan `var`."
+          },
+          {
+            "id": "d",
+            "text": "Mode strict khusus yang hanya aktif di ES modules."
+          }
+        ],
+        "answer": "a",
+        "explanation": "TDZ bukan berarti binding tidak dikenal. Binding sudah dibuat saat scope disiapkan, tetapi masih `uninitialized` sampai deklarasinya dieksekusi. Akses di periode itu melempar `ReferenceError`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-var-vs-let-output",
+        "type": "multiple-choice",
+        "prompt": "Apa output paling tepat?\n\n```js\nconsole.log(a);\nvar a = 1;\n\nconsole.log(b);\nlet b = 2;\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined`, lalu `2`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined`, lalu `ReferenceError` sebelum `b` diinisialisasi"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError` pada `a`, sehingga baris lain tidak berjalan"
+          },
+          {
+            "id": "d",
+            "text": "`1`, lalu `2`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`var a` di-hoist sekaligus diinisialisasi ke `undefined`. `let b` juga diketahui oleh scope, tetapi belum diinisialisasi sampai baris deklarasinya berjalan, sehingga akses sebelumnya terkena TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-hoisted-but-uninitialized",
+        "type": "true-false",
+        "prompt": "Benar atau salah: `let` dan `const` tidak di-hoist sama sekali; karena itu TDZ terjadi.",
+        "answer": false,
+        "explanation": "Salah. `let` dan `const` tetap di-hoist dalam arti binding-nya dibuat saat scope disiapkan. Bedanya dari `var`: binding tersebut belum diinisialisasi, sehingga akses sebelum deklarasi melempar `ReferenceError`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-temporal-not-spatial",
+        "type": "multiple-choice",
+        "prompt": "Mengapa disebut **temporal** dead zone?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Karena efeknya bergantung pada urutan waktu eksekusi, bukan sekadar posisi teks di file."
+          },
+          {
+            "id": "b",
+            "text": "Karena TDZ hanya aktif pada `setTimeout` dan microtask."
+          },
+          {
+            "id": "c",
+            "text": "Karena variabel otomatis kedaluwarsa setelah beberapa detik."
+          },
+          {
+            "id": "d",
+            "text": "Karena TDZ hanya terjadi saat debugging timeline browser."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Kunci TDZ adalah kapan ekspresi yang membaca binding dieksekusi. Fungsi boleh dibuat sebelum deklarasi `let`, selama fungsi itu baru membaca variabel setelah variabel tersebut diinisialisasi.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-later-closure-ok",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil kode berikut?\n\n```js\n{\n  const readToken = () => token;\n  let token = \"siap\";\n\n  console.log(readToken());\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"siap\"`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`, karena fungsi dibuat sebelum `token`"
+          },
+          {
+            "id": "d",
+            "text": "`TypeError`, karena closure tidak boleh membaca `let`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Membuat fungsi belum membaca `token`. Pembacaan baru terjadi saat `readToken()` dipanggil, dan pada saat itu `let token` sudah selesai diinisialisasi.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-early-closure-call",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\n{\n  const readScore = () => score;\n  readScore();\n  let score = 90;\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Mengembalikan `undefined`"
+          },
+          {
+            "id": "b",
+            "text": "Melempar `ReferenceError`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `SyntaxError`"
+          },
+          {
+            "id": "d",
+            "text": "Mengembalikan `90`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Fungsinya memang valid, tetapi dipanggil terlalu cepat. Saat `readScore()` mencoba membaca `score`, deklarasi `let score` belum dieksekusi, sehingga binding masih berada di TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-typeof-undeclared-vs-tdz",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil yang paling tepat?\n\n```js\nconsole.log(typeof belumAda);\n\n{\n  console.log(typeof token);\n  let token = \"abc\";\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"undefined\"`, lalu `\"undefined\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"undefined\"`, lalu `ReferenceError`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError` pada `belumAda`"
+          },
+          {
+            "id": "d",
+            "text": "`\"object\"`, lalu `\"string\"`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`typeof` aman untuk identifier yang benar-benar tidak dideklarasikan. Namun `token` sudah menjadi binding lokal blok dan sedang berada di TDZ, jadi `typeof token` tetap melempar `ReferenceError`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-shadowing",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode ini?\n\n```js\nlet status = \"luar\";\n\n{\n  console.log(status);\n  let status = \"dalam\";\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`\"luar\"`"
+          },
+          {
+            "id": "b",
+            "text": "`\"dalam\"`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined`"
+          },
+          {
+            "id": "d",
+            "text": "`ReferenceError`"
+          }
+        ],
+        "answer": "d",
+        "explanation": "`let status` di blok dalam melakukan shadowing sejak awal blok. Karena binding blok itu belum diinisialisasi pada baris `console.log`, binding luar tidak dipakai dan akses terkena TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-const-needs-initializer",
+        "type": "multiple-choice",
+        "prompt": "Mana pernyataan yang benar tentang `const` dan TDZ?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`const` memiliki TDZ dan harus diinisialisasi pada baris deklarasinya."
+          },
+          {
+            "id": "b",
+            "text": "`const` tidak punya TDZ karena nilainya tidak bisa berubah."
+          },
+          {
+            "id": "c",
+            "text": "`const` diinisialisasi otomatis ke `undefined`, lalu wajib diisi nanti."
+          },
+          {
+            "id": "d",
+            "text": "`const` hanya terkena TDZ di global scope."
+          }
+        ],
+        "answer": "a",
+        "explanation": "`const` mengikuti aturan TDZ seperti `let`: binding belum boleh diakses sebelum deklarasi dieksekusi. Selain itu, `const` harus langsung diberi initializer saat deklarasi.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-class-before-declaration",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\nconst item = new Product();\n\nclass Product {\n  constructor() {\n    this.name = \"Buku\";\n  }\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`item.name` menjadi `\"Buku\"`"
+          },
+          {
+            "id": "b",
+            "text": "`Product` bernilai `undefined`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "Melempar `SyntaxError` karena class tidak boleh memiliki constructor"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Deklarasi `class` juga memiliki TDZ. Nama class sudah menjadi binding, tetapi belum diinisialisasi sebelum deklarasi class dieksekusi, sehingga `new Product()` terlalu awal.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-default-param-order",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil pemanggilan berikut?\n\n```js\nfunction total(a = b, b = 2) {\n  return a + b;\n}\n\ntotal();\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`4`"
+          },
+          {
+            "id": "b",
+            "text": "`NaN`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`undefined`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Default parameter dievaluasi dari kiri ke kanan. Saat default untuk `a` dievaluasi, parameter `b` belum diinisialisasi, sehingga membaca `b` terkena TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-default-param-earlier-ok",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode ini?\n\n```js\nfunction total(a = 1, b = a + 2) {\n  return a + b;\n}\n\nconsole.log(total());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`3`"
+          },
+          {
+            "id": "b",
+            "text": "`4`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`NaN`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Parameter yang lebih kanan boleh memakai parameter di kiri karena parameter kiri sudah selesai diinisialisasi. Di sini `a` menjadi `1`, `b` menjadi `3`, totalnya `4`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-destructuring-left-to-right",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil kode berikut?\n\n```js\nlet { a = 1, b = a + 1 } = {};\nconsole.log(a, b);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`1 2`"
+          },
+          {
+            "id": "b",
+            "text": "`undefined undefined`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`1 NaN`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Default pada destructuring dievaluasi dari kiri ke kanan. Saat default `b` membaca `a`, binding `a` sudah diinisialisasi ke `1`, jadi hasilnya `1 2`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-destructuring-reverse",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\nlet { a = b, b = 1 } = {};\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`a` menjadi `1`, `b` menjadi `1`"
+          },
+          {
+            "id": "b",
+            "text": "`a` menjadi `undefined`, `b` menjadi `1`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "Melempar `SyntaxError` karena destructuring tidak boleh memakai default"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Saat default `a = b` dievaluasi, binding `b` memang ada dalam pola yang sama, tetapi belum diinisialisasi. Itu TDZ dalam destructuring.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-self-reference",
+        "type": "multiple-choice",
+        "prompt": "Apa hasil deklarasi ini?\n\n```js\nlet { name = name } = {};\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`name` menjadi string kosong"
+          },
+          {
+            "id": "b",
+            "text": "`name` menjadi `undefined`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "Melempar `TypeError`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "`name` di sisi kanan default merujuk ke binding `name` yang sedang dibuat, bukan variabel luar. Binding itu masih berada di TDZ, sehingga self-reference seperti ini error.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-loop-self-reference",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi pada loop ini?\n\n```js\nconst data = [1, 2, 3];\n\nfor (let data of data) {\n  console.log(data);\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Mencetak `1`, `2`, `3`"
+          },
+          {
+            "id": "b",
+            "text": "Melempar `ReferenceError` di header loop"
+          },
+          {
+            "id": "c",
+            "text": "Loop tidak berjalan tetapi tidak error"
+          },
+          {
+            "id": "d",
+            "text": "Melempar `SyntaxError` karena nama variabel sama"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`let data` pada sisi kiri `for...of` membuat binding baru yang melakukan shadowing terhadap `data` luar. Saat sisi kanan `data` dievaluasi, nama itu mengarah ke binding baru yang masih TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-loop-let-closures",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst fns = [];\n\nfor (let i = 0; i < 3; i++) {\n  fns.push(() => i);\n}\n\nconsole.log(fns[0](), fns[1](), fns[2]());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`0 1 2`"
+          },
+          {
+            "id": "b",
+            "text": "`3 3 3`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined undefined undefined`"
+          },
+          {
+            "id": "d",
+            "text": "`ReferenceError`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "`let` pada loop membuat binding segar per iterasi untuk closure. Ini bukan TDZ error; justru salah satu perilaku `let` yang menghindari jebakan closure klasik milik `var`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-var-loop-comparison",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\nconst fns = [];\n\nfor (var i = 0; i < 3; i++) {\n  fns.push(() => i);\n}\n\nconsole.log(fns[0](), fns[1](), fns[2]());\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`0 1 2`"
+          },
+          {
+            "id": "b",
+            "text": "`3 3 3`"
+          },
+          {
+            "id": "c",
+            "text": "`undefined undefined undefined`"
+          },
+          {
+            "id": "d",
+            "text": "`ReferenceError`"
+          }
+        ],
+        "answer": "b",
+        "explanation": "`var` bersifat function-scoped dan hanya ada satu binding `i` yang dipakai semua closure. Setelah loop selesai, `i` bernilai `3`, jadi semua fungsi membaca `3`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-static-class-field",
+        "type": "multiple-choice",
+        "prompt": "Apa nilai `Config.first` dan `Config.second`?\n\n```js\nclass Config {\n  static first = Config.second;\n  static second = 10;\n}\n\nconsole.log(Config.first, Config.second);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined 10`"
+          },
+          {
+            "id": "b",
+            "text": "`10 10`"
+          },
+          {
+            "id": "c",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "`null 10`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Field static diinisialisasi berurutan. Saat `first` membaca `Config.second`, itu property access pada class object; property `second` belum dibuat sehingga nilainya `undefined`, bukan TDZ. Class `Config` sendiri baru TDZ sebelum deklarasi class.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-catch-error-type",
+        "type": "short-answer",
+        "prompt": "Saat mengakses binding `let` yang masih berada di TDZ, jenis error apa yang dilempar JavaScript? Jawab nama error-nya.",
+        "answers": [
+          "ReferenceError",
+          "reference error",
+          "referenceerror"
+        ],
+        "inputType": "text",
+        "caseSensitive": false,
+        "explanation": "Akses ke binding `let`, `const`, atau `class` sebelum inisialisasi melempar `ReferenceError`. Ini berbeda dari `TypeError`, yang biasanya terjadi saat nilai ada tetapi operasi terhadap nilai itu tidak valid.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-which-declarations",
+        "type": "multiple-choice",
+        "prompt": "Kelompok deklarasi mana yang paling tepat dikaitkan dengan TDZ?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`let`, `const`, dan `class`"
+          },
+          {
+            "id": "b",
+            "text": "`var`, function declaration, dan property object"
+          },
+          {
+            "id": "c",
+            "text": "Hanya `const`, karena `let` boleh diubah"
+          },
+          {
+            "id": "d",
+            "text": "Hanya variabel global"
+          }
+        ],
+        "answer": "a",
+        "explanation": "TDZ terutama muncul pada lexical declarations: `let`, `const`, dan `class`. Ada juga kasus terkait parameter default dan pola destructuring karena evaluasi binding dilakukan bertahap.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-scope-start",
+        "type": "true-false",
+        "prompt": "Benar atau salah: TDZ untuk `let x` dalam sebuah blok dimulai tepat di baris `let x`, bukan di awal blok.",
+        "answer": false,
+        "explanation": "Salah. TDZ dimulai saat scope/blok dimasuki dan berakhir ketika deklarasi dieksekusi. Karena itu akses sebelum baris deklarasi dalam blok yang sama bisa error.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-avoid-pattern",
+        "type": "multiple-choice",
+        "prompt": "Praktik mana yang paling langsung mengurangi risiko TDZ dalam kode sehari-hari?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Deklarasikan dan inisialisasi `let`/`const` sebelum dipakai, terutama sebelum branch, callback yang langsung dipanggil, atau default parameter."
+          },
+          {
+            "id": "b",
+            "text": "Ganti semua `let` dan `const` menjadi `var`."
+          },
+          {
+            "id": "c",
+            "text": "Bungkus semua akses variabel dengan `typeof`."
+          },
+          {
+            "id": "d",
+            "text": "Gunakan `delete` pada variabel sebelum deklarasi."
+          }
+        ],
+        "answer": "a",
+        "explanation": "TDZ biasanya muncul ketika binding dipakai sebelum waktunya. Menaruh deklarasi dan inisialisasi sebelum pemakaian membuat alur baca lebih jelas dan menghindari ketergantungan pada detail hoisting.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-circular-module",
+        "type": "multiple-choice",
+        "prompt": "Dalam circular ES module import, kapan TDZ paling mungkin muncul?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Saat modul membaca imported binding di top-level sebelum modul sumber selesai menginisialisasi export tersebut."
+          },
+          {
+            "id": "b",
+            "text": "Saat `import` selalu menyalin nilai lama, bukan live binding."
+          },
+          {
+            "id": "c",
+            "text": "Saat file memiliki lebih dari satu `export`."
+          },
+          {
+            "id": "d",
+            "text": "Saat dynamic import dipakai setelah semua modul selesai berjalan."
+          }
+        ],
+        "answer": "a",
+        "explanation": "ES modules memakai live binding. Dalam siklus import, binding bisa sudah ada tetapi nilai export belum selesai diinisialisasi ketika modul lain membacanya di top-level. Akses itulah yang dapat bertemu TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-circular-module-fix",
+        "type": "multiple-choice",
+        "prompt": "Cara mana yang paling masuk akal untuk menghindari TDZ pada circular import?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Jangan baca imported binding di top-level; akses nanti lewat fungsi, atau pecah dependency bersama ke modul terpisah."
+          },
+          {
+            "id": "b",
+            "text": "Tambahkan `var` sebelum semua nama import."
+          },
+          {
+            "id": "c",
+            "text": "Ubah `export const` menjadi komentar agar bundler mengabaikannya."
+          },
+          {
+            "id": "d",
+            "text": "Tambahkan `typeof` pada semua import karena `typeof` selalu aman."
+          }
+        ],
+        "answer": "a",
+        "explanation": "Solusi praktisnya adalah menunda pembacaan sampai export sudah diinisialisasi, atau merombak graph modul agar tidak circular. Mengandalkan `typeof` tidak menyelesaikan TDZ pada binding lexical.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-let-without-initializer",
+        "type": "multiple-choice",
+        "prompt": "Apa output kode berikut?\n\n```js\n{\n  let count;\n  console.log(count);\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`undefined`"
+          },
+          {
+            "id": "b",
+            "text": "`ReferenceError`"
+          },
+          {
+            "id": "c",
+            "text": "`null`"
+          },
+          {
+            "id": "d",
+            "text": "`0`"
+          }
+        ],
+        "answer": "a",
+        "explanation": "TDZ berakhir ketika deklarasi `let count;` dieksekusi. Karena tidak ada initializer eksplisit, binding diinisialisasi ke `undefined`. Jadi pembacaan setelah deklarasi aman.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-function-call-before-const",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi?\n\n```js\nconst result = readLimit();\nconst limit = 10;\n\nfunction readLimit() {\n  return limit;\n}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`result` menjadi `10`"
+          },
+          {
+            "id": "b",
+            "text": "`result` menjadi `undefined`"
+          },
+          {
+            "id": "c",
+            "text": "Melempar `ReferenceError`"
+          },
+          {
+            "id": "d",
+            "text": "Melempar `SyntaxError` karena function declaration tidak boleh membaca `const`"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Function declaration `readLimit` memang bisa dipanggil sebelum posisi teksnya, tetapi isi fungsi membaca `limit`. Saat fungsi dipanggil, `const limit` belum diinisialisasi, sehingga pembacaan itu terkena TDZ.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-class-extends-before-parent",
+        "type": "multiple-choice",
+        "prompt": "Apa yang terjadi pada kode ini?\n\n```js\nclass Child extends Parent {}\n\nclass Parent {}\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "`Child` berhasil dibuat karena semua class declaration di-hoist seperti function declaration."
+          },
+          {
+            "id": "b",
+            "text": "Melempar `ReferenceError` saat mengevaluasi `Parent` pada klausa `extends`."
+          },
+          {
+            "id": "c",
+            "text": "Melempar `TypeError` karena `Parent` otomatis bernilai `undefined`."
+          },
+          {
+            "id": "d",
+            "text": "`Child` dibuat sebagai class tanpa parent."
+          }
+        ],
+        "answer": "b",
+        "explanation": "Class declaration memiliki TDZ. Saat `class Child extends Parent` dievaluasi, ekspresi `Parent` harus dibaca, tetapi deklarasi `class Parent` belum dieksekusi. Maka akses `Parent` terlalu awal dan melempar `ReferenceError`.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)"
+      },
+      {
+        "id": "tdz-out-of-scope-vs-tdz",
+        "type": "multiple-choice",
+        "prompt": "Apa penjelasan terbaik untuk kode ini?\n\n```js\n{\n  let topic = \"TDZ\";\n}\n\nconsole.log(topic);\n```",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Ini TDZ, karena `topic` dibaca sebelum deklarasinya."
+          },
+          {
+            "id": "b",
+            "text": "Ini bukan TDZ; `topic` sudah keluar dari block scope, sehingga identifier itu tidak tersedia di luar blok."
+          },
+          {
+            "id": "c",
+            "text": "`topic` mencetak `\"TDZ\"` karena `let` bersifat function-scoped."
+          },
+          {
+            "id": "d",
+            "text": "`topic` mencetak `undefined` karena `let` mirip `var` setelah blok selesai."
+          }
+        ],
+        "answer": "b",
+        "explanation": "TDZ terjadi di dalam scope yang memiliki binding lexical sebelum binding itu diinisialisasi. Contoh ini berbeda: pembacaan berada di luar blok, jadi binding `topic` memang tidak berada dalam scope yang bisa diakses.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      },
+      {
+        "id": "tdz-purpose",
+        "type": "true-false",
+        "prompt": "Benar atau salah: salah satu tujuan TDZ adalah menangkap bug lebih awal saat kode memakai variabel lexical sebelum siap digunakan.",
+        "answer": true,
+        "explanation": "Benar. TDZ membuat akses sebelum inisialisasi gagal eksplisit dengan `ReferenceError`, bukan diam-diam menghasilkan `undefined` seperti banyak kasus `var`. Ini membantu bug terlihat lebih cepat.\n\n#### 🔗 Referensi konsep\n- [Temporal Dead Zone in JS](https://33jsconcepts.com/beyond/concepts/temporal-dead-zone)\n- [What is the Temporal Dead Zone?](https://www.freecodecamp.org/news/what-is-the-temporal-dead-zone/)"
+      }
+    ]
+  },
+  "flashcards": []
+}

@@ -1,7 +1,67 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-14",
+  "updatedAt": "2026-07-16",
   "items": [
+    {
+      "type": "quiz",
+      "slug": "javascript-oop-prototype-this-class",
+      "title": "JavaScript OOP: Prototype, this, Class, dan Polymorphism",
+      "description": "30 soal JavaScript OOP tentang factory function, class, constructor, this/call/apply/bind, prototype chain, inheritance, dan polymorphism.",
+      "subject": "JavaScript",
+      "tags": [
+        "javascript",
+        "oop",
+        "prototype",
+        "this",
+        "class",
+        "factory",
+        "inheritance",
+        "polymorphism"
+      ],
+      "questionCount": 30,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/javascript-oop-prototype-this-class.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "javascript-type-nuances",
+      "title": "JavaScript: Type Nuances",
+      "description": "20 soal JavaScript tentang nuansa tipe: null vs undefined, typeof, short-circuit operator, optional chaining, instanceof, Symbols, dan BigInt.",
+      "subject": "JavaScript",
+      "tags": [
+        "javascript",
+        "type-system",
+        "typeof",
+        "nullish",
+        "optional-chaining",
+        "symbol",
+        "bigint",
+        "instanceof"
+      ],
+      "questionCount": 20,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/javascript-type-nuances.json"
+    },
+    {
+      "type": "quiz",
+      "slug": "javascript-temporal-dead-zone-tdz",
+      "title": "JavaScript: Temporal Dead Zone (TDZ)",
+      "description": "30 soal khusus Temporal Dead Zone untuk programmer JavaScript: teori, hoisting, let/const/class, typeof, shadowing, default parameter, destructuring, loop, closure, dan circular ES modules.",
+      "subject": "JavaScript",
+      "tags": [
+        "javascript",
+        "tdz",
+        "temporal-dead-zone",
+        "hoisting",
+        "let",
+        "const",
+        "class",
+        "esm"
+      ],
+      "questionCount": 30,
+      "flashcardCount": 0,
+      "dataFile": "./kuis/javascript-temporal-dead-zone-tdz.json"
+    },
     {
       "type": "quiz",
       "slug": "javascript-lanjutan-33-konsep",
